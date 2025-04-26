@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+}
+  
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    padding-top: 10vh; /* Make up for the navbar at the top of the screen*/
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto; /* Center the whole content block on the page */
+}
+  
+.profileImage {
+    width: 30%;
+    height: 8%;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding-right: 20px;
+    border-right: 4px solid rgb(65, 123, 174);
+}
+
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.profileText {
+    flex: 1;
+    min-width: 250px;
+    max-width: 600px;
+}
+  

@@ -1,0 +1,32 @@
+.section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+}
+
+.image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.textContent {
+  margin-top: 1rem;
+}
+
+.textContent h2 {
+  font-size: 1.5rem;
+}
+
+.textContent p {
+  font-size: 1rem;
+  color: #555;
+}

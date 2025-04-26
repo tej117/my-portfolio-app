@@ -1,0 +1,92 @@
+.carouselContainer {
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.scrollArea {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 1rem;
+}
+
+.card {
+    flex: 0 0 auto;
+    scroll-snap-align: center; /* better for centering */
+    height: 500px;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #b4d7ff;
+    padding: 1rem;
+}
+
+.arrowLeft,
+.arrowRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: #02101e;
+    color: white;
+}
+
+.arrowLeft {
+    left: 0;
+}
+
+.arrowRight {
+    right: 0;
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.indicators span {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.indicators span:hover {
+    color: #0070f3;
+}
+
+.indicator {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.indicator:hover {
+    color: #0070f3;
+}
+
+/* Active indicator styling */
+.active {
+    color: #0070f3;
+    font-weight: bold;
+}
+
+.scrollArea::-webkit-scrollbar {
+    display: none;
+}
+.scrollArea {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+  

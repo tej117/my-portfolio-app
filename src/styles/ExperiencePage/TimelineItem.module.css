@@ -1,0 +1,48 @@
+.timelineItem {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.timelineItem .dot {
+    position: absolute;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background: #1b4c95;
+    border-radius: 50%;
+    border: 3px solid white;
+    z-index: 2;
+}
+
+.timelineItem.left {
+    left: 0;
+    text-align: right;
+}
+
+.timelineItem.left .dot {
+    right: -8px;
+}
+
+.timelineItem.right {
+    left: 50%;
+    text-align: left;
+}
+
+.timelineItem.right .dot {
+    left: -8px;
+}
+
+.content {
+    background-color: #0d1a26;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #aaa;
+}

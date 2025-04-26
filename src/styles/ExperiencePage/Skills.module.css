@@ -1,0 +1,64 @@
+.container {
+    width: 80%;
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    min-height: 90vh; /* Full height of the screen */
+}
+
+.title {
+    font-size: 3rem;
+    padding-bottom: 50px;
+    color: rgb(27, 76, 149);
+}
+
+.flexWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /*Ensures last row is centered*/
+    gap: 2rem;
+}
+
+.skillCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #0d1a26;
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s ease;
+
+    width: clamp(100px, 15vw, 160px);
+    height: clamp(100px, 15vh, 160px);
+}
+
+.skillCard:hover {
+    transform: scale(1.05);
+}
+
+.iconPlaceholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    background-color: #2c3e50;
+    border-radius: 8px;
+}
+
+.iconPlaceholder img {
+    max-width: 100%;
+    max-height: 100%;
+}

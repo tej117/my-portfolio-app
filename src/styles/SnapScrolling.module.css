@@ -1,0 +1,36 @@
+/* Outer container with fixed navbar */
+.page {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Scrollable area below the navbar */
+.scrollAreaProx {
+    flex: 1;
+    height: 100vh; /* remaining height after navbar */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+/* Optional: Enable snap scrolling */
+.scrollAreaMan {
+    flex: 1;
+    height: 100vh; /* remaining height after navbar */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+/* Each section fills the scroll area */
+.snapSection {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}

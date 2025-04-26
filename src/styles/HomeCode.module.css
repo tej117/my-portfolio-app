@@ -1,0 +1,138 @@
+/* Container for Introduction */
+.typewriterContainer{
+  width: 48%;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: left;
+  overflow: hidden;
+
+  /* Styling for typewriter box */
+  background: rgba(8, 8, 8, 0.205); /* greyer tone */
+  border: 2px solid rgba(160, 160, 160, 0.62);
+  backdrop-filter: blur(2px); /* less blur */
+  -webkit-backdrop-filter: blur(2px); /* for Safari support */
+}
+/* Container for description */
+.textContainer{
+  width: 48%;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: left;
+  overflow: hidden;
+
+  color: rgb(57, 162, 71);
+
+  /* Stay hidden before slide animation*/
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+/* This should be a style given to both typewriterContainer && textContainer
+before the slide animation occurs. Allows containers to be center. */
+.absolutePosition {
+  position: absolute;
+}
+
+/* Styles for the different texts done by typewriter */
+.fakeCode0{
+    font-size: 1rem;
+    color: rgb(19, 54, 119);
+    font-family: 'Consolas, \'Courier New\', monospace';
+    margin-left: 20px;
+}
+.fakeCode1{
+    font-size: 1rem;
+    color: rgb(19, 54, 119);
+    font-family: 'Consolas, \'Courier New\', monospace';
+    margin-left: 40px;
+}
+.fakeCode2{
+    font-size: 1rem;
+    color: rgb(19, 54, 119);
+    font-family: 'Consolas, \'Courier New\', monospace';
+    margin-left: 60px;
+}
+.titleh1{
+    font-size: 5rem;
+    margin-left: 50px;
+}
+.titleh2{
+  font-size: 4rem;
+  margin-left: 50px;
+}
+.cursor {
+  color: rgb(57, 162, 71);
+  animation: blink 1s steps(2, start) infinite;
+} 
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Ensures that both containers continue to remain properly positioned even
+after the slide animation. */
+.animationWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Start fully centered layout */
+.flexInitial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Final layout once animation is done */
+.flexFinal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  gap: 10px;
+}
+
+/* Slide animations */
+@keyframes slideToLeftFull {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-360px); } /*How much should it slide?*/
+}
+@keyframes slideToRightFull {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(360px); } /*How much should it slide?*/
+}
+.animateToLeft {
+  animation: slideToLeftFull 1s ease forwards;
+}
+.animateToRight {
+  animation: slideToRightFull 1s ease forwards;
+}
+
+/* Make the textContainer visible after the slide animation */
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*Proper positioning for btn inside the textContainer*/
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/*TODO: Have the textContainer appear below the typewriterContainer when the screen shrinks*/

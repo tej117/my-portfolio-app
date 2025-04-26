@@ -1,0 +1,50 @@
+.footer {
+    background-color: #01060c;
+    width: 800px; /* Or whatever width you want */
+    height: 150px;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* push content to the bottom */
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+.footer a {
+    color: #0070f3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #00aaff;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact p {
+    padding: 10px;
+    margin: 0.5rem 0;
+}
+
+.footerBottom {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #888;
+}
+  
