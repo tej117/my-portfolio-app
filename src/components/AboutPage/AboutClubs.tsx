@@ -1,22 +1,28 @@
-import Carousel from '../Carousel';
+import Carousel from '../Carousel/Carousel';
+import { CarouselItem } from "../Carousel/types";
 
-const clubItems = [
+const clubItems: CarouselItem[] = [
   {
-    label: 'AI',
-    content: <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum eos consequatur minima iure praesentium dolor laborum fugit. Harum tenetur eius placeat, consequuntur delectus officiis sit?</div>,
+    label: "AI",
+    title: "UVic AI Club",
+    textContent: (
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eos
+        consequatur minima iure praesentium dolor laborum fugit.
+      </div>
+    ),
+    imageSrc: <img src="/ai-club.jpg" alt="AI Club" />,
   },
   {
-    label: 'Robotics',
-    content: <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur quibusdam harum, debitis voluptate animi adipisci, repellendus sint quae cum nostrum exercitationem similique, iusto amet labore.</div>,
-  },
-  {
-    label: 'Debate',
-    content: <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam incidunt hic itaque nobis molestias cumque aliquid, quae cum error omnis, corrupti eveniet officiis repudiandae praesentium!</div>,
+    label: "Robotics",
+    title: "UVic Robotics Club",
+    textContent: <div>Robotics club description goes here.</div>,
+    imageSrc: <img src="/robotics.jpg" alt="Robotics Club" />,
   },
 ];
 
 const AboutClubs: React.FC = () => {
-    return <Carousel items={clubItems} title="Clubs I'm Part Of" />;
+    return <Carousel items={clubItems} />;
   };
   
-  export default AboutClubs;
+export default AboutClubs;

@@ -2,6 +2,9 @@
     width: 100%;
     height: 100vh;
     padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
   
 .profile {
@@ -10,7 +13,6 @@
     align-items: center;
     gap: 2rem;
     padding: 1rem;
-    padding-top: 10vh; /* Make up for the navbar at the top of the screen*/
     flex-wrap: wrap;
     max-width: 1000px;
     margin: 0 auto; /* Center the whole content block on the page */
