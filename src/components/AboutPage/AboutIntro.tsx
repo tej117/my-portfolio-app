@@ -13,7 +13,7 @@ const AboutIntro: React.FC = () => {
                 </div>
                 <div className={style.profileText}>
                     <h2>Hi, I'm Simran!</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus tenetur earum aliquid, non reprehenderit corrupti, laboriosam delectus exercitationem veritatis eaque iure, amet ullam reiciendis excepturi dolorem placeat assumenda quia. Minima!</p>
+                    <p>I’m a Software Engineering student at the University of Victoria, specializing in Artificial Intelligence. I’m passionate about using technology to solve real-world problems and am fascinated with projects that combine AI and robotics. When I’m not coding or experimenting with new tech, you’ll probably find me playing video games, reading novels, or dancing in my hip-hop classes.</p>
                 </div>
             </div>
         </div>

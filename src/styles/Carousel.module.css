@@ -65,8 +65,9 @@
   flex: 1;
   width: 100%;
   max-width: 1200px;
-  background: #b4d7ff;
+  background: rgb(97, 150, 212, 0.7);
   border-radius: 20px;
+  border: 2px solid white;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
@@ -77,8 +78,16 @@
   flex: 1;
   font-size: 1.2rem;
   line-height: 1.5;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  margin-right: 1rem;
+  margin-left: 2rem;
+
+  color: #39A247;
+
+  /* Background */
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .imageSide {
@@ -86,12 +95,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 2rem;
+  margin-left: 1rem;
 }
 .imageSide img {
   max-width: 100%;
   max-height: 80vh;
-  object-fit: contain;
+  object-fit: fill; /* fill - stretches image, contain - keeps aspect ratio */
   border-radius: 1rem;
+  border: 2px solid white;
 }
 
 /* ===== Navigation Arrows ===== */
