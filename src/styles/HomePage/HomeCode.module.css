@@ -1,6 +1,6 @@
 /* Container for Introduction */
 .typewriterContainer{
-  width: 48%;
+  width: 45%;
   margin-left: 10px;
   margin-top: 10px;
   padding: 20px;
@@ -14,12 +14,12 @@
   backdrop-filter: blur(2px); /* less blur */
   -webkit-backdrop-filter: blur(2px); /* for Safari support */
 }
-/* Container for description */
-.textContainer{
-  width: 48%;
+/* Container for text and resume button */
+.contentContainer{
+  width: 45%;
   margin-right: 10px;
   margin-top: 10px;
-  padding: 20px;
+  padding: 40px;
   border-radius: 30px;
   text-align: left;
   overflow: hidden;
@@ -30,6 +30,13 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease;
+}
+
+.textContainer{
+  padding: 10px;
+  border-radius: 30px;
+  background: rgba(33, 77, 63, 0.5);
+  border: 2px solid rgba(160, 160, 160, 0.62);
 }
 
 /* This should be a style given to both typewriterContainer && textContainer
@@ -109,11 +116,11 @@ after the slide animation. */
 /* Slide animations */
 @keyframes slideToLeftFull {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-360px); } /*How much should it slide?*/
+  100% { transform: translateX(-338px); } /*How much should it slide?*/
 }
 @keyframes slideToRightFull {
   0% { transform: translateX(0); }
-  100% { transform: translateX(360px); } /*How much should it slide?*/
+  100% { transform: translateX(338px); } /*How much should it slide?*/
 }
 .animateToLeft {
   animation: slideToLeftFull 1s ease forwards;
@@ -128,11 +135,38 @@ after the slide animation. */
   visibility: visible;
 }
 
-/*Proper positioning for btn inside the textContainer*/
+/* Proper positioning for btn inside the textContainer */
 .btnContainer {
+  position: relative;   /* anchor for button */
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  padding-top: 5rem;
+  z-index: 1;           /* ensures button stays above the path */
 }
 
-/*TODO: Have the textContainer appear below the typewriterContainer when the screen shrinks*/
+/* Responsive layout: stack containers vertically on small screens */
+@media (max-width: 900px) {
+  .flexFinal {
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .typewriterContainer,
+  .textContainer {
+    width: 90%;
+    margin: 0;
+  }
+
+  .titleh1 {
+    font-size: 3rem;
+    margin-left: 20px;
+  }
+
+  .titleh2 {
+    font-size: 2rem;
+    margin-left: 20px;
+  }
+}

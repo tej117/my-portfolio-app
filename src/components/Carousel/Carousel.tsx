@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../../styles/Carousel.module.css";
+import styles from "../../styles/Other/Carousel.module.css";
 import { CarouselItem } from "./types";
 import Labels from "./Labels";
 import Arrows from "./Arrows";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import style from "../styles/SnapScrolling.module.css";
+import style from "../styles/Other/SnapScrolling.module.css";
 import Skills from "../components/ExperiencePage/Skills";
 import Timeline from "../components/ExperiencePage/Timeline";
 import { setupCustomScrollSnap } from "../scripts/ScrollSnap";

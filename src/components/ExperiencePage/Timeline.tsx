@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/ExperiencePage/Timeline.module.css";
-import { experiences } from "../../scripts/ExperienceData";
+import { experiences } from "../../data/ExperienceData";
 import TimelineItem from "./TimelineItem";
 
 const Timeline: React.FC = () => {

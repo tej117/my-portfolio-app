@@ -1,25 +1,30 @@
 import React from "react";
+import { projects } from "../../data/ProjectsData";
 import style from '../../styles/ProjectPage/ProjectBar.module.css'
 
+
 type Props = {
-    active: string;
-}
+  active: string;
+  onSelect: (id: string) => void;
+};
 
-const ProjectBar: React.FC<Props> = ({ active }) => {
-    console.log("Active Section:", active);
-    return (
-        <div className={style.sidebar}>
-            <ul>
-                <li className={active === "project1" ? style.active : undefined}>
-                    <a href="#project1">Project1</a>
-                </li>
-                <li className={active === "project2" ? style.active : undefined}>
-                    <a href="#project2">Project2</a>
-                </li>
-            </ul>
-        </div>
-    );
-}
-
+const ProjectBar: React.FC<Props> = ({ active, onSelect }) => {
+  return (
+    <div className={style.sidebar}>
+      <ul>
+        {projects.map((project) => (
+          <li
+            key={project.id}
+            className={active === project.id ? style.active : undefined}
+          >
+            <button onClick={() => onSelect(project.id)}>
+              {project.title}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default ProjectBar;

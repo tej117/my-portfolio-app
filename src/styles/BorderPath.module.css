@@ -1,0 +1,9 @@
+.pathSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: -1; /* adjust depending on if you want behind/over content */
+}

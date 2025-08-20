@@ -4,11 +4,13 @@ import AboutIntro from "../components/AboutPage/AboutIntro";
 
 const About = () => {
   return (
-    <div>
+    <>
+      <div>
           <AboutIntro />
           <AboutClubs />
           <AboutInterests />
-    </div>
+      </div>
+    </>
   );
 };
   

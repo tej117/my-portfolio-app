@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/ResumeBtn.module.css';
+import styles from '../../styles/HomePage/ResumeBtn.module.css';
 
 const ResumeBtn: React.FC = () => {
     return (

@@ -11,7 +11,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 2px solid #00ffcc;
+    border: 2px solid #39A247;
     background-color: transparent;
     color: white;
     font-weight: bold;
@@ -46,7 +46,7 @@
 }
 
 .downloadButton:hover {
-    box-shadow: 0 0 8px #00ffcc;
+    box-shadow: 0 0 4px #39A247;
     transform: scale(1.05); /* Slight zoom effect */
 }
   
@@ -64,7 +64,7 @@
 .arcSmall {
     width: 110px;
     height: 110px;
-    border-top-color: #00ffcc;
+    border-top-color: #66D49D;
     animation: spin 2s linear infinite;
     z-index: 1;
 }
@@ -72,7 +72,7 @@
 .arcMedium {
     width: 130px;
     height: 130px;
-    border-right-color: #00aaff;
+    border-right-color: #66D474;
     animation: spinReverse 3s linear infinite;
     z-index: 2;
 }
@@ -80,7 +80,7 @@
 .arcLarge {
     width: 150px;
     height: 150px;
-    border-bottom-color: #00ff99;
+    border-bottom-color: #47B366;
     animation: spin 4s linear infinite;
     z-index: 0;
 }

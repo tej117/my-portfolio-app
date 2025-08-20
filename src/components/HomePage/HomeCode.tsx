@@ -1,15 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
-import styles from '../../styles/HomeCode.module.css';
+import styles from '../../styles/HomePage/HomeCode.module.css';
 import Typewriter from "../../scripts/Typewriter";
 
 import ResumeBtn from './ResumeBtn';
+import CircuitPath from './CircuitPath';
 
 const HomeCode: React.FC = () => {
 
     const containerRef1 = useRef<HTMLDivElement>(null);
+    const resumeRef = useRef<HTMLDivElement>(null);
+
     const [isFirstDone, setIsFirstDone] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
     const hasRun = useRef(false);
+    const [showPath, setShowPath] = useState(false);
 
     useEffect(() => {
         // Ensures it runs only once
@@ -63,37 +67,48 @@ const HomeCode: React.FC = () => {
         }
     }, []);
 
+    useEffect(() => {
+        if (isFirstDone) {
+            // Wait 1200 for animation to finish and path gets correct resumebtn postion
+            const timer = setTimeout(() => setShowPath(true), 1500);
+            return () => clearTimeout(timer);
+        }
+    }, [isFirstDone]);
+
     const showAnimation = isFirstDone && !animationComplete;
     const showCentered = !isFirstDone || showAnimation;
 
     //Make First Container appear center before moving to Left
     return (
-        <div className={isFirstDone && animationComplete ? styles.flexFinal : styles.flexInitial}>
-            <div className={styles.animationWrapper}>
-                <div
-                    className={`${styles.typewriterContainer} 
-                                ${showCentered ? styles.absolutePosition : ''} 
-                                ${showAnimation ? styles.animateToLeft : ''}`}
-                    onAnimationEnd={() => setAnimationComplete(true)}
-                >
-                    <div ref={containerRef1} />
-                </div>
+        <div>
+            <div className={isFirstDone && animationComplete ? styles.flexFinal : styles.flexInitial}>
+                <div className={styles.animationWrapper}>
+                    <div
+                        className={`${styles.typewriterContainer} 
+                                    ${showCentered ? styles.absolutePosition : ''} 
+                                    ${showAnimation ? styles.animateToLeft : ''}`}
+                        onAnimationEnd={() => setAnimationComplete(true)}
+                    >
+                        <div ref={containerRef1} />
+                    </div>
 
-                <div
-                    className={`${styles.textContainer}
-                                ${isFirstDone ? styles.visible : ''}
-                                ${showAnimation ? styles.absolutePosition : ''}
-                                ${showAnimation ? styles.animateToRight : ''}`}
-                >
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur soluta, corrupti
-                        consequuntur amet ipsum voluptatibus facere debitis eos necessitatibus distinctio
-                        incidunt sint consectetur neque autem.
-                    </p>
-                    <div className={styles.btnContainer}>
-                        <ResumeBtn />
+                    <div
+                        className={`${styles.contentContainer}
+                                    ${isFirstDone ? styles.visible : ''}
+                                    ${showAnimation ? styles.absolutePosition : ''}
+                                    ${showAnimation ? styles.animateToRight : ''}`}
+                    >
+                        <div className={styles.textContainer}>
+                            <p>
+                                I'm a Software Engineering student at UVic who is specializing in Artifical Intelligence. I am focused on gaining experience in the Robotics and AI field, wanting to tackle real-world problems that can be solved through automation.
+                            </p>
+                        </div>
+                        <div className={styles.btnContainer} ref={resumeRef}>
+                            <ResumeBtn />
+                        </div>
                     </div>
                 </div>
+                {showPath && <CircuitPath isFirstDone={isFirstDone} resumeRef={resumeRef} />}
             </div>
         </div>
     );       

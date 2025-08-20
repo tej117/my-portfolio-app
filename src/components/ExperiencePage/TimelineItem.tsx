@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/ExperiencePage/TimelineItem.module.css";
-import { Experience } from "../../scripts/ExperienceData";
+import { Experience } from "../../data/ExperienceData";
 
 type Props = {
     experience: Experience;

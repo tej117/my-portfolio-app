@@ -1,7 +1,7 @@
 /* src/components/Carousel/Labels.tsx */
 
 import React from "react";
-import styles from "../../styles/Carousel.module.css";
+import styles from "../../styles/Other/Carousel.module.css";
 import { CarouselItem } from "./types";
 
 interface LabelsProps {

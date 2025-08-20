@@ -32,3 +32,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Works on Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px; /* width of the scrollbar */
+  height: 10px; /* height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1a26;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white; /* scrollbar handle color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1D242B; /* darker on hover */
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white #0d1a26; /* thumb color | track color*/
+}

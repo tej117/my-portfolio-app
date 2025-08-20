@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react"
-import style from "../styles/SnapScrolling.module.css";
+import style from "../styles/Other/SnapScrolling.module.css";
 
 import ProjectIntro from '../components/ProjectPage/ProjectIntro';
 import ProjectBar from '../components/ProjectPage/ProjectBar';

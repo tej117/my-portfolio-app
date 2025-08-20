@@ -1,7 +1,7 @@
 /* src/components/Carousel/Arrows.tsx */
 
 import React from "react";
-import styles from "../../styles/Carousel.module.css";
+import styles from "../../styles/Other/Carousel.module.css";
 
 interface ArrowsProps {
   prevSlide: () => void;
