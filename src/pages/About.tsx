@@ -1,12 +1,12 @@
 import AboutClubs from "../components/AboutPage/AboutClubs";
 import AboutInterests from "../components/AboutPage/AboutInterests";
-import AboutIntro from "../components/AboutPage/AboutIntro";
+import AboutSection from "../components/AboutPage/AboutSection";
 
 const About = () => {
   return (
     <>
       <div>
-          <AboutIntro />
+          <AboutSection />
           <AboutClubs />
           <AboutInterests />
       </div>

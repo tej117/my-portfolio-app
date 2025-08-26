@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  max-width: 1000px;
+  flex-direction: row;   /* side by side */
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.textBlock {
+  flex: 1;
+  min-width: 300px;
+  margin-top: 10vh;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space between text and line */
+  margin-bottom: 1.5rem;
+}
+
+.heading h1 {
+  font-size: 2rem;
+  white-space: nowrap; /* prevents wrapping */
+}
+
+.headingLine {
+  flex: 1; /* take remaining space */
+  height: 2px;
+  background-color: rgb(65, 123, 174);
+  opacity: 0.7;
+}
+
+.textBlock p {
+  line-height: 1.6;
+}
+
+.techList {
+  margin-top: 1rem;
+}
+
+.techList ul {
+  list-style: none;
+  margin-left: 1rem;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.techList li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.imageBlock {
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.imageBlock img {
+  width: 100%;
+  max-width: 280px;
+  border: 5px solid rgb(65, 123, 174);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.anchorPoint {
+  position: absolute;    /* lets you control exact position */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;    /* makes it a circle */
+  background: red;       /* easy to see */
+  z-index: 1000;         /* make sure it’s on top */
+}

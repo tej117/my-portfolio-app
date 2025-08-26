@@ -144,6 +144,15 @@ after the slide animation. */
   z-index: 1;           /* ensures button stays above the path */
 }
 
+.anchorPoint {
+  position: absolute;    /* lets you control exact position */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;    /* makes it a circle */
+  background: red;       /* easy to see */
+  z-index: 1000;         /* make sure it’s on top */
+}
+
 /* Responsive layout: stack containers vertically on small screens */
 @media (max-width: 900px) {
   .flexFinal {

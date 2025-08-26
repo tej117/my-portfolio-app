@@ -3,17 +3,26 @@ import styles from '../../styles/HomePage/HomeCode.module.css';
 import Typewriter from "../../scripts/Typewriter";
 
 import ResumeBtn from './ResumeBtn';
-import CircuitPath from './CircuitPath';
 
-const HomeCode: React.FC = () => {
+interface HomeCodeProps {
+    onShowPath?: () => void;
+    resumeRef: React.RefObject<HTMLDivElement | null>;
+    onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
+}
+
+const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsReady }) => {
+
+    // extra anchor refs for path waypoints
+    const landingAnchor1 = useRef<HTMLDivElement>(null);
+    const landingAnchor2 = useRef<HTMLDivElement>(null);
+    const landingAnchor3 = useRef<HTMLDivElement>(null);
 
     const containerRef1 = useRef<HTMLDivElement>(null);
-    const resumeRef = useRef<HTMLDivElement>(null);
 
     const [isFirstDone, setIsFirstDone] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
-    const hasRun = useRef(false);
     const [showPath, setShowPath] = useState(false);
+    const hasRun = useRef(false);
 
     useEffect(() => {
         // Ensures it runs only once
@@ -69,9 +78,19 @@ const HomeCode: React.FC = () => {
 
     useEffect(() => {
         if (isFirstDone) {
-            // Wait 1200 for animation to finish and path gets correct resumebtn postion
-            const timer = setTimeout(() => setShowPath(true), 1500);
+            const timer = setTimeout(() => {
+                setShowPath(true);          // local flag
+                if (onShowPath) onShowPath(); // notify parent
+            }, 1500); // wait for animation to settle
             return () => clearTimeout(timer);
+        }
+    }, [isFirstDone]);
+
+    useEffect(() => {
+        if (!isFirstDone) return;
+        // Pass anchor refs up to Home
+        if (onAnchorsReady) {
+            onAnchorsReady([landingAnchor1, landingAnchor2, landingAnchor3]);
         }
     }, [isFirstDone]);
 
@@ -80,7 +99,7 @@ const HomeCode: React.FC = () => {
 
     //Make First Container appear center before moving to Left
     return (
-        <div>
+        <div style={{ position: 'relative' }}>
             <div className={isFirstDone && animationComplete ? styles.flexFinal : styles.flexInitial}>
                 <div className={styles.animationWrapper}>
                     <div
@@ -108,8 +127,11 @@ const HomeCode: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                {showPath && <CircuitPath isFirstDone={isFirstDone} resumeRef={resumeRef} />}
             </div>
+            {/* Hidden anchors for path waypoints */}
+            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "82.4%", left: "72.22%" }} />
+            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "82.4%", left: "32.7%" }} />
+            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "100%", left: "32.7%" }} />
         </div>
     );       
 };

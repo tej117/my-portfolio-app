@@ -1,14 +1,20 @@
 // src/Home.tsx
 
+import React, { useState, useRef } from 'react';
+
 // Border
 import BorderPath from './components/BorderPath';
+
+// Circuit Path
+import CircuitPath from './components/CircuitPath/CircuitPath';
+import { createLandingToResumeSegment, createLandingToAboutSegment } from './components/CircuitPath/PathData';
 
 // Landing Section
 import HomeCode from './components/HomePage/HomeCode';
 import Background from './components/Background';
 
 // About Section
-import AboutIntro from "./components/AboutPage/AboutIntro";
+import AboutSection from "./components/AboutPage/AboutSection";
 
 // Experience Section
 import Timeline from "./components/ExperiencePage/Timeline";
@@ -17,28 +23,46 @@ import Timeline from "./components/ExperiencePage/Timeline";
 import Project from "./components/ProjectPage/ProjectView"
 
 const Home = () => {
+    const [showPath, setShowPath] = useState(false);
+    const resumeRef = useRef<HTMLDivElement>(null);
+
+    const [landingAnchorRefs, setLandingAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
+
+    const [aboutAnchorRefs, setAboutAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
+
+    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs];
+
+    const fullSegment = createLandingToResumeSegment(resumeRef, combinedRefs, 83);
+
     return (
       <>
-        <BorderPath />
-        
-        <Background
-          lineCount={0}
-          color="#39A247"
-          opacity={0.5}
-          circleRadius={3}
-        />
-        <div>
-            <HomeCode />
+        <div style={{ position: 'relative' }}>
+          <BorderPath />
+          
+          <div>
+            <HomeCode
+              onShowPath={() => setShowPath(true)}
+              resumeRef={resumeRef}
+              onAnchorsReady={refs => setLandingAnchorRefs(refs)}
+            />
+          </div>
+
+          {showPath && <CircuitPath isActive={showPath} segment={fullSegment} />}
+
+          <div>
+              <AboutSection
+                onAnchorsReady={refs => setAboutAnchorRefs(refs)}
+              />
+          </div>
+
+          <div>
+              <Timeline />
+          </div>
+          <div>
+              <Project />
+          </div>
         </div>
-        <div>
-            <AboutIntro />
-        </div>
-        <div>
-            <Timeline />
-        </div>
-        <div>
-            <Project />
-        </div>
+
       </>
     );
   };
