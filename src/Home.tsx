@@ -7,20 +7,19 @@ import BorderPath from './components/BorderPath';
 
 // Circuit Path
 import CircuitPath from './components/CircuitPath/CircuitPath';
-import { createLandingToResumeSegment, createLandingToAboutSegment } from './components/CircuitPath/PathData';
+import { createLandingToResumeSegment } from './components/CircuitPath/PathData';
 
 // Landing Section
 import HomeCode from './components/HomePage/HomeCode';
-import Background from './components/Background';
 
 // About Section
 import AboutSection from "./components/AboutPage/AboutSection";
 
 // Experience Section
-import Timeline from "./components/ExperiencePage/Timeline";
+import ExperienceSection from "./components/ExperiencePage/ExperienceSection";
 
 // Project Section
-import Project from "./components/ProjectPage/ProjectView"
+import Project from "./components/ProjectPage/ProjectSection"
 
 const Home = () => {
     const [showPath, setShowPath] = useState(false);
@@ -30,7 +29,9 @@ const Home = () => {
 
     const [aboutAnchorRefs, setAboutAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
 
-    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs];
+    const [experienceAnchorRefs, setExperienceAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
+
+    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs, ...experienceAnchorRefs];
 
     const fullSegment = createLandingToResumeSegment(resumeRef, combinedRefs, 83);
 
@@ -50,16 +51,24 @@ const Home = () => {
           {showPath && <CircuitPath isActive={showPath} segment={fullSegment} />}
 
           <div>
+            <section id="about">
               <AboutSection
                 onAnchorsReady={refs => setAboutAnchorRefs(refs)}
               />
+            </section>
           </div>
 
           <div>
-              <Timeline />
+            <section id="experience">
+              <ExperienceSection
+                onAnchorsReady={refs => setExperienceAnchorRefs(refs)}
+              />
+            </section>
           </div>
           <div>
+            <section id="projects">
               <Project />
+            </section>
           </div>
         </div>
 

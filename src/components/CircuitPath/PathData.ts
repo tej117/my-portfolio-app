@@ -43,22 +43,3 @@ export const createLandingToResumeSegment = (
   duration: 3000,
   color: '#39A247'
 });
-
-export const createLandingToAboutSegment = (
-  anchorRefs: React.RefObject<HTMLDivElement | null>[]
-): PathSegment => ({
-  id: 'landingToAbout',
-  getCoords: () => {
-    const anchors = anchorRefs
-      .map(ref => ref.current)
-      .filter(Boolean)
-      .map(el => ({
-        x: el!.getBoundingClientRect().left + el!.offsetWidth / 2 + window.scrollX,
-        y: el!.getBoundingClientRect().top + el!.offsetHeight / 2 + window.scrollY
-      }));
-
-    return anchors;
-  },
-  duration: 2500,
-  color: '#39A247'
-});

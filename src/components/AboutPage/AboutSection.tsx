@@ -23,7 +23,7 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
         if (!isFirstDone) {
             const timer = setTimeout(() => {
                 setIsFirstDone(true)          // local flag
-            }, 2000); // wait for landing section
+            }, 2000); // Delay (don't know why it works when added)
             return () => clearTimeout(timer);
         }
     }, [isFirstDone]);

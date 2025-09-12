@@ -1,14 +1,21 @@
 .sidebar {
     position: sticky;
-    width: 200px;
     top: 0;
-    height: 90vh;
+    width: 200px;
+    height: 90vh;          /* sticky takes 90% viewport height */
     padding: 2rem 1rem;
     background-color: #02101e;
     position: relative;
 }
 
-/* This is for the border-right to be a subjective height*/
+.sidebarInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centers buttons vertically */
+    height: 100%;            /* match height of sticky sidebar */
+}
+
+/* Border-right decoration */
 .sidebar::after {
     content: "";
     position: absolute;
@@ -31,24 +38,22 @@
     width: 100%;
 }
 
-.sidebar li {
-    margin-bottom: 1rem;
+.sidebar li button {
     width: 100%;
-}
-
-.sidebar a {
-    text-decoration: none; /* Removes default underline */
-    color: white; /* Lighter version of the background */
-    display: block;
+    background: none; /* remove default button background */
+    border: none;     /* remove default button border */
+    color: white;     /* text color */
     text-align: right;
     padding-right: 8px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.sidebar a:hover {
-    color: rgb(65, 123, 174); /* Brighter on hover */
+.sidebar li button:hover {
+    color: rgb(65, 123, 174);
 }
 
-.active a {
+.active button {
     color: rgb(65, 123, 174);
     border-right: 4px solid rgb(65, 123, 174);
     padding-right: 8px;

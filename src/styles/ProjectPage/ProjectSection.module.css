@@ -1,32 +1,27 @@
-.section{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-.content {
-  max-width: 800px;
-}
-
-.image {
+.sectionWrapper {
   width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 8px;
+  margin: 2rem 0;
 }
 
-.textContent {
-  margin-top: 1rem;
+.heading {
+  font-size: 2rem;
+  text-align: center;   /* full screen center */
 }
 
-.textContent h2 {
-  font-size: 1.5rem;
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;   /* keep centered within page */
+  padding: 0 1.5rem;
+
+  align-items: flex-start; /* slideshow stays tight under header */
 }
 
-.textContent p {
-  font-size: 1rem;
-  color: #555;
+.slideshow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
 }

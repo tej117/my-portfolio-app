@@ -11,18 +11,20 @@ type Props = {
 const ProjectBar: React.FC<Props> = ({ active, onSelect }) => {
   return (
     <div className={style.sidebar}>
-      <ul>
-        {projects.map((project) => (
-          <li
-            key={project.id}
-            className={active === project.id ? style.active : undefined}
-          >
-            <button onClick={() => onSelect(project.id)}>
-              {project.title}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className={style.sidebarInner}>
+        <ul>
+          {projects.map((project) => (
+            <li
+              key={project.id}
+              className={active === project.id ? style.active : undefined}
+            >
+              <button onClick={() => onSelect(project.id)}>
+                {project.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

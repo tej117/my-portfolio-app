@@ -34,7 +34,7 @@ const CircuitPath: React.FC<CircuitPathProps> = ({ isActive, segment }) => {
     const animation = path.animate(
       [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
       {
-        duration: segment.duration || 3000,
+        duration: segment.duration || 6000,
         fill: 'forwards',
         easing: 'ease-in-out',
       }
@@ -62,7 +62,7 @@ const CircuitPath: React.FC<CircuitPathProps> = ({ isActive, segment }) => {
       {pathReady && (
         <circle r={6} fill={segment.color || '#39A247'}>
           <animateMotion
-            dur={`${(segment.duration || 3000) / 1000}s`}
+            dur={`${(segment.duration || 6000) / 200}s`}
             repeatCount="indefinite"
           >
             <mpath href={`#${segment.id}`} />

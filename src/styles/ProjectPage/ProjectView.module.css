@@ -1,14 +1,94 @@
-.container {
+.section {
   display: flex;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  background-color: #0d1a26;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.slideshow {
-  flex: 1;
+.content {
+  max-width: 800px;
+}
+
+.image {
+  width: 100%;
+  max-width: 500px;
+  min-width: 400px;
+  height: auto;
+  border: 5px solid rgb(65, 123, 174);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.textContent {
+  margin-top: 1rem;
+}
+
+.textContent h2 {
+  font-size: 1.5rem;
+}
+
+.textContent p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.metaRow {
+  margin-top: 1.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* no scrollbar */
-  transition: all 0.5s ease-in-out;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap; /* keeps mobile friendly */
+  text-align: left; /* better alignment */
+}
+
+.skills {
+  display: flex;
+  align-items: center; /* vertically center heading + pills */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills h3 {
+  font-size: 1.1rem;
+  margin: 0; /* remove margin pushing it down */
+  margin-right: 0.5rem; /* spacing between label and pills */
+  font-weight: 600;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.skills li {
+  background: #f0f4f8;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.githubLink {
+  align-self: center; /* keeps it aligned nicely */
+  padding: 0.4rem 0.75rem;
+  background-color: #417bae;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+  white-space: nowrap; /* prevents wrapping */
+}
+
+.githubLink:hover {
+  background-color: #2f5d87;
 }

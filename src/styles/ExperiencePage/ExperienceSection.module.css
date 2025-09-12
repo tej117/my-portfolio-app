@@ -5,11 +5,15 @@
     position: relative;
 }
 
-.title {
+.titleContainer {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 60px;
-    color: rgb(27, 76, 149);
+    margin-bottom: 30px;
+}
+
+.titleContainer h1 {
+  font-size: 2rem;
+  white-space: nowrap; /* prevents wrapping */
 }
 
 .timeline {
@@ -27,4 +31,13 @@
     width: 4px;
     background-color: #1b4c95;
     transform: translateX(-50%);
+}
+
+.anchorPoint {
+    position: absolute;    /* lets you control exact position */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;    /* makes it a circle */
+    background: red;       /* easy to see */
+    z-index: 1000;         /* make sure it’s on top */
 }
