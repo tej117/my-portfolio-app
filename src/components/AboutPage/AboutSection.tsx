@@ -4,11 +4,18 @@ import styles from '../../styles/AboutPage/AboutSection.module.css'
 //Images
 import profileImg from '../../assets/Me.jpg';
 
+//IMAGES
+import AIClubImg from '../../assets/AI_club.jpg';
+import RoboticsClubImg from '../../assets/Robotics_club_placeholder.jpg';
+
 interface AboutSectionProps {
     onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
 }
 
 const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
+
+    //Popups
+    const [activePopup, setActivePopup] = useState<"ai" | "robotics" | "skills" | null>(null);
 
     // extra anchor refs for path waypoints
     const landingAnchor1 = useRef<HTMLDivElement>(null);
@@ -18,7 +25,7 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
     const landingAnchor5 = useRef<HTMLDivElement>(null);
 
     const [isFirstDone, setIsFirstDone] = useState(false);
-
+    
     useEffect(() => {
         if (!isFirstDone) {
             const timer = setTimeout(() => {
@@ -52,7 +59,11 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                 <p>
                    I’m a fourth-year Software Engineering student at the University of Victoria, specializing in Artificial Intelligence. My passion lies in applying AI and robotics to solve real-world problems. As I continue my degree, I’m focused on expanding my expertise in AI development, robotics, and computer vision to prepare for a career at the intersection of these fields.
                 </p><br/><p>
-                    Through the UVic AI Club and Robotics Club, I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI (CUCAI), which strengthened my technical and communication skills. In robotics, I’ve worked with the ZED 2i depth camera and ROS to build vision systems for our competition robot, focusing on 3D data streaming, remote control, and marker detection. 
+                    Through the 
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club</span> 
+                    and 
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club</span>
+                    , I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI (CUCAI), which strengthened my technical and communication skills. In robotics, I’ve worked with the ZED 2i depth camera and ROS to build vision systems for our competition robot, focusing on 3D data streaming, remote control, and marker detection. 
                 </p><br/><p>
                     Outside of school and clubs, I enjoy playing soccer, taking hip-hop dance classes, reading sci-fi novels and playing RPGs.
                 </p>
@@ -67,6 +78,7 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                         <li><strong>Web:</strong> React, FastAPI</li>
                         <li><strong>Robotics:</strong> ROS, ZED Depth Camera</li>
                     </ul>
+                    <span className={styles.popupTrigger} onClick={() => setActivePopup("skills")}>View Full Skills</span>
                 </div>
             </div>
             <div className={styles.imageBlock}>
@@ -79,6 +91,54 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
             <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "71.2%", left: "66%" }} />
             <div ref={landingAnchor4} className={styles.anchorPoint} style={{ top: "71.2%", left: "1%" }} />
             <div ref={landingAnchor5} className={styles.anchorPoint} style={{ top: "100%", left: "1%" }} />
+
+            {activePopup && (
+                <div className={styles.popupOverlay} onClick={() => setActivePopup(null)}>
+                    <div 
+                    className={styles.popupBox} 
+                    onClick={(e) => e.stopPropagation()}
+                    >
+                    <button className={styles.closeButton} onClick={() => setActivePopup(null)}>×</button>
+                    
+                    {activePopup === "ai" && (
+                        <div className={styles.popupContent}>
+                            <h2>UVic AI Club</h2>
+                            <p>
+                                As part of the AI Club, I’ve worked on small projects that have honed my machine learning skills. Most recently, I developed many models to predict molecule toxicity using the Tox21 dataset, which taught me a lot about handling imbalanced data and experimenting with different techniques in TensorFlow. I also had the opportunity to present this project with my partner at the Canadian Undergraduate Conference on AI (CUCAI), where I gained valuable experience sharing technical work with both peers and industry professionals. It was an incredible way to grow my confidence and communication skills while connecting with the wider AI community.
+                            </p>
+                            <div className={styles.imageSection}>
+                                <img src={AIClubImg} alt="UVic AI Club project" />
+                            </div>
+                        </div>
+                    )}
+
+                    {activePopup === "robotics" && (
+                        <div className={styles.popupContent}>
+                            <h2>UVic Robotics Club</h2>
+                            <p>
+                                Being part of the Robotics Club has allowed me to bridge software and hardware by working directly with robotics systems. I’m currently using the ZED 2i depth camera with ROS to experiment with computer vision, remote control, and 3D data streaming for our competition robot. The club has been a great environment for problem-solving with a team—whether it’s figuring out low-light marker detection, managing code with GitHub, or exploring how robotics and AI intersect in practice. It’s been both a technical challenge and a chance to grow through collaboration.
+                            </p>
+                            <div className={styles.imageSection}>
+                                <img src={RoboticsClubImg} alt="UVic Robotics Club project" />
+                            </div>
+                        </div>
+                    )}
+
+                    {activePopup === "skills" && (
+                        <div className={styles.popupContent}>
+                            <h2>All Skills</h2>
+                            <ul className={styles.fullSkills}>
+                                <li><strong>Programming:</strong> Java, Python, TypeScript, C, JavaScript</li>
+                                <li><strong>AI/ML:</strong> TensorFlow, Scikit-learn, PyTorch, Pandas, NumPy</li>
+                                <li><strong>Web:</strong> React, FastAPI, Node.js, HTML, CSS/SCSS</li>
+                                <li><strong>Robotics:</strong> ROS, ZED Depth Camera, Linux, Git</li>
+                                <li><strong>Other:</strong> ServiceNow, SQL, Agile, GitHub, Docker</li>
+                            </ul>
+                        </div>
+                    )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
