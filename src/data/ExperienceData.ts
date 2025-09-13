@@ -1,4 +1,4 @@
-//ExperienceData
+// src/data/ExperienceData.ts
 
 export type Experience = {
     date: string;

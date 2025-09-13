@@ -1,3 +1,5 @@
+// src/components/ProjectSection/ProjectBar.tsx
+
 import React from "react";
 import { projects } from "../../data/ProjectsData";
 import style from '../../styles/ProjectPage/ProjectBar.module.css'

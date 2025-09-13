@@ -1,3 +1,5 @@
+// src/components/ExperienceSection/ExperienceSection.tsx
+
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../../styles/ExperiencePage/ExperienceSection.module.css";
 import { experiences } from "../../data/ExperienceData";

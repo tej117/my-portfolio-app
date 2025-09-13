@@ -1,4 +1,4 @@
-// src/components/ProjectPage/ProjectView.tsx
+// src/components/ProjectSection/ProjectSection.tsx
 
 import React, { useState } from "react";
 import { projects } from "../../data/ProjectsData";

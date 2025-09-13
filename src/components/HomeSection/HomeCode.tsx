@@ -1,3 +1,5 @@
+// src/components/HomeSection/HomeCode.tsx
+
 import React, { useRef, useEffect, useState } from 'react';
 import styles from '../../styles/HomePage/HomeCode.module.css';
 import Typewriter from "../../scripts/Typewriter";

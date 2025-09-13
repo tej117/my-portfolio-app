@@ -1,3 +1,5 @@
+// src/components/ProjectSection/ProjectView.tsx
+
 import React from "react";
 import style from '../../styles/ProjectPage/ProjectView.module.css'
 

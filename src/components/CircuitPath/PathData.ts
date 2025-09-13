@@ -1,4 +1,4 @@
-// src/HomePage/PathData.ts
+// src/components/CircuitPath/PathData.ts
 
 export interface PathSegment {
   id: string;

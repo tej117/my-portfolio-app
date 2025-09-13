@@ -1,4 +1,4 @@
-//ScrollSnap.ts
+// src/components/ScrollSnap.ts
 
 export function setupCustomScrollSnap(
     scrollContainerSelector: string,

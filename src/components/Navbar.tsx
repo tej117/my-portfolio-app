@@ -1,3 +1,5 @@
+// src/components/Navbar.tsx
+
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/Navbar.module.css';
 import { Link } from 'react-router-dom';

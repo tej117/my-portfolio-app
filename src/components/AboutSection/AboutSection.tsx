@@ -1,3 +1,5 @@
+// src/components/AboutSection/AboutSection.tsx
+
 import React, { useRef, useEffect, useState } from 'react';
 import styles from '../../styles/AboutPage/AboutSection.module.css'
 

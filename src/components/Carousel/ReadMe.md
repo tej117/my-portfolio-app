@@ -1,9 +1,9 @@
-import Carousel from '../Carousel/Carousel';
-import { CarouselItem } from "../Carousel/types";
+This is not being used on the webpage anymore. But is a fully functional Custom Carousel Component.
 
-//IMAGES
-import AIClubImg from '../../assets/AI_club.jpg';
-import RoboticsClubImg from '../../assets/Robotics_club_placeholder.jpg';
+How to use Carousel Component:
+
+```
+<Carousel items={clubItems} />;
 
 const clubItems: CarouselItem[] = [
   {
@@ -25,10 +25,6 @@ const clubItems: CarouselItem[] = [
       </div>),
     imageSrc: <img src={RoboticsClubImg} alt="Robotics Club" width={600} height={400}/>,
   },
-];
+]; 
+```
 
-const AboutClubs: React.FC = () => {
-    return <Carousel items={clubItems} />;
-  };
-  
-export default AboutClubs;

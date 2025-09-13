@@ -1,4 +1,4 @@
-//Typewriter.ts
+//src/components/Typewriter.ts
 
 export interface TypewriterLine {
     tag?: keyof HTMLElementTagNameMap; //e.g. h1, h2, h3, (default) p

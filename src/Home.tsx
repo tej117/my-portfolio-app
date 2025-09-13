@@ -10,16 +10,16 @@ import CircuitPath from './components/CircuitPath/CircuitPath';
 import { createLandingToResumeSegment } from './components/CircuitPath/PathData';
 
 // Landing Section
-import HomeCode from './components/HomePage/HomeCode';
+import HomeCode from './components/HomeSection/HomeCode';
 
 // About Section
-import AboutSection from "./components/AboutPage/AboutSection";
+import AboutSection from "./components/AboutSection/AboutSection";
 
 // Experience Section
-import ExperienceSection from "./components/ExperiencePage/ExperienceSection";
+import ExperienceSection from "./components/ExperienceSection/ExperienceSection";
 
 // Project Section
-import Project from "./components/ProjectPage/ProjectSection"
+import Project from "./components/ProjectSection/ProjectSection"
 
 const Home = () => {
     const [showPath, setShowPath] = useState(false);

@@ -1,3 +1,5 @@
+// src/components/BorderPath.tsx
+
 import React, { useRef, useEffect } from 'react';
 import styles from '../styles/BorderPath.module.css';
 

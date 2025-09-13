@@ -1,3 +1,5 @@
+/* src/components/Carousel/Carousel.tsx */
+
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Other/Carousel.module.css";
 import { CarouselItem } from "./types";

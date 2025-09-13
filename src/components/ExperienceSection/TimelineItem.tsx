@@ -1,3 +1,5 @@
+// src/components/ExperienceSection/TimelineItem.tsx
+
 import React from "react";
 import styles from "../../styles/ExperiencePage/TimelineItem.module.css";
 import { Experience } from "../../data/ExperienceData";

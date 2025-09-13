@@ -1,3 +1,5 @@
+// src/components/CircuitPath/CircuitPath.tsx
+
 import React, { useRef, useEffect, useState } from 'react';
 import styles from '../../styles/HomePage/CircuitPath.module.css';
 import { PathSegment } from './PathData';
