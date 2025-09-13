@@ -132,8 +132,8 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
             </div>
             {/* Hidden anchors for path waypoints */}
             <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "82.4%", left: "72.22%" }} />
-            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "82.4%", left: "32.7%" }} />
-            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "100%", left: "32.7%" }} />
+            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "82.4%", left: "33.25%" }} />
+            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "100%", left: "33.25%" }} />
         </div>
     );       
 };

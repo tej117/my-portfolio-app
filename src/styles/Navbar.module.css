@@ -26,7 +26,7 @@
 }
 
 .name:hover {
-  color: rgb(65, 123, 174); /* Highlight link */
+  color: #41a0e3; /* Highlight link */
   transform: scale(1.05); /*Slightly increase the text*/
 }
 
@@ -58,7 +58,7 @@
   display: inline-block;
 }
 .navLink:hover {
-  color: rgb(65, 123, 174); /* Highlight link */
+  color: #41a0e3; /* Highlight link */
   background-color: rgba(65, 123, 174, 0.2); /* Soft box background */
   transform: scale(1.05); /*Slightly increase the text*/
 }

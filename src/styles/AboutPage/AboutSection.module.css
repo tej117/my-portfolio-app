@@ -35,6 +35,7 @@
   height: 2px;
   background-color: rgb(65, 123, 174);
   opacity: 0.7;
+  margin-right: -20px; /* Extend to the right a bit more, for circuit path */
 }
 
 .textBlock p {
@@ -61,7 +62,7 @@
   flex: 0 0 30%;
   display: flex;
   justify-content: center;
-  margin-top: 10vh;
+  margin-top: 23vh;
 }
 
 .imageBlock img {
@@ -70,6 +71,28 @@
   border: 5px solid rgb(65, 123, 174);
   border-radius: 8px;
   object-fit: cover;
+}
+
+.hoverLink {
+  position: relative;
+  text-decoration: none; /* remove default underline */
+  color: #41a0e3; /* match your theme */
+  font-weight: 500;
+}
+
+.hoverLink::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #41a0e3;
+  transition: width 0.3s ease;
+}
+
+.hoverLink:hover::after {
+  width: 100%;
 }
 
 .anchorPoint {
@@ -82,16 +105,15 @@
 }
 
 .popupTrigger {
-  color: #41a0e3; /* UVic blue-ish */
+  color: #41a0e3;
   font-weight: 600;
   cursor: pointer;
-  padding: 2px 6px;
+  padding: 2px 2px;
   border-radius: 6px;
-  background: rgba(65,160,227,0.15);
   transition: background 0.3s ease, transform 0.2s ease;
 }
 .popupTrigger:hover {
-  background: rgba(65,160,227,0.3);
+  background: rgba(65, 123, 174, 0.2);
   transform: scale(1.05);
 }
 
@@ -109,7 +131,7 @@
 }
 
 .popupBox {
-  background: #0b0e12; /* dark theme to match your site */
+  background: #0d1a26; /* dark theme to match your site */
   color: #f0f0f0;
   padding: 2rem;
   border-radius: 16px;
@@ -124,6 +146,7 @@
 
 .closeButton {
   position: absolute;
+  color: #f0f0f0;
   top: 10px;
   right: 12px;
   border: none;

@@ -4,9 +4,14 @@ import React from 'react';
 import styles from '../../styles/HomePage/ResumeBtn.module.css';
 
 const ResumeBtn: React.FC = () => {
+
+    const handleOpen = () => {
+        window.open('/Resume-Main.pdf', '_blank'); // open in a new tab
+    };
+
     return (
         <div className={styles.buttonWrapper}>
-            <button className={styles.downloadButton}>Resume</button>
+            <button onClick={handleOpen} className={styles.downloadButton}>Resume</button>
             <div className={`${styles.arc} ${styles.arcSmall}`}></div>
             <div className={`${styles.arc} ${styles.arcMedium}`}></div>
             <div className={`${styles.arc} ${styles.arcLarge}`}></div>

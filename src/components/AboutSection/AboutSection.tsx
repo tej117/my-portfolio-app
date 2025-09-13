@@ -59,13 +59,21 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                     <div className={styles.headingLine}/>
                 </div>
                 <p>
-                   I’m a fourth-year Software Engineering student at the University of Victoria, specializing in Artificial Intelligence. My passion lies in applying AI and robotics to solve real-world problems. As I continue my degree, I’m focused on expanding my expertise in AI development, robotics, and computer vision to prepare for a career at the intersection of these fields.
+                    I’m a fourth-year Software Engineering student at the{" "} 
+                        <a href="https://www.uvic.ca" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                            University of Victoria
+                        </a>
+                    , specializing in Artificial Intelligence. My passion lies in applying AI and robotics to solve real-world problems. As I continue my degree, I’m focused on expanding my expertise in AI development, robotics, and computer vision to prepare for a career at the intersection of these fields.
                 </p><br/><p>
-                    Through the 
-                        <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club</span> 
-                    and 
-                        <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club</span>
-                    , I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI (CUCAI), which strengthened my technical and communication skills. In robotics, I’ve worked with the ZED 2i depth camera and ROS to build vision systems for our competition robot, focusing on 3D data streaming, remote control, and marker detection. 
+                    Through the{" "}  
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club→</span> 
+                    {" "}and{" "}  
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club→</span>
+                    , I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI ( 
+                        <a href="https://cucai.ca/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                            CUCAI
+                        </a>
+                    ), which strengthened my technical and communication skills. In robotics, I’ve worked with the ZED 2i depth camera and ROS to build vision systems for our competition robot, focusing on 3D data streaming, remote control, and marker detection. 
                 </p><br/><p>
                     Outside of school and clubs, I enjoy playing soccer, taking hip-hop dance classes, reading sci-fi novels and playing RPGs.
                 </p>
@@ -80,7 +88,8 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                         <li><strong>Web:</strong> React, FastAPI</li>
                         <li><strong>Robotics:</strong> ROS, ZED Depth Camera</li>
                     </ul>
-                    <span className={styles.popupTrigger} onClick={() => setActivePopup("skills")}>View Full Skills</span>
+                    <br/>
+                    <span className={styles.popupTrigger} onClick={() => setActivePopup("skills")}>View Full Skills→</span>
                 </div>
             </div>
             <div className={styles.imageBlock}>
@@ -88,8 +97,8 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
             </div>
 
             {/* Hidden anchors for path waypoints */}
-            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "16%", left: "25%" }} />
-            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "16%", left: "66%" }} />
+            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "15.9%", left: "25%" }} />
+            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "15.9%", left: "66%" }} />
             <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "71.2%", left: "66%" }} />
             <div ref={landingAnchor4} className={styles.anchorPoint} style={{ top: "71.2%", left: "1%" }} />
             <div ref={landingAnchor5} className={styles.anchorPoint} style={{ top: "100%", left: "1%" }} />
@@ -130,11 +139,11 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                         <div className={styles.popupContent}>
                             <h2>All Skills</h2>
                             <ul className={styles.fullSkills}>
-                                <li><strong>Programming:</strong> Java, Python, TypeScript, C, JavaScript</li>
-                                <li><strong>AI/ML:</strong> TensorFlow, Scikit-learn, PyTorch, Pandas, NumPy</li>
-                                <li><strong>Web:</strong> React, FastAPI, Node.js, HTML, CSS/SCSS</li>
-                                <li><strong>Robotics:</strong> ROS, ZED Depth Camera, Linux, Git</li>
-                                <li><strong>Other:</strong> ServiceNow, SQL, Agile, GitHub, Docker</li>
+                                <li><strong>Programming Languages:</strong> Java, Python, C, C++, TypeScript/JavaScript, SQL, HTML/CSS, Bash</li>
+                                <li><strong>Tools & Frameworks:</strong> FastAPI, React, Node.js, LangChain, Docker, Git, GitHubActions, ROS, ServiceNow</li>
+                                <li><strong>AI/ML & DataScience:</strong> TensorFlow, Scikit-learn, Retrievial-Augmented Generation, LLM Orchestration, Prompt Engineering, QDrant, Groq API</li>
+                                <li><strong>Systems & Hardware:</strong> Linux, Embedded C (STM32), VHDL (GHDL), Async Python, REST APIs, Fullstack-Development, CI/CD</li>
+                                <li><strong>Other:</strong> UML Diagrams, API Integration, Technical Writing, Documentation, Team Collaboration</li>
                             </ul>
                         </div>
                     )}
