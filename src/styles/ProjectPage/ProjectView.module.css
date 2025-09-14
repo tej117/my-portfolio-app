@@ -29,11 +29,12 @@
 
 .textContent h2 {
   font-size: 1.5rem;
+  color: #39A247;
 }
 
 .textContent p {
   font-size: 1rem;
-  color: #555;
+  color: white;
 }
 
 .metaRow {
@@ -78,7 +79,9 @@
 }
 
 .githubLink {
+  display: inline-flex;
   align-self: center; /* keeps it aligned nicely */
+  gap: 0.5rem;
   padding: 0.4rem 0.75rem;
   background-color: #417bae;
   color: white;
@@ -91,4 +94,10 @@
 
 .githubLink:hover {
   background-color: #2f5d87;
+  transform: scale(1.05);
+}
+
+.githubIcon {
+  width: 18px;   /* adjust size */
+  height: 18px;
 }

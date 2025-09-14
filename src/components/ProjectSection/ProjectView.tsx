@@ -3,6 +3,9 @@
 import React from "react";
 import style from '../../styles/ProjectPage/ProjectView.module.css'
 
+//Images
+import { Images } from "../../assets/assets";
+
 interface ProjectProps {
   title: string;
   description: string;
@@ -42,7 +45,8 @@ const ProjectView: React.FC<ProjectProps> = ({ title, description, image, alt, g
                   rel="noopener noreferrer"
                   className={style.githubLink}
                 >
-                  View on GitHub
+                  <img src={Images.icons.github} alt="GitHub" className={style.githubIcon} />
+                  GitHub
                 </a>
               )}
             </div>

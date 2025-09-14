@@ -21,7 +21,7 @@ const ProjectBar: React.FC<Props> = ({ active, onSelect }) => {
               className={active === project.id ? style.active : undefined}
             >
               <button onClick={() => onSelect(project.id)}>
-                {project.title}
+                {project.label}
               </button>
             </li>
           ))}

@@ -1,11 +1,20 @@
 .sectionWrapper {
   width: 100%;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+  padding-top: 10vh;
 }
 
 .heading {
   font-size: 2rem;
-  text-align: center;   /* full screen center */
+  text-align: left;   /* full screen center */
+  margin-bottom: 10px;
+  margin-left: 3rem
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -14,7 +23,8 @@
   margin: 0 auto;   /* keep centered within page */
   padding: 0 1.5rem;
 
-  align-items: flex-start; /* slideshow stays tight under header */
+  min-height: 90vh; /* stretch container */
+  align-items: center; /* vertical center for both */
 }
 
 .slideshow {

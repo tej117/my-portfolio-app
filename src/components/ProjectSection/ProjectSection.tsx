@@ -17,22 +17,23 @@ const ProjectSection: React.FC = () => {
 
   return (
     <div className={style.sectionWrapper}>
-      <h1 className={style.heading}>03. Projects</h1>
-
       <div className={style.container}>
         <ProjectBar active={activeProject} onSelect={handleSelect} />
 
-        <div className={style.slideshow}>
-          {currentProject && (
-            <ProjectView
-              title={currentProject.title}
-              description={currentProject.description}
-              image={currentProject.image}
-              alt={currentProject.title}
-              github={currentProject.github}
-              skills={currentProject.skills}
-            />
-          )}
+        <div className={style.mainContent}>
+          <h1 className={style.heading}>03. Projects</h1>
+          <div className={style.slideshow}>
+            {currentProject && (
+              <ProjectView
+                title={currentProject.title}
+                description={currentProject.description}
+                image={currentProject.image}
+                alt={currentProject.title}
+                github={currentProject.github}
+                skills={currentProject.skills}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
