@@ -1,0 +1,22 @@
+.hoverLink {
+  position: relative;
+  display: inline-block;
+  text-decoration: none; /* remove default underline */
+  color: #41a0e3; /* match your theme */
+  font-weight: 500;
+}
+
+.hoverLink::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #41a0e3;
+  transition: width 0.3s ease;
+}
+
+.hoverLink:hover::after {
+  width: 100%;
+}

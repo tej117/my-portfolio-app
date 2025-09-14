@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../../styles/ExperiencePage/ExperienceSection.module.css";
-import { experiences } from "../../data/ExperienceData";
+import { experiences } from "../../data/ExperienceData.tsx";
 import TimelineItem from "./TimelineItem";
 
 interface ExperienceSectionProps {
@@ -51,9 +51,9 @@ const Timeline: React.FC<ExperienceSectionProps> = ( { onAnchorsReady }) => {
             </div>
 
             {/* Hidden anchors for path waypoints */}
-            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "13%", left: "9%" }} />
-            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "13%", left: "49.7%" }} />
-            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "100%", left: "49.7%" }} />
+            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "13.8%", left: "9%" }} />
+            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "13.8%", left: "49.77%" }} />
+            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "100%", left: "49.77%" }} />
         </div>
     );
 }
