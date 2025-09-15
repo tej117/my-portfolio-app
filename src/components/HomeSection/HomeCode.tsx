@@ -23,7 +23,6 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
 
     const [isFirstDone, setIsFirstDone] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
-    const [showPath, setShowPath] = useState(false);
     const hasRun = useRef(false);
 
     useEffect(() => {
@@ -37,7 +36,6 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
                 {
                     loop: false,
                     typingSpeed: 50,
-                    deletingSpeed: 10
                 }
             );
 
@@ -79,11 +77,8 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
     }, []);
 
     useEffect(() => {
-        if (isFirstDone) {
-            const timer = setTimeout(() => {
-                setShowPath(true);          // local flag
-                if (onShowPath) onShowPath(); // notify parent
-            }, 1500); // wait for animation to settle
+        if (isFirstDone && onShowPath) {
+            const timer = setTimeout(() => onShowPath(), 1500);
             return () => clearTimeout(timer);
         }
     }, [isFirstDone]);
