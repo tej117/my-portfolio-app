@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
         <div>
             <header> 
                 <nav className={`${styles.navbar} ${show ? styles.show : styles.hidden}`}>
-                    <a href="/" className={`${styles.name}`}>Tejal Simran Cheema</a>
+                    <a href="/my-portfolio-app/" className={`${styles.name}`}>Tejal Simran Cheema</a>
                     <p className={styles.title}> Software Engineer </p>
                     <ul className={`${styles.navMenu} ${isActive ? styles.active ?? '' : ''}`}>
                         <li onClick={removeActive}>
