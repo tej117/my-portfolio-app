@@ -14,6 +14,8 @@ import NautichatImg from './Nautichat.jpg';
 
 // Icons
 import githubIcon from "./github-mark-white.png";
+import linkedinIcon from "./InBug-White.png";
+import emailIcon from "./email.png";
 
 // Export everything in an object (grouped by type)
 export const Images = {
@@ -24,6 +26,8 @@ export const Images = {
   },
   icons: {
     github: githubIcon,
+    linkedin: linkedinIcon,
+    email: emailIcon
   },
   clubs: {
     AIClub: AIClubImg,
