@@ -16,18 +16,16 @@ class Typewriter {
     //#cursor: HTMLElement;
     #loop: boolean;
     #typingSpeed: number;
-    #deletingSpeed: number;
 
     // Constructor creates a container element where all typed elements will be appended
     constructor(
         parent:HTMLElement,
-        { loop = false, typingSpeed = 50, deletingSpeed = 50 } = {}
+        { loop = false, typingSpeed = 50} = {}
     ) {
         this.#container = document.createElement("div");
         parent.append(this.#container);
         this.#loop = loop;
         this.#typingSpeed = typingSpeed;
-        this.#deletingSpeed = deletingSpeed;
 
         // Create and append a persistent cursor element
         // this.#cursor = document.createElement("span");
@@ -76,48 +74,6 @@ class Typewriter {
         })
         return this;
     }
-
-    // deleteChars(num: number) {
-    //     this.#addToQueue(resolve => {
-    //         let i = 0;
-    //         const interval = setInterval(() => {
-    //             //Delete character from last appended element
-    //             const lastChild = this.#container.lastElementChild;
-    //             if (lastChild && lastChild !== this.#cursor) {
-    //               lastChild.textContent = lastChild.textContent?.slice(0, -1) || "";
-                  
-    //               // Ensure the cursor remains at the end of the last element
-    //               lastChild.appendChild(this.#cursor);
-    //             }
-
-    //             i++;
-    //             if (i >= num) {
-    //                 clearInterval(interval);
-    //                 resolve();
-    //             }
-    //         }, this.#deletingSpeed)
-    //     })
-    //     return this;
-    // }
-
-    // deleteAll(deleteSpeed = this.#deletingSpeed) {
-    //     this.#addToQueue(resolve => {
-    //         let i = 0;
-    //         const interval = setInterval(() => {
-    //             //Delete character from last appended element
-    //             const lastChild = this.#container.lastElementChild;
-    //             if (lastChild) {
-    //                 lastChild.textContent = lastChild.textContent?.slice(0, -1) || "";
-    //             }
-
-    //             if (lastChild.textContent.length === 0) {
-    //                 clearInterval(interval);
-    //                 resolve();
-    //             }
-    //         }, deleteSpeed)
-    //     })
-    //     return this;
-    // }
 
     pauseFor(duration: number) {
         this.#addToQueue(resolve => {

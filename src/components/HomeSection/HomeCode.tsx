@@ -23,6 +23,8 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
 
     const [isFirstDone, setIsFirstDone] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [showPath, setShowPath] = useState(false);
     const hasRun = useRef(false);
 
@@ -37,7 +39,6 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
                 {
                     loop: false,
                     typingSpeed: 50,
-                    deletingSpeed: 10
                 }
             );
 

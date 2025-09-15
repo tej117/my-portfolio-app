@@ -7,6 +7,7 @@ export interface PathSegment {
   color?: string;
 }
 
+/*
 function getCoordsFromRef(ref: React.RefObject<HTMLDivElement | null>, yOffset = 0) {
   if (!ref.current) return null;
   const rect = ref.current.getBoundingClientRect();
@@ -14,7 +15,7 @@ function getCoordsFromRef(ref: React.RefObject<HTMLDivElement | null>, yOffset =
     x: rect.left + rect.width / 2 + window.scrollX,
     y: rect.top + rect.height / 2 + window.scrollY + yOffset
   };
-}
+}*/
 
 export const createLandingToResumeSegment = (
   resumeRef: React.RefObject<HTMLDivElement | null>,
