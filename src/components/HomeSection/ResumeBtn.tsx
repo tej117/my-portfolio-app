@@ -6,7 +6,7 @@ import styles from '../../styles/HomePage/ResumeBtn.module.css';
 const ResumeBtn: React.FC = () => {
 
     const handleOpen = () => {
-        window.open('/Resume-Main.pdf', '_blank'); // open in a new tab
+        window.open('/my-portfolio-app/Resume-Main.pdf', '_blank'); // open in a new tab
     };
 
     return (

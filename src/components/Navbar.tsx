@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/Navbar.module.css';
-import { Link } from 'react-router-dom';
 
 // Define Navbar Component
 const Navbar: React.FC = () => {
@@ -62,7 +61,7 @@ const Navbar: React.FC = () => {
         <div>
             <header> 
                 <nav className={`${styles.navbar} ${show ? styles.show : styles.hidden}`}>
-                    <Link to="/" className={`${styles.name}`}>Tejal Simran Cheema</Link>
+                    <a href="/" className={`${styles.name}`}>Tejal Simran Cheema</a>
                     <p className={styles.title}> Software Engineer </p>
                     <ul className={`${styles.navMenu} ${isActive ? styles.active ?? '' : ''}`}>
                         <li onClick={removeActive}>
