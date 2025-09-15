@@ -31,7 +31,9 @@ const Home = () => {
 
     const [experienceAnchorRefs, setExperienceAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
 
-    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs, ...experienceAnchorRefs];
+    const [projectAnchorRefs, setProjectAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
+
+    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs, ...experienceAnchorRefs, ...projectAnchorRefs];
 
     const fullSegment = createLandingToResumeSegment(resumeRef, combinedRefs, 83);
 
@@ -67,7 +69,9 @@ const Home = () => {
           </div>
           <div>
             <section id="projects">
-              <Project />
+              <Project 
+                onAnchorsReady={refs => setProjectAnchorRefs(refs)}
+              />
             </section>
           </div>
         </div>

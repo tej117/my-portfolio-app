@@ -9,7 +9,7 @@ interface ExperienceSectionProps {
     onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
 }
 
-const Timeline: React.FC<ExperienceSectionProps> = ( { onAnchorsReady }) => {
+const Timeline: React.FC<ExperienceSectionProps> = ( { onAnchorsReady } ) => {
 
     // extra anchor refs for path waypoints
     const landingAnchor1 = useRef<HTMLDivElement>(null);
