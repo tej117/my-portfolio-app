@@ -1,7 +1,7 @@
 .sidebar {
     position: sticky;
     top: 0;
-    width: 200px;
+    width: 250px;
     height: 90vh;          /* sticky takes 90% viewport height */
     padding: 2rem 1rem;
     background-color: #02101e;
@@ -47,14 +47,31 @@
     cursor: pointer;
     font-size: 1rem;
     padding: 3px 0 3px 8px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .sidebar li button:hover {
     color: rgb(65, 123, 174);
 }
 
-.active button {
+.sidebar li.active button {
     color: rgb(65, 123, 174);
-    border-right: 4px solid rgb(65, 123, 174);
-    padding-right: 8px;
+}
+
+.sidebar li.active img {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+
+    position: relative;
+    top: 2px;
+}
+
+.sidebar li.active img {
+    filter: invert(47%) sepia(14%) saturate(1480%) hue-rotate(171deg) brightness(93%) contrast(90%);
 }

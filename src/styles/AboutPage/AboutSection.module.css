@@ -117,6 +117,14 @@
   transform: scale(1.05);
 }
 
+.popupTrigger img{
+  width: 16px;
+  height: 16px;
+  filter: invert(58%) sepia(87%) saturate(409%) hue-rotate(166deg) brightness(92%) contrast(89%);
+
+  margin-left: 2px;
+}
+
 .popupOverlay {
   position: fixed;
   top: 0;

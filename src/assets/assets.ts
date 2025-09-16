@@ -1,8 +1,5 @@
 // src/assets/assets.ts
 
-// Profile Image
-import profileImg from './Me.jpg';
-
 // Club Images
 import AIClubImg from './AI_club.jpg';
 import RoboticsClubImg from './Robotics_club_placeholder.jpg';
@@ -16,6 +13,12 @@ import NautichatImg from './Nautichat.jpg';
 import githubIcon from "./github-mark-white.png";
 import linkedinIcon from "./InBug-White.png";
 import emailIcon from "./email.png";
+
+//Misc
+import leftBackIcon from "./left-back.png";
+
+// Profile Image
+import profileImg from './Me.jpg';
 
 // Export everything in an object (grouped by type)
 export const Images = {
@@ -35,5 +38,6 @@ export const Images = {
   },
   misc: {
     profile: profileImg,
+    leftBack: leftBackIcon
   },
 };

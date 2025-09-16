@@ -3,7 +3,7 @@
 import React from 'react'
 import styles from '../styles/Footer.module.css';
 
-// Import icons (you can use your pngs from assets)
+// Import icons
 import { Images } from "../assets/assets"
 
 const Footer: React.FC = () => {

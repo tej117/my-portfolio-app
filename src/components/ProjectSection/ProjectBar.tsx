@@ -2,8 +2,10 @@
 
 import React from "react";
 import { projects } from "../../data/ProjectsData";
-import style from '../../styles/ProjectPage/ProjectBar.module.css'
+import style from '../../styles/ProjectPage/ProjectBar.module.css';
 
+// Import icons (you can use your pngs from assets)
+import { Images } from "../../assets/assets";
 
 type Props = {
   active: string;
@@ -21,7 +23,10 @@ const ProjectBar: React.FC<Props> = ({ active, onSelect }) => {
               className={active === project.id ? style.active : undefined}
             >
               <button onClick={() => onSelect(project.id)}>
-                {project.label}
+                <span>{project.label}</span>
+                {active === project.id && (
+                  <img src={Images.misc.leftBack} alt="<" />
+                )}
               </button>
             </li>
           ))}

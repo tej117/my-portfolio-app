@@ -6,6 +6,9 @@ import styles from '../../styles/AboutPage/AboutSection.module.css'
 //Images
 import { Images } from "../../assets/assets";
 
+//SVG
+import TopRightArrow from "../../assets/box-arrow-up-right.svg";
+
 interface AboutSectionProps {
     onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
 }
@@ -62,9 +65,9 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                     , specializing in Artificial Intelligence. My passion lies in applying AI and robotics to solve real-world problems. As I continue my degree, I’m focused on expanding my expertise in AI development, robotics, and computer vision to prepare for a career at the intersection of these fields.
                 </p><br/><p>
                     Through the{" "}  
-                        <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club→</span> 
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club<img src={TopRightArrow} alt="" /></span> 
                     {" "}and{" "}  
-                        <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club→</span>
+                        <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club<img src={TopRightArrow}alt="" /></span>
                     , I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI ( 
                         <a href="https://cucai.ca/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
                             CUCAI
@@ -85,7 +88,7 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
                         <li><strong>Robotics:</strong> ROS, ZED Depth Camera</li>
                     </ul>
                     <br/>
-                    <span className={styles.popupTrigger} onClick={() => setActivePopup("skills")}>View Full Skills→</span>
+                    <span className={styles.popupTrigger} onClick={() => setActivePopup("skills")}>View Full Skills<img src={TopRightArrow} alt="" /></span>
                 </div>
             </div>
             <div className={styles.imageBlock}>
