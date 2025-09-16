@@ -96,11 +96,11 @@ const AboutSection: React.FC<AboutSectionProps> = ( { onAnchorsReady } ) => {
             </div>
 
             {/* Hidden anchors for path waypoints */}
-            <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "15.9%", left: "25%" }} />
-            <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "15.9%", left: "66%" }} />
-            <div ref={landingAnchor3} className={styles.anchorPoint} style={{ top: "71.2%", left: "66%" }} />
-            <div ref={landingAnchor4} className={styles.anchorPoint} style={{ top: "71.2%", left: "1%" }} />
-            <div ref={landingAnchor5} className={styles.anchorPoint} style={{ top: "100%", left: "1%" }} />
+            <div ref={landingAnchor1} className={`${styles.anchorPoint} ${styles.anchor1}`} />
+            <div ref={landingAnchor2} className={`${styles.anchorPoint} ${styles.anchor2}`} />
+            <div ref={landingAnchor3} className={`${styles.anchorPoint} ${styles.anchor3}`} />
+            <div ref={landingAnchor4} className={`${styles.anchorPoint} ${styles.anchor4}`} />
+            <div ref={landingAnchor5} className={`${styles.anchorPoint} ${styles.anchor5}`} />
 
             {activePopup && (
                 <div className={styles.popupOverlay} onClick={() => setActivePopup(null)}>

@@ -66,7 +66,7 @@
 }
 
 .imageBlock img {
-  width: 100%;
+  width: auto;
   max-width: 280px;
   border: 5px solid rgb(65, 123, 174);
   border-radius: 8px;
@@ -100,8 +100,29 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;    /* makes it a circle */
-  /*background: red;*/       /* easy to see */
+  background: red;       /* easy to see */
   z-index: 1000;         /* make sure it’s on top */
+}
+
+.anchor1 {
+  top: 15.9%;
+  left: 25%;
+}
+.anchor2 {
+  top: 15.9%;
+  left: 66%;
+}
+.anchor3 {
+  top: 71.2%;
+  left: 66%;
+}
+.anchor4 {
+  top: 71.2%;
+  left: 1%;
+}
+.anchor5 {
+  top: 100%;
+  left: 1%;
 }
 
 .popupTrigger {
@@ -129,8 +150,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
@@ -206,4 +227,141 @@
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* About Section responsive tweaks */
+@media (max-width: 980px) {
+  .container {
+    flex-direction: column;   /* stack text and image */
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;             /* let it grow naturally */
+    padding: 1.5rem;
+    gap: 2rem;                /* reduce spacing */
+  }
+
+  .textBlock {
+    flex: 1;
+    margin-top: 5vh;          /* start a bit lower so nav doesn’t overlap */
+    width: 100%;
+    min-width: 200px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    padding-left: 15px;
+  }
+
+  .heading h1 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+  }
+
+  .headingLine {
+    margin-right: 0;  /* prevent pushing outside container */
+  }
+
+  .textBlock p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .techList ul {
+    font-size: 0.85rem;
+  }
+
+  .imageBlock {
+    margin-top: 2rem;         /* less vertical push */
+    flex: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imageBlock img {
+    max-width: 320px;         /* shrink profile image */
+    width: 80%;               /* scale with screen */
+  }
+
+  /* Popup box should fit small screens better */
+  .popupBox {
+    max-width: 95%;
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .popupContent p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .imageSection img {
+    max-width: 100%;
+    max-height: 250px;
+  }
+
+  .anchor1 {
+    top: 8%;
+    left: 33%;
+  }
+  .anchor2 {
+    top: 8%;
+    left: 98%;
+  }
+  .anchor3 {
+    top: 63%;
+    left: 98%;
+  }
+  .anchor4 {
+    top: 66%;
+    left: 8%;
+  }
+  .anchor5 {
+    top: 100%;
+    left: 8%;
+  }
+}
+
+/* Even tighter on very small phones */
+@media (max-width: 500px) {
+
+  .textBlock {
+    font-size: 0.8rem;   /* shrink more for small screens */
+    padding-left: 15px;  /* preserve left border spacing */
+  }
+
+  .heading h1 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+  }
+
+  .textBlock p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .imageBlock img {
+    max-width: 280px;
+  }
+
+  .popupBox {
+    padding: 1rem;
+  }
+
+  .anchor1 {
+    top: 8%;
+    left: 42%;
+  }
+  .anchor2 {
+    top: 8%;
+    left: 98%;
+  }
+  .anchor3 {
+    top: 71.2%;
+    left: 98%;
+  }
+  .anchor4 {
+    top: 71.2%;
+    left: 10%;
+  }
+  .anchor5 {
+    top: 100%;
+    left: 10%;
+  }
 }

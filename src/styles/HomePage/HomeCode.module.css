@@ -153,20 +153,65 @@ after the slide animation. */
   z-index: 1000;         /* make sure it’s on top */
 }
 
-/* Responsive layout: stack containers vertically on small screens */
+.anchor1 {
+  top: 82.4%;
+  left: 72.22%;
+}
+.anchor2 {
+  top: 82.4%;
+  left: 33.25%;
+}
+
 @media (max-width: 900px) {
   .flexFinal {
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 15px; /* smaller gap */
     height: auto;
     padding: 40px 0;
   }
 
+  .animationWrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* smaller gap */
+    width: 100%;
+  }
+
   .typewriterContainer,
-  .textContainer {
+  .contentContainer {
     width: 90%;
-    margin: 0;
+    margin: 0 auto;
+    padding-top: 20px;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  .typewriterContainer {
+    width: 85%;       /* narrower */
+    margin-top: 10vh; /* push lower under navbar */
+    font-size: 0.9rem;
+  }
+
+  .typewriterContainer .titleh1 {
+    font-size: 2.5rem;
+  }
+
+  .typewriterContainer .titleh2 {
+    font-size: 1.6rem;
+  }
+
+  .animateToLeft,
+  .animateToRight {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .absolutePosition {
+    position: static !important;
   }
 
   .titleh1 {
@@ -177,5 +222,25 @@ after the slide animation. */
   .titleh2 {
     font-size: 2rem;
     margin-left: 20px;
+  }
+
+  .textContainer p {
+    font-size: 0.95rem;
+  }
+
+  .btnContainer {
+    padding-top: 2rem;
+  }
+
+  .anchor1 {
+    top: 88%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .anchor2 {
+    top: 98%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
