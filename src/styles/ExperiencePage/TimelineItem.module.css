@@ -1,52 +1,120 @@
 .timelineItem {
-    position: relative;
-    width: 50%;
-    padding: 20px 40px;
-    box-sizing: border-box;
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
 .timelineItem .dot {
-    position: absolute;
-    top: 20px;
-    width: 16px;
-    height: 16px;
-    background: #1b4c95;
-    border-radius: 50%;
-    border: 3px solid white;
-    z-index: 2;
+  position: absolute;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #1b4c95;
+  border-radius: 50%;
+  border: 3px solid white;
+  z-index: 2;
 }
 
 .timelineItem.left {
-    left: 0;
-    text-align: right;
+  left: 0;
+  text-align: right;
 }
 
 .timelineItem.left .dot {
-    right: -8px;
+  right: -8px;
 }
 
 .timelineItem.right {
-    left: 50%;
-    text-align: left;
+  left: 50%;
+  text-align: left;
 }
 
 .timelineItem.right .dot {
-    left: -8px;
+  left: -8px;
 }
 
+/* Content styling */
 .content {
-    background-color: #0d1a26;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #0d1a26;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: calc(100% - 40px); /* add right padding when stacked */
 }
 
 .content h3 {
-    color: #39A247;
+  color: #39A247;
 }
 
 .date {
-    font-size: 0.9rem;
-    color: #aaa;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ----------------- Responsive adjustments ----------------- */
+
+/* Tablet / smaller screens: stack items */
+@media (max-width: 900px) {
+  .timelineItem,
+  .timelineItem.left,
+  .timelineItem.right {
+    width: 100%;
+    left: 0 !important;
+    text-align: left !important;
+    padding: 15px 20px;
+    margin-left: 3rem; /* leave space for vertical line */
+  }
+
+  /* separate offsets for left and right items */
+  .timelineItem.left .dot {
+    left: -1.35rem; /* align left dot with vertical line */
+    right: auto;
+  }
+
+  .timelineItem.right .dot {
+    left: -1.35rem; /* slightly different to perfectly center */
+    right: auto;
+  }
+
+  .content {
+    padding: 15px;
+    max-width: calc(100% - 60px); /* add extra right padding so text doesn’t hug edge */
+    font-size: clamp(0.9rem, 1.5vw, 1rem); /* responsive text */
+  }
+}
+
+/* Mobile / very small phones */
+@media (max-width: 500px) {
+  .timelineItem {
+    margin-left: 2rem;
+    padding: 10px 15px;
+  }
+
+  .timelineItem.left .dot {
+    left: -1.75rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timelineItem.right .dot {
+    left: -1.75rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .content {
+    padding: 10px;
+    max-width: calc(100% - 40px);
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  .content h3 {
+    font-size: 1rem;
+  }
 }

@@ -44,6 +44,87 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;    /* makes it a circle */
-    /*background: red;*/       /* easy to see */
+    background: red;       /* easy to see */
     z-index: 1000;         /* make sure it’s on top */
+}
+
+.anchor1 {
+    top: 16.5%;
+    left: 9%;
+}
+.anchor2 {
+    top: 16.5%;
+    left: 49.77%;
+}
+.anchor3 {
+    top: 100%;
+    left: 49.77%;
+}
+
+@media (max-width: 900px) {
+    .timelineContainer {
+        width: 90%;
+        padding: 2rem 1rem;
+    }
+
+    .titleContainer h1 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    /* Stack timeline items instead of left/right */
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Move central line slightly left so it doesn’t overlap content */
+    .timeline::before {
+        left: 2rem;
+        transform: none; /* remove translateX */
+    }
+
+  .anchor1 {
+        top: 16.5%;
+        left: 9%;
+    }
+    .anchor2 {
+        top: 100%;
+        left: 9%;
+    }
+    .anchor3 {
+        top: 100%;
+        left: 9%;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 500px) {
+    .timelineContainer {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .titleContainer h1 {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+    }
+
+    /* Timeline line narrower */
+    .timeline::before {
+        left: 1.5rem;
+        width: 3px;
+    }
+
+    .anchor1 {
+        top: 16.5%;
+        left: 9%;
+    }
+    .anchor2 {
+        top: 100%;
+        left: 9%;
+    }
+    .anchor3 {
+        top: 100%;
+        left: 9%;
+    }
 }
