@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
     //States for disappearing Navbar
     const [show, setShow] = useState<boolean>(true);
     const [lastScrollY, setLastScrollY] = useState<number>(0);
+    const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
 
     // Ref to store timeout ID
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -27,24 +28,26 @@ const Navbar: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
 
+        if (!isProgrammaticScroll) {
             if (window.scrollY > lastScrollY) {
-                // scrolling down → hide navbar
-                setShow(false);
+            // scrolling down → hide navbar
+            setShow(false);
             } else {
-                // scrolling up → show navbar
-                setShow(true);
+            // scrolling up → show navbar
+            setShow(true);
             }
+        }
 
-            setLastScrollY(window.scrollY);
+        setLastScrollY(window.scrollY);
 
-            // debounce to prevent flicker
-            timeoutRef.current = setTimeout(() => {
-                setShow(window.scrollY <= 0 || show);
-            }, 100);
+        // debounce to prevent flicker
+        timeoutRef.current = setTimeout(() => {
+            setShow(window.scrollY <= 0 || show);
+        }, 100);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -55,7 +58,7 @@ const Navbar: React.FC = () => {
             }
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY, show]);
+    }, [lastScrollY, show, isProgrammaticScroll]);
 
     return (
         <div>
@@ -65,13 +68,55 @@ const Navbar: React.FC = () => {
                     <p className={styles.title}> Software Engineer </p>
                     <ul className={`${styles.navMenu} ${isActive ? styles.active ?? '' : ''}`}>
                         <li onClick={removeActive}>
-                            <a href="#about" className={styles.navLink}>01. &lt;About/&gt;</a>
+                            <a 
+                                href="#about" 
+                                className={styles.navLink}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setIsProgrammaticScroll(true);
+                                    document.getElementById("about")?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                    // reset the flag after scroll finishes
+                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                }}
+                            >
+                                01. &lt;About/&gt;
+                            </a>
                         </li>
                         <li onClick={removeActive}>
-                            <a href="#experience" className={styles.navLink}>02.  &lt;Experience/&gt;</a>
+                            <a 
+                                href="#experience" 
+                                className={styles.navLink}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setIsProgrammaticScroll(true);
+                                    document.getElementById("experience")?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                    // reset the flag after scroll finishes
+                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                }}
+                            >
+                                02.  &lt;Experience/&gt;
+                            </a>
                         </li>
                         <li onClick={removeActive}>
-                            <a href="#projects" className={styles.navLink}>03.  &lt;Projects/&gt;</a>
+                            <a 
+                                href="#projects" 
+                                className={styles.navLink}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setIsProgrammaticScroll(true);
+                                    document.getElementById("projects")?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                    // reset the flag after scroll finishes
+                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                }}
+                            >
+                                03.  &lt;Projects/&gt;
+                            </a>
                         </li>
                     </ul>
                     <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
