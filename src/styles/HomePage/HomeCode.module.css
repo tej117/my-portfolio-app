@@ -99,7 +99,8 @@ after the slide animation. */
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   overflow: hidden;
 }
 
@@ -109,7 +110,8 @@ after the slide animation. */
   justify-content: space-around;
   align-items: center;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   gap: 10px;
 }
 

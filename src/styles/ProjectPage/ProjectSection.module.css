@@ -1,3 +1,4 @@
+/* Base styles (desktop / full screen) */
 .sectionWrapper {
   width: 100%;
   margin-bottom: 2rem;
@@ -7,9 +8,9 @@
 
 .heading {
   font-size: 2rem;
-  text-align: left;   /* full screen center */
+  text-align: left;
   margin-bottom: 10px;
-  margin-left: 3rem
+  margin-left: 3rem;
 }
 
 .mainContent {
@@ -21,13 +22,13 @@
 .container {
   display: flex;
   max-width: 1200px;
-  margin: 0 auto;   /* keep centered within page */
+  margin: 0 auto;
   padding: 0 1.5rem;
-
-  min-height: 90vh; /* stretch container */
-  align-items: center; /* vertical center for both */
+  min-height: 90vh;
+  align-items: center;
 }
 
+/* slideshow / project image */
 .slideshow {
   flex: 1;
   display: flex;
@@ -38,10 +39,136 @@
 }
 
 .anchorPoint {
-    position: absolute;    /* lets you control exact position */
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;    /* makes it a circle */
-    /*background: red;*/       /* easy to see */
-    z-index: 1000;         /* make sure it’s on top */
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+.anchor1 {
+    top: 17.5%;
+    left: 49.77%;
+}
+.anchor2 {
+    top: 17.5%;
+    left: 90%;
+}
+.anchor3 {
+    bottom: 0%;
+    left: 90%;
+}
+.anchor4 {
+    bottom: 0%;
+    left: 50%;
+}
+.anchor5 {
+    bottom: 10%;
+    left: 50%;
+}
+
+/* ----------------- Responsive ----------------- */
+
+/* Tablet / smaller screens */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column; /* stack ProjectBar and mainContent */
+    align-items: flex-start;
+    min-height: auto;
+    padding: 0 1rem;
+    margin-left: 3rem; /* push content to the right to clear left border */
+  }
+
+  .mainContent {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .heading {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-left: 0; /* reset since container already pushes */
+  }
+
+  .slideshow {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ProjectView image and content */
+  .slideshow img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .slideshow .content {
+    padding: 15px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .anchor1 {
+      top: 0%;
+      left: 49.77%;
+  }
+  .anchor2 {
+      top: 0%;
+      left: 99%;
+  }
+  .anchor3 {
+      bottom: 0%;
+      left: 99%;
+  }
+  .anchor4 {
+      bottom: 0%;
+      left: 50%;
+  }
+  .anchor5 {
+      bottom: 10%;
+      left: 50%;
+  }
+}
+
+/* Mobile / very small screens */
+@media (max-width: 500px) {
+  .container {
+    padding: 0 0.5rem;
+    margin-left: 1.5rem; /* still leave some space for border */
+  }
+
+  .heading {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    margin-left: 0; /* reset again */
+  }
+
+  .slideshow img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .slideshow .content {
+    padding: 10px;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+
+    .anchor1 {
+      top: 0%;
+      left: 49.77%;
+  }
+  .anchor2 {
+      top: 0%;
+      left: 99%;
+  }
+  .anchor3 {
+      bottom: 0%;
+      left: 99%;
+  }
+  .anchor4 {
+      bottom: 0%;
+      left: 50%;
+  }
+  .anchor5 {
+      bottom: 10%;
+      left: 50%;
+  }
 }

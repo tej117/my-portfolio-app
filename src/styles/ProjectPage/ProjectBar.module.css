@@ -1,11 +1,32 @@
+/* ----------------- Desktop / Full screen ----------------- */
 .sidebar {
     position: sticky;
     top: 0;
     width: 250px;
     height: 90vh;          /* sticky takes 90% viewport height */
     padding: 2rem 1rem;
-    background-color: #02101e;
+    background-color: transparent;
     position: relative;
+
+    /* Vertical scrolling if content overflows */
+    overflow-y: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: white transparent;
+}
+
+/* Optional: Webkit scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 6px; /* width of the scrollbar */
+    height: 6px; /* height for horizontal scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 3px;
 }
 
 .sidebarInner {
@@ -74,4 +95,67 @@
 
 .sidebar li.active img {
     filter: invert(47%) sepia(14%) saturate(1480%) hue-rotate(171deg) brightness(93%) contrast(90%);
+}
+
+/* Tablet / smaller screens */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 1rem 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebarInner {
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+  }
+
+  /* Remove vertical border decoration */
+  .sidebar::after {
+    display: none;
+  }
+
+  .sidebar ul {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    gap: 1rem;
+    padding: 0;
+
+    /* horizontal scrolling */
+    overflow-x: auto;
+    scrollbar-width: thin;      /* Firefox */
+    scrollbar-color: white transparent; /* Firefox */
+  }
+
+  /* Optional: hide default scrollbar in Webkit and style it */
+  .sidebar ul::-webkit-scrollbar {
+    width: 6px; /* width of the scrollbar */
+    height: 6px; /* height for horizontal scrollbar */
+  }
+
+  .sidebar ul::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sidebar ul::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  .sidebar li button {
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    padding: 5px 10px;
+    white-space: nowrap; /* prevent wrapping */
+  }
 }

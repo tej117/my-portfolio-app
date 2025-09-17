@@ -43,7 +43,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ onAnchorsReady } ) => {
               landingAnchor5
           ]);
       }
-  }, [isFirstDone]);
+  }, [isFirstDone, activeProject]);
 
   const handleSelect = (id: string) => {
     setActiveProject(id);
@@ -74,11 +74,11 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ onAnchorsReady } ) => {
       </div>
 
       {/* Hidden anchors for path waypoints */}
-      <div ref={landingAnchor1} className={styles.anchorPoint} style={{ top: "17.5%", left: "49.77%" }} />
-      <div ref={landingAnchor2} className={styles.anchorPoint} style={{ top: "17.5%", left: "90%" }} />
-      <div ref={landingAnchor3} className={styles.anchorPoint} style={{ bottom: "0%", left: "90%" }} />
-      <div ref={landingAnchor4} className={styles.anchorPoint} style={{ bottom: "0%", left: "50%" }} />
-      <div ref={landingAnchor5} className={styles.anchorPoint} style={{ bottom: "10%", left: "50%" }} />
+      <div ref={landingAnchor1} className={`${styles.anchorPoint} ${styles.anchor1}`} />
+      <div ref={landingAnchor2} className={`${styles.anchorPoint} ${styles.anchor2}`} />
+      <div ref={landingAnchor3} className={`${styles.anchorPoint} ${styles.anchor3}`} />
+      <div ref={landingAnchor4} className={`${styles.anchorPoint} ${styles.anchor4}`} />
+      <div ref={landingAnchor5} className={`${styles.anchorPoint} ${styles.anchor5}`} />
     </div>
   );
 };

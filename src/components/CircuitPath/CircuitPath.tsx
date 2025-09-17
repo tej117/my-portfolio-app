@@ -66,7 +66,7 @@ const CircuitPath: React.FC<CircuitPathProps> = ({ isActive, segment }) => {
   }, [segment.id]);
 
   return (
-    <>
+    <div>
       <svg className={styles.pathSvgBehind} xmlns="http://www.w3.org/2000/svg">
         <path
           id={segment.id}
@@ -168,7 +168,7 @@ const CircuitPath: React.FC<CircuitPathProps> = ({ isActive, segment }) => {
           </>
         )}
       </svg>
-    </>
+    </div>
   );
 };
 

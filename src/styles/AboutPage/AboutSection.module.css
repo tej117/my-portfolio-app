@@ -1,7 +1,8 @@
 .container {
   display: flex;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
   max-width: 1000px;
   flex-direction: row;   /* side by side */
@@ -100,7 +101,6 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;    /* makes it a circle */
-  background: red;       /* easy to see */
   z-index: 1000;         /* make sure it’s on top */
 }
 
