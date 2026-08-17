@@ -1,0 +1,232 @@
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fileLabel {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(57, 162, 71, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+}
+
+.heading h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+
+.headingNumber {
+  color: #39a247;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* ============================================================
+   GRID — 3 + 2 layout
+   ============================================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.grid > .card:nth-child(1),
+.grid > .card:nth-child(2),
+.grid > .card:nth-child(3) {
+  grid-column: span 1;
+}
+
+/* Second row wrapper to center the two cards */
+.grid > .card:nth-child(4) {
+  grid-column: 1 / 2;
+  justify-self: end;
+}
+
+.grid > .card:nth-child(5) {
+  grid-column: 2 / 3;
+  justify-self: start;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.card {
+  background: rgba(13, 27, 42, 0.6);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;        /* add */
+  z-index: 0;                /* add */
+  transition: border-color 0.3s ease, transform 0.3s ease;  /* add */
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.15);  /* subtle brighten */
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateBorder {
+  to { --angle: 360deg; }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 8px;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0%,
+    transparent 70%,
+    #39a247 85%,
+    rgba(57, 162, 71, 0.2) 95%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+
+  /* Hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::after {
+  opacity: 1;
+  animation: rotateBorder 3s linear infinite;
+}
+
+/* ============================================================
+   CARD HEADER
+   ============================================================ */
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  font-family: 'Consolas', 'Courier New', monospace;
+  letter-spacing: 0.03em;
+}
+
+.cardDivider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+/* ============================================================
+   SKILLS AREA — left accent border + tags
+   ============================================================ */
+
+.skillsArea {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.skillsAccent {
+  width: 2px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: #39a247;
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: #4ec9b0;
+  background: rgba(78, 201, 176, 0.07);
+  border: 0.5px solid rgba(78, 201, 176, 0.25);
+  border-radius: 4px;
+  padding: 3px 8px;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid > .card:nth-child(4) {
+    grid-column: auto;
+    margin-left: 0;
+  }
+
+  .grid > .card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.625rem);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid > .card:nth-child(4),
+  .grid > .card:nth-child(5) {
+    grid-column: auto;
+    max-width: 100%;
+    margin: 0;
+  }
+}

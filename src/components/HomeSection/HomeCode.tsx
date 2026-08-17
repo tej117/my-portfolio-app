@@ -3,32 +3,52 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from '../../styles/HomePage/HomeCode.module.css';
 import Typewriter from "../../scripts/Typewriter";
+import BrowserPreview from './BrowserPreview';
 
-import ResumeBtn from './ResumeBtn';
-
-interface HomeCodeProps {
-    onShowPath?: () => void;
-    resumeRef: React.RefObject<HTMLDivElement | null>;
-    onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
-}
-
-const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsReady }) => {
-
-    // extra anchor refs for path waypoints
-    const landingAnchor1 = useRef<HTMLDivElement>(null);
-    const landingAnchor2 = useRef<HTMLDivElement>(null);
-    const landingAnchor3 = useRef<HTMLDivElement>(null);
+const HomeCode: React.FC = () => {
 
     const containerRef1 = useRef<HTMLDivElement>(null);
 
+    const lineNumRef = useRef<HTMLDivElement>(null);
+
     const [isFirstDone, setIsFirstDone] = useState(false);
-    const [animationComplete, setAnimationComplete] = useState(false);
     const hasRun = useRef(false);
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         // Ensures it runs only once
         if (hasRun.current) return; 
         hasRun.current = true;
+
+        // Current editor line
+        let currentLine = 0;
+
+        // Keep track of line number in typewriter (create div for it and set classname for styling)
+        const addLineNumber = () => {
+            currentLine++;
+            if (lineNumRef.current && containerRef1.current) {
+                // Find the last typed line's actual height
+                const codeDiv = containerRef1.current.firstElementChild; // the inner div Typewriter creates
+                const lastLine = codeDiv?.lastElementChild as HTMLElement | null;
+                const height = lastLine ? lastLine.offsetHeight : null;
+
+                const num = document.createElement("div");
+                num.textContent = String(currentLine);
+                num.className = styles.lineNum;
+                if (height) num.style.height = `${height}px`;
+
+                lineNumRef.current.appendChild(num);
+            }
+        }
 
         if (containerRef1.current) {
             const typewriter = new Typewriter(
@@ -40,97 +60,109 @@ const HomeCode: React.FC<HomeCodeProps> = ({onShowPath, resumeRef, onAnchorsRead
             );
 
             // Text with the Typewriter effect
-
             typewriter
-                .typeElement({
-                    tag: "p", text: "&lt;/head&gt;", className:styles.fakeCode0
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;body&gt;", className:styles.fakeCode0
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;h1&gt;", className:styles.fakeCode1
-                })
+                .typeParts([
+                    { text: "<", className: styles.bracket },
+                    { text: "head", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode0)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "<!-- styles, scripts -->", className: styles.comment }
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "</", className: styles.bracket },
+                    { text: "head", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode0)
+                .callFunction(addLineNumber)
                 .pauseFor(200)
-                .typeElement({
-                    tag: "h1", text: "Hi, </br> I'm Simran", className:styles.titleh1
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;/h1&gt;", className:styles.fakeCode1
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;h2&gt;", className:styles.fakeCode1
-                })
+
+                .typeParts([
+                    { text: "<", className: styles.bracket },
+                    { text: "body", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode0)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "<", className: styles.bracket },
+                    { text: "h1", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
                 .pauseFor(200)
-                .typeElement({
-                    tag: "h2", text: "Software Engineer", className:styles.titleh2
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;/h2&gt;", className:styles.fakeCode1
-                })
-                .typeElement({
-                    tag: "p", text: "&lt;/body&gt;", className:styles.fakeCode0
-                })
+
+                .typeParts([
+                    { text: "Hi, I'm Simran", className: styles.string }
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "</", className: styles.bracket },
+                    { text: "h1", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "<", className: styles.bracket },
+                    { text: "h2", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+                .pauseFor(200)
+
+                .typeParts([
+                    { text: "Software Engineer", className: styles.string }
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "</", className: styles.bracket },
+                    { text: "h2", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode1)
+                .callFunction(addLineNumber)
+
+                .typeParts([
+                    { text: "</", className: styles.bracket },
+                    { text: "body", className: styles.tagName },
+                    { text: ">", className: styles.bracket },
+                ], styles.fakeCode0)
+                .callFunction(addLineNumber)
+
                 .callFunction(() => setIsFirstDone(true))
                 .start();
         }
     }, []);
 
-    useEffect(() => {
-        if (isFirstDone && onShowPath) {
-            const timer = setTimeout(() => onShowPath(), 1500);
-            return () => clearTimeout(timer);
-        }
-    }, [isFirstDone]);
-
-    useEffect(() => {
-        if (!isFirstDone) return;
-        // Pass anchor refs up to Home
-        if (onAnchorsReady) {
-            onAnchorsReady([landingAnchor1, landingAnchor2, landingAnchor3]);
-        }
-    }, [isFirstDone]);
-
-    const showAnimation = isFirstDone && !animationComplete;
-    const showCentered = !isFirstDone || showAnimation;
-
     //Make First Container appear center before moving to Left
     return (
-        <div style={{ position: 'relative' }}>
-            <div className={isFirstDone && animationComplete ? styles.flexFinal : styles.flexInitial}>
-                <div className={styles.animationWrapper}>
-                    <div
-                        className={`${styles.typewriterContainer} 
-                                    ${showCentered ? styles.absolutePosition : ''} 
-                                    ${showAnimation ? styles.animateToLeft : ''}`}
-                        onAnimationEnd={() => setAnimationComplete(true)}
-                    >
-                        <div ref={containerRef1} />
-                    </div>
-
-                    <div
-                        className={`${styles.contentContainer}
-                                    ${isFirstDone ? styles.visible : ''}
-                                    ${showAnimation ? styles.absolutePosition : ''}
-                                    ${showAnimation ? styles.animateToRight : ''}`}
-                    >
-                        <div className={styles.textContainer}>
-                            <p>
-                                I'm a Software Engineering student at UVic who is specializing in Artifical Intelligence. I am focused on gaining experience in the Robotics and AI field, wanting to tackle real-world problems that can be solved through automation.
-                            </p>
-                        </div>
-                        <div className={styles.btnContainer} ref={resumeRef}>
-                            <ResumeBtn />
-                        </div>
-                    </div>
+        <div className={styles.flexFinal}>
+            <div className={`${styles.typewriterContainer}`}>
+                <div className={styles.editorBar}>
+                    <span className={styles.editorTitle}>index.html</span>
+                </div>
+                <div className={styles.editorBody}>
+                    <div ref={lineNumRef} className={styles.lineNumbers} />
+                    <div ref={containerRef1} className={styles.codeContent} />
                 </div>
             </div>
-            {/* Hidden anchors for path waypoints */}
-            <div ref={landingAnchor1} className={`${styles.anchorPoint} ${styles.anchor1}`} />
-            <div ref={landingAnchor2} className={`${styles.anchorPoint} ${styles.anchor2}`} />
-            
+
+            <BrowserPreview visible={isFirstDone} />
+
+            {isFirstDone && (
+                <div className={`${styles.scrollIndicator} ${scrolled ? styles.scrollHidden : ''}`}>
+                    <span className={styles.scrollLabel}>// scroll</span>
+                    <div className={styles.scrollChevron}>&#8964;</div>
+                </div>
+            )}
         </div>
-    );       
+    );     
 };
 
 export default HomeCode;

@@ -7,13 +7,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red !important; */
 }
 
 /* Global Styles */
 :root {
   --primary-color: #646cff;
   --text-color: #ffffff;
-  --background-color: #02101e;
+  --background-color: #040910;
 }
 
 html {

@@ -1,19 +1,13 @@
 // src/Home.tsx
 
-import React, { useState, useRef } from 'react';
-
-// Border
-import BorderPath from './components/BorderPath';
-
-// Circuit Path
-import CircuitPath from './components/CircuitPath/CircuitPath';
-import { createLandingToResumeSegment } from './components/CircuitPath/PathData';
-
 // Landing Section
 import HomeCode from './components/HomeSection/HomeCode';
 
 // About Section
 import AboutSection from "./components/AboutSection/AboutSection";
+
+// Skills Section
+import SkillsSection from "./components/SkillSection/SkillSection";
 
 // Experience Section
 import ExperienceSection from "./components/ExperienceSection/ExperienceSection";
@@ -22,56 +16,33 @@ import ExperienceSection from "./components/ExperienceSection/ExperienceSection"
 import Project from "./components/ProjectSection/ProjectSection"
 
 const Home = () => {
-    const [showPath, setShowPath] = useState(false);
-    const resumeRef = useRef<HTMLDivElement>(null);
-
-    const [landingAnchorRefs, setLandingAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
-
-    const [aboutAnchorRefs, setAboutAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
-
-    const [experienceAnchorRefs, setExperienceAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
-
-    const [projectAnchorRefs, setProjectAnchorRefs] = useState<React.RefObject<HTMLDivElement | null>[]>([]);
-
-    const combinedRefs = [...landingAnchorRefs, ...aboutAnchorRefs, ...experienceAnchorRefs, ...projectAnchorRefs];
-
-    const fullSegment = createLandingToResumeSegment(resumeRef, combinedRefs, 83);
-
     return (
       <>
         <div style={{ position: 'relative' }}>
-          <BorderPath />
-          
           <div>
-            <HomeCode
-              onShowPath={() => setShowPath(true)}
-              resumeRef={resumeRef}
-              onAnchorsReady={refs => setLandingAnchorRefs(refs)}
-            />
+            <HomeCode/>
           </div>
-
-          {showPath && <CircuitPath isActive={showPath} segment={fullSegment} />}
 
           <div>
             <section id="about">
-              <AboutSection
-                onAnchorsReady={refs => setAboutAnchorRefs(refs)}
-              />
+              <AboutSection/>
+            </section>
+          </div>
+
+          <div>
+            <section id="skills">
+              <SkillsSection/>
             </section>
           </div>
 
           <div>
             <section id="experience">
-              <ExperienceSection
-                onAnchorsReady={refs => setExperienceAnchorRefs(refs)}
-              />
+              <ExperienceSection/>
             </section>
           </div>
           <div>
             <section id="projects">
-              <Project 
-                onAnchorsReady={refs => setProjectAnchorRefs(refs)}
-              />
+              <Project />
             </section>
           </div>
         </div>

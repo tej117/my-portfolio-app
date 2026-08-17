@@ -38,35 +38,6 @@
   transition: all 0.5s ease-in-out;
 }
 
-.anchorPoint {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  z-index: 1000;
-}
-
-.anchor1 {
-    top: 17.5%;
-    left: 49.77%;
-}
-.anchor2 {
-    top: 17.5%;
-    left: 90%;
-}
-.anchor3 {
-    bottom: 0%;
-    left: 90%;
-}
-.anchor4 {
-    bottom: 0%;
-    left: 50%;
-}
-.anchor5 {
-    bottom: 10%;
-    left: 50%;
-}
-
 /* ----------------- Responsive ----------------- */
 
 /* Tablet / smaller screens */
@@ -106,27 +77,6 @@
     padding: 15px;
     font-size: clamp(0.9rem, 2vw, 1rem);
   }
-
-  .anchor1 {
-      top: 0%;
-      left: 49.77%;
-  }
-  .anchor2 {
-      top: 0%;
-      left: 99%;
-  }
-  .anchor3 {
-      bottom: 0%;
-      left: 99%;
-  }
-  .anchor4 {
-      bottom: 0%;
-      left: 50%;
-  }
-  .anchor5 {
-      bottom: 10%;
-      left: 50%;
-  }
 }
 
 /* Mobile / very small screens */
@@ -149,26 +99,5 @@
   .slideshow .content {
     padding: 10px;
     font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-  }
-
-    .anchor1 {
-      top: 0%;
-      left: 49.77%;
-  }
-  .anchor2 {
-      top: 0%;
-      left: 99%;
-  }
-  .anchor3 {
-      bottom: 0%;
-      left: 99%;
-  }
-  .anchor4 {
-      bottom: 0%;
-      left: 50%;
-  }
-  .anchor5 {
-      bottom: 10%;
-      left: 50%;
   }
 }

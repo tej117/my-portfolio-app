@@ -13,6 +13,7 @@ import NautichatImg from './Nautichat.jpg';
 import githubIcon from "./github-mark-white.png";
 import linkedinIcon from "./InBug-White.png";
 import emailIcon from "./email.png";
+import fileIcon from "./file-white.png";
 
 //Misc
 import leftBackIcon from "./left-back.png";
@@ -30,7 +31,8 @@ export const Images = {
   icons: {
     github: githubIcon,
     linkedin: linkedinIcon,
-    email: emailIcon
+    email: emailIcon,
+    file: fileIcon
   },
   clubs: {
     AIClub: AIClubImg,

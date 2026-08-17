@@ -3,6 +3,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/Navbar.module.css';
 
+// Import icons
+import { Images } from "../assets/assets"
+
 // Define Navbar Component
 const Navbar: React.FC = () => {
 
@@ -119,6 +122,18 @@ const Navbar: React.FC = () => {
                             </a>
                         </li>
                     </ul>
+                    <a
+                        href="/my-portfolio-app/Resume-Main.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.resumeLink}
+                        aria-label="View CV (opens in new tab)"
+                    >
+                        <span aria-hidden="true">
+                            <img className={styles.resumeIcon} src={Images.icons.file} alt="CV" />
+                        </span>
+                        <span className={styles.resumeText}>CV</span>
+                    </a>
                     <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>

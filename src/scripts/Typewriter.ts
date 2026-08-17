@@ -1,9 +1,9 @@
 //src/components/Typewriter.ts
 
-export interface TypewriterLine {
-    tag?: keyof HTMLElementTagNameMap; //e.g. h1, h2, h3, (default) p
+export interface TypewriterPart {
     text: string;
-    className?: string; //for css styling
+    className?: string; // For css styling
+    tag?: keyof HTMLElementTagNameMap;  // only needed for typeRendered
 }
 
 type QueueItem = () => Promise<void>
@@ -26,52 +26,74 @@ class Typewriter {
         parent.append(this.#container);
         this.#loop = loop;
         this.#typingSpeed = typingSpeed;
-
-        // Create and append a persistent cursor element
-        // this.#cursor = document.createElement("span");
-        // this.#cursor.className = "cursor"; // Style this in CSS
-        // this.#cursor.textContent = "|";
-        // this.#container.appendChild(this.#cursor);
     }
 
     // Method to type a custom element with desired tag, text, and css classes
-    typeElement(options: TypewriterLine) {
+    typeParts(parts: TypewriterPart[], lineClassName?: string) {
         this.#addToQueue(resolve => {
+            // Wrapper line element
+            const line = document.createElement("p");
+            if (lineClassName) line.className = lineClassName;
+            this.#container.appendChild(line);
 
-            // Set up the element with the given options properties
+            // Cursor at the end
+            const cursorSpan = document.createElement("span");
+            cursorSpan.className = "cursor";
+            cursorSpan.textContent = "|";
+
+            const typeNext = (index: number) => {
+                if (index >= parts.length) {
+                    cursorSpan.remove();
+                    resolve();
+                    return;
+                }
+                const { text, className } = parts[index];
+                const span = document.createElement("span");
+                if (className) span.className = className;
+                line.appendChild(span);
+                line.appendChild(cursorSpan);
+
+                let i = 0;
+                const interval = setInterval(() => {
+                    span.textContent = text.substring(0, i + 1);  // was innerHTML
+                    i++;
+                    if (i >= text.length) {
+                        clearInterval(interval);
+                        typeNext(index + 1);
+                    }
+                }, this.#typingSpeed);
+            };
+
+            typeNext(0);
+        });
+        return this;
+    }
+
+    typeRendered(options: TypewriterPart) {
+        this.#addToQueue(resolve => {
             const { tag = "p", text, className } = options;
-            //Create new element
             const element = document.createElement(tag);
-            if (className) {
-                element.className = className;
-            }
-            // Append the element to the container
+            if (className) element.className = className;
             this.#container.appendChild(element);
 
-            // Create a separate span for the text
             const textSpan = document.createElement("span");
             element.appendChild(textSpan);
-
-            // Create a separate span for the cursor
             const cursorSpan = document.createElement("span");
             cursorSpan.className = "cursor";
             cursorSpan.textContent = "|";
             element.appendChild(cursorSpan);
 
-            // Type animation for the string
             let i = 0;
             const interval = setInterval(() => {
-                // Update innerHTML to include the text and a blinking cursor span
                 textSpan.innerHTML = text.substring(0, i + 1);
                 i++;
                 if (i >= text.length) {
                     clearInterval(interval);
-                    // Remove the cursor once typing is done
                     cursorSpan.remove();
                     resolve();
                 }
-            }, this.#typingSpeed)
-        })
+            }, this.#typingSpeed);
+        });
         return this;
     }
 

@@ -1,89 +1,193 @@
-/* Container for Introduction */
-.typewriterContainer{
-  width: 45%;
+/* ============================================================
+   EDITOR SHELL
+   ============================================================ */
+
+.typewriterContainer {
+  width: 38%;
   margin-left: 10px;
   margin-top: 10px;
-  padding: 20px;
-  border-radius: 30px;
-  text-align: left;
+  padding: 0;
+  border-radius: 10px;
   overflow: hidden;
-
-  /* Styling for typewriter box */
-  background: rgba(8, 8, 8, 0.205); /* greyer tone */
-  border: 2px solid rgba(160, 160, 160, 0.62);
-  backdrop-filter: blur(2px); /* less blur */
-  -webkit-backdrop-filter: blur(2px); /* for Safari support */
+  background: rgba(13, 27, 42, 0.6);
+  border: 0.5px solid rgba(255,255,255,0.08);
 }
-/* Container for text and resume button */
-.contentContainer{
-  width: 45%;
+
+.editorBar {
+  height: 36px;
+  background: #1a2332;
+  border-bottom: 0.5px solid rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+}
+
+.editorTitle {
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   EDITOR BODY — line numbers + code columns
+   ============================================================ */
+
+.editorBody {
+  display: flex;
+  padding: 12px 0;
+}
+
+.lineNumbers {
+  width: 44px;
+  text-align: right;
+  padding-right: 16px;
+  flex-shrink: 0;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.2);
+  user-select: none;
+}
+
+.lineNum {
+  line-height: 1.9;
+}
+
+.codeContent {
+  flex: 1;
+  padding-right: 16px;
+}
+
+/* ============================================================
+   SYNTAX COLORS
+   ============================================================ */
+
+/* Shared monospace base for all code lines */
+.fakeCode0,
+.fakeCode1 {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.9;
+}
+
+/* Top-level tags — no indent */
+.fakeCode0 {
+  margin-left: 0;
+}
+
+/* Indented tags — indent guide line */
+.fakeCode1 {
+  margin-left: 1.5rem;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: 1rem;
+}
+
+/* <brackets> and </slashes> */
+.bracket {
+  color: #569cd6;
+}
+
+/* tag names */
+.tagName {
+  color: #4ec9b0;
+}
+
+/* <!-- comments --> */
+.comment {
+  color: rgba(255,255,255,0.3);
+  font-style: italic;
+}
+
+/* Cursor blink */
+.cursor {
+  color: #aeafad;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* ============================================================
+   RENDERED OUTPUT — h1 and h2 inside the editor
+   ============================================================ */
+
+.string {
+  padding-left: 2rem;
+  color: #ce9178;  /* VS Code string orange — distinct from tags and brackets */
+}
+
+/* ============================================================
+   CONTENT CONTAINER (right side — bio)
+   ============================================================ */
+
+.contentContainer {
+  width: 38%;
   margin-right: 10px;
   margin-top: 10px;
   padding: 40px;
   border-radius: 30px;
   text-align: left;
   overflow: hidden;
-
   color: rgb(57, 162, 71);
-
-  /* Stay hidden before slide animation*/
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease;
 }
 
-.textContainer{
+.textContainer {
   padding: 10px;
   border-radius: 30px;
   background: rgba(33, 77, 63, 0.5);
   border: 2px solid rgba(160, 160, 160, 0.62);
 }
 
-/* This should be a style given to both typewriterContainer && textContainer
-before the slide animation occurs. Allows containers to be center. */
-.absolutePosition {
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+
+.scrollIndicator {
   position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-/* Styles for the different texts done by typewriter */
-.fakeCode0{
-    font-size: 1rem;
-    color: rgb(19, 54, 119);
-    font-family: 'Consolas, \'Courier New\', monospace';
-    margin-left: 20px;
-}
-.fakeCode1{
-    font-size: 1rem;
-    color: rgb(19, 54, 119);
-    font-family: 'Consolas, \'Courier New\', monospace';
-    margin-left: 40px;
-}
-.fakeCode2{
-    font-size: 1rem;
-    color: rgb(19, 54, 119);
-    font-family: 'Consolas, \'Courier New\', monospace';
-    margin-left: 60px;
-}
-.titleh1{
-    font-size: 5rem;
-    margin-left: 50px;
-}
-.titleh2{
-  font-size: 4rem;
-  margin-left: 50px;
-}
-.cursor {
-  color: rgb(57, 162, 71);
-  animation: blink 1s steps(2, start) infinite;
-} 
-@keyframes blink {
-  to {
-    visibility: hidden;
-  }
+.scrollHidden {
+  opacity: 0;
 }
 
-/* Ensures that both containers continue to remain properly positioned even
-after the slide animation. */
+.scrollLabel {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.85rem;          /* was 0.7rem */
+  color: rgba(57, 162, 71, 0.9);  /* was 0.5 */
+  letter-spacing: 0.08em;
+}
+
+.scrollChevron {
+  font-size: 2rem;              /* was 1.4rem */
+  color: rgba(57, 162, 71, 0.8);  /* was 0.4 */
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ============================================================
+   SLIDE ANIMATION
+   ============================================================ */
+
 .animationWrapper {
   position: relative;
   display: flex;
@@ -93,82 +197,30 @@ after the slide animation. */
   height: 100%;
 }
 
-/* Start fully centered layout */
-.flexInitial {
+.flexFinal {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   min-height: 100vh;
-  height: auto;
-  overflow: hidden;
+  gap: 100px;
 }
 
-/* Final layout once animation is done */
-.flexFinal {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  min-height: 100vh;
-  height: auto;
-  gap: 10px;
-}
-
-/* Slide animations */
-@keyframes slideToLeftFull {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-338px); } /*How much should it slide?*/
-}
-@keyframes slideToRightFull {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(338px); } /*How much should it slide?*/
-}
-.animateToLeft {
-  animation: slideToLeftFull 1s ease forwards;
-}
-.animateToRight {
-  animation: slideToRightFull 1s ease forwards;
-}
-
-/* Make the textContainer visible after the slide animation */
 .visible {
   opacity: 1;
   visibility: visible;
 }
 
-/* Proper positioning for btn inside the textContainer */
-.btnContainer {
-  position: relative;   /* anchor for button */
-  display: flex;
-  justify-content: center;
-  padding-top: 5rem;
-  z-index: 1;           /* ensures button stays above the path */
-}
-
-.anchorPoint {
-  position: absolute;    /* lets you control exact position */
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;    /* makes it a circle */
-  /*background: red;*/       /* easy to see */
-  z-index: 1000;         /* make sure it’s on top */
-}
-
-.anchor1 {
-  top: 82.4%;
-  left: 72.22%;
-}
-.anchor2 {
-  top: 82.4%;
-  left: 33.25%;
-}
+/* ============================================================
+   RESPONSIVE — max-width 900px
+   ============================================================ */
 
 @media (max-width: 900px) {
+
   .flexFinal {
     flex-direction: column;
     justify-content: center;
-    gap: 15px; /* smaller gap */
+    gap: 15px;
     height: auto;
     padding: 40px 0;
   }
@@ -177,7 +229,7 @@ after the slide animation. */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px; /* smaller gap */
+    gap: 15px;
     width: 100%;
   }
 
@@ -193,56 +245,21 @@ after the slide animation. */
   }
 
   .typewriterContainer {
-    width: 85%;       /* narrower */
-    margin-top: 10vh; /* push lower under navbar */
-    font-size: 0.9rem;
-  }
-
-  .typewriterContainer .titleh1 {
-    font-size: 2.5rem;
-  }
-
-  .typewriterContainer .titleh2 {
-    font-size: 1.6rem;
-  }
-
-  .animateToLeft,
-  .animateToRight {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .absolutePosition {
-    position: static !important;
+    width: 85%;
+    margin-top: 10vh;
   }
 
   .titleh1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-left: 20px;
   }
 
   .titleh2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-left: 20px;
   }
 
   .textContainer p {
     font-size: 0.95rem;
-  }
-
-  .btnContainer {
-    padding-top: 2rem;
-  }
-
-  .anchor1 {
-    top: 88%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .anchor2 {
-    top: 98%;
-    left: 50%;
-    transform: translateX(-50%);
   }
 }

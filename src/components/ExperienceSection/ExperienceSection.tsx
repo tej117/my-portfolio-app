@@ -5,39 +5,7 @@ import styles from "../../styles/ExperiencePage/ExperienceSection.module.css";
 import { experiences } from "../../data/ExperienceData.tsx";
 import TimelineItem from "./TimelineItem";
 
-interface ExperienceSectionProps {
-    onAnchorsReady?: (anchors: React.RefObject<HTMLDivElement | null>[]) => void;
-}
-
-const Timeline: React.FC<ExperienceSectionProps> = ( { onAnchorsReady } ) => {
-
-    // extra anchor refs for path waypoints
-    const landingAnchor1 = useRef<HTMLDivElement>(null);
-    const landingAnchor2 = useRef<HTMLDivElement>(null);
-    const landingAnchor3 = useRef<HTMLDivElement>(null);
-
-    const [isFirstDone, setIsFirstDone] = useState(false);
-    
-    useEffect(() => {
-        if (!isFirstDone) {
-            const timer = setTimeout(() => {
-                setIsFirstDone(true)          // local flag
-            }, 2000); // Delay (don't know why it works when added)
-            return () => clearTimeout(timer);
-        }
-    }, [isFirstDone]);
-
-    useEffect(() => {
-        if (!isFirstDone) return;
-
-        if (onAnchorsReady) {
-            onAnchorsReady([
-                landingAnchor1,
-                landingAnchor2,
-                landingAnchor3
-            ]);
-        }
-    }, [isFirstDone]);
+const Timeline: React.FC = () => {
 
     return (
         <div className={styles.timelineContainer} id="timeline">
@@ -49,11 +17,6 @@ const Timeline: React.FC<ExperienceSectionProps> = ( { onAnchorsReady } ) => {
                     <TimelineItem key={i} experience={exp} isLeft={i % 2 === 0} />
                 ))}
             </div>
-
-            {/* Hidden anchors for path waypoints */}
-            <div ref={landingAnchor1} className={`${styles.anchorPoint} ${styles.anchor1}`} />
-            <div ref={landingAnchor2} className={`${styles.anchorPoint} ${styles.anchor2}`} />
-            <div ref={landingAnchor3} className={`${styles.anchorPoint} ${styles.anchor3}`} />
         </div>
     );
 }
