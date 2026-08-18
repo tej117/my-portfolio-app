@@ -62,3 +62,15 @@ code {
   scrollbar-width: thin;
   scrollbar-color: white #0d1a26; /* thumb color | track color*/
 }
+
+@property --seg-end {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+@property --seg-start {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}

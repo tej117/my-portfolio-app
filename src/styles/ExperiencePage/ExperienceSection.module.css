@@ -1,79 +1,97 @@
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
 .timelineContainer {
-    width: 80%;
+    max-width: 800px;
     margin: auto;
-    padding-top: 30px;
-    padding-bottom: 60px;
+    padding: 4rem 2rem;
     position: relative;
 }
 
-.titleContainer {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    margin-top: 10vh;
+/* ============================================================
+   HEADER — matches Skills/About pattern
+   ============================================================ */
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 3rem;
+  margin-top: 10vh;
 }
 
-.titleContainer h1 {
-  font-size: 2rem;
-  white-space: nowrap; /* prevents wrapping */
+.fileLabel {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(57, 162, 71, 0.5);
+  letter-spacing: 0.04em;
 }
+
+.heading h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+
+.headingNumber {
+  color: #39a247;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* ============================================================
+   TIMELINE — left rail
+   ============================================================ */
 
 .timeline {
-    position: relative;
-    margin: auto;
-    padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 2rem;
 }
 
+/* The vertical green line */
 .timeline::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background-color: #1b4c95;
-    transform: translateX(-50%);
-    opacity: 0.7;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(57, 162, 71, 0.08) var(--seg-start),   /* dim rail above */
+    rgba(57, 162, 71, 0.15) var(--seg-start),    /* tail fade in */
+    #39a247 var(--seg-end),                       /* bright front */
+    rgba(57, 162, 71, 0.08) var(--seg-end)        /* dim rail below */
+  );
+  animation: travelDown 2.5s ease-in-out infinite;
+  animation-delay: 1s;
 }
+
+@keyframes travelDown {
+  0%   { --seg-end: 0%;   --seg-start: 0%;   }
+  60%  { --seg-end: 100%; --seg-start: 60%;  }
+  100% { --seg-end: 100%; --seg-start: 100%; }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
 
 @media (max-width: 900px) {
-    .timelineContainer {
-        width: 90%;
-        padding: 2rem 1rem;
-    }
-
-    .titleContainer h1 {
-        font-size: clamp(1.3rem, 5vw, 1.8rem);
-    }
-
-    /* Stack timeline items instead of left/right */
-    .timeline {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    /* Move central line slightly left so it doesn’t overlap content */
-    .timeline::before {
-        left: 2rem;
-        transform: none; /* remove translateX */
-    }
+  .timelineContainer {
+    padding: 2rem 1rem;
+  }
 }
 
-/* Very small phones */
 @media (max-width: 500px) {
-    .timelineContainer {
-        width: 95%;
-        padding: 1rem;
-    }
-
-    .titleContainer h1 {
-        font-size: clamp(1.1rem, 5vw, 1.5rem);
-    }
-
-    /* Timeline line narrower */
-    .timeline::before {
-        left: 1.5rem;
-        width: 3px;
-    }
+  .timelineContainer {
+    padding: 1rem;
+  }
 }

@@ -1,103 +1,90 @@
-/* Base styles (desktop / full screen) */
-.sectionWrapper {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding-top: 10vh;
-  position: relative;
-}
-
-.heading {
-  font-size: 2rem;
-  text-align: left;
-  margin-bottom: 10px;
-  margin-left: 3rem;
-}
-
-.mainContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+/* ============================================================
+   CONTAINER
+   ============================================================ */
 
 .container {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  min-height: 90vh;
-  align-items: center;
-}
-
-/* slideshow / project image */
-.slideshow {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
-}
-
-/* ----------------- Responsive ----------------- */
-
-/* Tablet / smaller screens */
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column; /* stack ProjectBar and mainContent */
-    align-items: flex-start;
-    min-height: auto;
-    padding: 0 1rem;
-    margin-left: 3rem; /* push content to the right to clear left border */
-  }
-
-  .mainContent {
-    width: 100%;
-    margin-top: 2rem;
-  }
-
-  .heading {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    margin-left: 0; /* reset since container already pushes */
-  }
-
-  .slideshow {
-    width: 100%;
     justify-content: center;
-  }
-
-  /* ProjectView image and content */
-  .slideshow img {
-    width: 80%;
-    max-width: 400px;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .slideshow .content {
-    padding: 15px;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-  }
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-/* Mobile / very small screens */
-@media (max-width: 500px) {
-  .container {
-    padding: 0 0.5rem;
-    margin-left: 1.5rem; /* still leave some space for border */
-  }
+/* ============================================================
+   HEADER — matches other sections
+   ============================================================ */
 
-  .heading {
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
-    margin-left: 0; /* reset again */
-  }
+.headerBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 10vh;
+}
 
-  .slideshow img {
-    width: 100%;
-    max-width: 300px;
-  }
+.fileLabel {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(57, 162, 71, 0.5);
+    letter-spacing: 0.04em;
+}
 
-  .slideshow .content {
-    padding: 10px;
-    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-  }
+.heading h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+}
+
+.headingNumber {
+    color: #39a247;
+    font-weight: 600;
+    margin-right: 0.4rem;
+}
+
+/* ============================================================
+   TAB BAR
+   ============================================================ */
+
+.tabBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;        /* overlap the tabBar border */
+    padding: 0.6rem 1.25rem;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: rgba(255,255,255,0.7);
+}
+
+.activeTab {
+    color: #ffffff;
+    border-bottom: 2px solid #39a247;
+}
+
+/* ============================================================
+   CARD WRAPPER
+   ============================================================ */
+
+.cardWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 40vh;
 }

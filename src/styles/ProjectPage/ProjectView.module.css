@@ -1,193 +1,281 @@
-/* ----------------- Base Styles (Desktop) ----------------- */
+/* ============================================================
+   CARD
+   ============================================================ */
 
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 2rem;
-  text-align: center;
-  background-color: #0d1a26;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 500;
+.card {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(13, 27, 42, 0.6);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.75rem 2rem;
+    position: relative;
+    z-index: 0;
 }
 
-.content {
-  max-width: 800px;
-  width: 100%;
+@property --project-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }
 
-.image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border: 5px solid rgb(65, 123, 174);
-  border-radius: 8px;
-  object-fit: cover;
+@keyframes rotateBorderProject {
+    to { --project-angle: 360deg; }
 }
 
-.textContent {
-  margin-top: 1rem;
+.card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 10px;
+    padding: 1px;
+    background: conic-gradient(
+        from var(--project-angle, 0deg),
+        transparent 0%,
+        transparent 70%,
+        #39a247 85%,
+        rgba(57, 162, 71, 0.2) 95%,
+        transparent 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateBorderProject 4s linear infinite;
+    z-index: -1;
+    pointer-events: none;
 }
 
-.textContent h2 {
-  font-size: 1.5rem;
-  color: #39A247;
+/* ============================================================
+   TOP ROW — title/desc left, thumbnail right
+   ============================================================ */
+
+.topRow {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-.textContent p {
-  font-size: 1rem;
-  color: white;
+.titleBlock {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 0;
 }
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #39a247;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.description {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+}
+
+/* ============================================================
+   THUMBNAIL
+   ============================================================ */
+
+.thumbnail {
+    width: 180px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 0.5px solid rgba(255,255,255,0.1);
+}
+
+.thumbnailClickable {
+    cursor: pointer;
+}
+
+.thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) saturate(0.8);
+    transition: filter 0.2s ease;
+}
+
+/* Hover overlay with expand icon */
+.thumbnailOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 27, 42, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.thumbnailClickable:hover .thumbnailOverlay {
+    opacity: 1;
+}
+
+.thumbnailClickable:hover .thumbnailImg {
+    filter: brightness(0.6) saturate(0.7);
+}
+
+.expandHint {
+    color: #39a247;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* Placeholder when no image */
+.thumbnailPlaceholder {
+    background: rgba(13, 27, 42, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+.placeholderLabel {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    padding: 0 8px;
+}
+
+/* ============================================================
+   META ROW — skills + github
+   ============================================================ */
 
 .metaRow {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  flex-wrap: wrap; /* keeps mobile friendly */
-  text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
 }
 
-.skills {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.skillsBlock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.skills h3 {
-  font-size: 1.1rem;
-  margin: 0;
-  margin-right: 0.5rem;
-  font-weight: 600;
+.skillsLabel {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    white-space: nowrap;
 }
 
-.skills ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
-.skills li {
-  background: #f0f4f8;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  color: #333;
+.tag {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: #4ec9b0;
+    background: rgba(78, 201, 176, 0.07);
+    border: 0.5px solid rgba(78, 201, 176, 0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
 }
 
 .githubLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  background-color: #417bae;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  transition: background 0.2s ease, transform 0.2s ease;
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 5px 12px;
+    background: rgba(57, 162, 71, 0.08);
+    border: 0.5px solid rgba(57, 162, 71, 0.4);
+    border-radius: 6px;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
 }
 
 .githubLink:hover {
-  background-color: #2f5d87;
-  transform: scale(1.05);
+    background: rgba(57, 162, 71, 0.15);
+    border-color: #39a247;
+    color: #ffffff;
 }
 
 .githubIcon {
-  width: 16px !important;   /* scales with font-size of githubLink */
-  height: 16px !important;
-  flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    filter: invert(1);
+    flex-shrink: 0;
 }
 
-/* ----------------- Responsive Adjustments ----------------- */
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
 
-/* Tablet / smaller screens */
-@media (max-width: 900px) {
-  .section {
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .content {
-    max-width: 90%;
-  }
-
-  .image {
-    max-width: 80%;
-    height: auto;
-    border-width: 4px;
-  }
-
-  .textContent h2 {
-    font-size: clamp(1.3rem, 4vw, 1.5rem);
-  }
-
-  .textContent p {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-  }
-
-  .metaRow {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .skills h3 {
-    font-size: clamp(1rem, 2vw, 1.1rem);
-  }
-
-  .skills li {
-    font-size: clamp(0.8rem, 1.8vw, 0.85rem);
-    padding: 0.25rem 0.5rem;
-  }
-
-  .githubLink {
-    font-size: clamp(0.85rem, 1.8vw, 0.9rem);
-    padding: 0.3rem 0.6rem;
-  }
+.lightboxOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    cursor: pointer;
+    animation: fadeIn 0.2s ease;
 }
 
-/* Mobile / very small screens */
-@media (max-width: 500px) {
-  .section {
-    padding: 1rem;
-  }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
-  .content {
-    max-width: 95%;
-  }
+.lightboxImage {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    cursor: default;
+    animation: scaleIn 0.2s ease;
+}
 
-  .image {
-    max-width: 100%;
-    border-width: 3px;
-  }
+@keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
 
-  .textContent h2 {
-    font-size: clamp(1.1rem, 5vw, 1.3rem);
-  }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
-  .textContent p {
-    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-  }
+@media (max-width: 700px) {
+    .topRow {
+        flex-direction: column-reverse;  /* thumbnail above text on mobile */
+    }
 
-  .skills h3 {
-    font-size: clamp(0.9rem, 3vw, 1rem);
-  }
+    .thumbnail {
+        width: 100%;
+        height: 160px;
+    }
 
-  .skills li {
-    font-size: clamp(0.75rem, 2.5vw, 0.8rem);
-    padding: 0.2rem 0.4rem;
-  }
-
-  .githubLink {
-    font-size: clamp(0.8rem, 2.5vw, 0.85rem);
-    padding: 0.25rem 0.5rem;
-  }
+    .metaRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

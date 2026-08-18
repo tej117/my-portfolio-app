@@ -89,6 +89,23 @@ const Navbar: React.FC = () => {
                         </li>
                         <li onClick={removeActive}>
                             <a 
+                                href="#skills" 
+                                className={styles.navLink}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setIsProgrammaticScroll(true);
+                                    document.getElementById("skills")?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                    // reset the flag after scroll finishes
+                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                }}
+                            >
+                                02. &lt;Skills/&gt;
+                            </a>
+                        </li>
+                        <li onClick={removeActive}>
+                            <a 
                                 href="#experience" 
                                 className={styles.navLink}
                                 onClick={(e) => {
@@ -101,7 +118,7 @@ const Navbar: React.FC = () => {
                                     setTimeout(() => setIsProgrammaticScroll(false), 800);
                                 }}
                             >
-                                02.  &lt;Experience/&gt;
+                                03.  &lt;Experience/&gt;
                             </a>
                         </li>
                         <li onClick={removeActive}>
@@ -118,7 +135,7 @@ const Navbar: React.FC = () => {
                                     setTimeout(() => setIsProgrammaticScroll(false), 800);
                                 }}
                             >
-                                03.  &lt;Projects/&gt;
+                                04.  &lt;Projects/&gt;
                             </a>
                         </li>
                     </ul>
