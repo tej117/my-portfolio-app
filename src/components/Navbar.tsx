@@ -13,11 +13,8 @@ const Navbar: React.FC = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
     //States for disappearing Navbar
     const [show, setShow] = useState<boolean>(true);
-    const [lastScrollY, setLastScrollY] = useState<number>(0);
+    const lastScrollY = useRef(0);
     const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
-
-    // Ref to store timeout ID
-    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     //Flips between active - NOT active when hamburger is clicked
     const toggleActiveClass = (): void => {
@@ -31,37 +28,28 @@ const Navbar: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
+            const currentScrollY = window.scrollY;
 
-        if (!isProgrammaticScroll) {
-            if (window.scrollY > lastScrollY) {
-            // scrolling down → hide navbar
-            setShow(false);
-            } else {
-            // scrolling up → show navbar
-            setShow(true);
+            if (!isProgrammaticScroll) {
+                if (currentScrollY > lastScrollY.current) {
+                    // Scrolling down
+                    setShow(false);
+                    setIsActive(false);
+                } else {
+                    // Scrolling up
+                    setShow(true);
+                }
             }
-        }
 
-        setLastScrollY(window.scrollY);
-
-        // debounce to prevent flicker
-        timeoutRef.current = setTimeout(() => {
-            setShow(window.scrollY <= 0 || show);
-        }, 100);
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY, show, isProgrammaticScroll]);
+    }, [isProgrammaticScroll]);
 
     return (
         <div>
