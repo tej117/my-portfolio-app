@@ -1,38 +1,52 @@
 /* ============================================================
-   EDITOR SHELL
+   HOME / LANDING PAGE
+   ============================================================ */
+
+.flexFinal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  min-height: 100vh;
+  gap: 100px;
+}
+
+
+/* ============================================================
+   CODE EDITOR
    ============================================================ */
 
 .typewriterContainer {
   width: 38%;
-  margin-left: 10px;
-  margin-top: 10px;
-  padding: 0;
-  border-radius: 10px;
+  margin: 10px 0 0 10px;
+
   overflow: hidden;
+  padding: 0;
+
   background: rgba(13, 27, 42, 0.6);
-  border: 0.5px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
 }
 
 .editorBar {
-  height: 36px;
-  background: #1a2332;
-  border-bottom: 0.5px solid rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
-  gap: 7px;
+
+  height: 36px;
   padding: 0 14px;
+
+  background: #1a2332;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .editorTitle {
-  color: rgba(255,255,255,0.3);
-  font-size: 12px;
-  font-family: 'Consolas', 'Courier New', monospace;
   margin: 0 auto;
-}
 
-/* ============================================================
-   EDITOR BODY — line numbers + code columns
-   ============================================================ */
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 12px;
+}
 
 .editorBody {
   display: flex;
@@ -41,13 +55,15 @@
 
 .lineNumbers {
   width: 44px;
-  text-align: right;
   padding-right: 16px;
+
   flex-shrink: 0;
+
+  color: rgba(255, 255, 255, 0.2);
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.8rem;
   line-height: 1.9;
-  color: rgba(255,255,255,0.2);
+  text-align: right;
   user-select: none;
 }
 
@@ -60,11 +76,11 @@
   padding-right: 16px;
 }
 
+
 /* ============================================================
-   SYNTAX COLORS
+   CODE STYLING
    ============================================================ */
 
-/* Shared monospace base for all code lines */
 .fakeCode0,
 .fakeCode1 {
   font-family: 'Consolas', 'Courier New', monospace;
@@ -72,77 +88,42 @@
   line-height: 1.9;
 }
 
-/* Top-level tags — no indent */
-.fakeCode0 {
-  margin-left: 0;
-}
-
-/* Indented tags — indent guide line */
 .fakeCode1 {
   margin-left: 1.5rem;
-  border-left: 1px solid rgba(255,255,255,0.08);
   padding-left: 1rem;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* <brackets> and </slashes> */
 .bracket {
   color: #569cd6;
 }
 
-/* tag names */
 .tagName {
   color: #4ec9b0;
 }
 
-/* <!-- comments --> */
 .comment {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   font-style: italic;
 }
 
-/* Cursor blink */
+.string {
+  padding-left: 2rem;
+  color: #ce9178;
+}
+
 .cursor {
   color: #aeafad;
   animation: blink 1s steps(2, start) infinite;
 }
 
 @keyframes blink {
-  to { visibility: hidden; }
+  to {
+    visibility: hidden;
+  }
 }
 
-/* ============================================================
-   RENDERED OUTPUT — h1 and h2 inside the editor
-   ============================================================ */
-
-.string {
-  padding-left: 2rem;
-  color: #ce9178;  /* VS Code string orange — distinct from tags and brackets */
-}
-
-/* ============================================================
-   CONTENT CONTAINER (right side — bio)
-   ============================================================ */
-
-.contentContainer {
-  width: 38%;
-  margin-right: 10px;
-  margin-top: 10px;
-  padding: 40px;
-  border-radius: 30px;
-  text-align: left;
-  overflow: hidden;
-  color: rgb(57, 162, 71);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease;
-}
-
-.textContainer {
-  padding: 10px;
-  border-radius: 30px;
-  background: rgba(33, 77, 63, 0.5);
-  border: 2px solid rgba(160, 160, 160, 0.62);
-}
 
 /* ============================================================
    SCROLL INDICATOR
@@ -152,14 +133,18 @@
   position: absolute;
   bottom: 2rem;
   left: 50%;
-  transform: translateX(-50%);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
+
+  transform: translateX(-50%);
+
   opacity: 1;
-  transition: opacity 0.4s ease;
   pointer-events: none;
+
+  transition: opacity 0.4s ease;
 }
 
 .scrollHidden {
@@ -167,99 +152,88 @@
 }
 
 .scrollLabel {
+  color: rgba(57, 162, 71, 0.9);
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.85rem;          /* was 0.7rem */
-  color: rgba(57, 162, 71, 0.9);  /* was 0.5 */
+  font-size: 0.85rem;
   letter-spacing: 0.08em;
 }
 
 .scrollChevron {
-  font-size: 2rem;              /* was 1.4rem */
-  color: rgba(57, 162, 71, 0.8);  /* was 0.4 */
+  color: rgba(57, 162, 71, 0.8);
+  font-size: 2rem;
+
   animation: bounce 1.5s ease infinite;
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
 }
+
 
 /* ============================================================
-   SLIDE ANIMATION
-   ============================================================ */
-
-.animationWrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.flexFinal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  min-height: 100vh;
-  gap: 100px;
-}
-
-.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ============================================================
-   RESPONSIVE — max-width 900px
+   RESPONSIVE
    ============================================================ */
 
 @media (max-width: 900px) {
-
   .flexFinal {
     flex-direction: column;
-    justify-content: center;
-    gap: 15px;
-    height: auto;
-    padding: 40px 0;
-  }
-
-  .animationWrapper {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .typewriterContainer,
-  .contentContainer {
-    width: 90%;
-    margin: 0 auto;
-    padding-top: 20px;
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
+    gap: 40px;
+    padding: 20px 0 40px;
   }
 
   .typewriterContainer {
     width: 85%;
-    margin-top: 10vh;
+    margin: 0 auto;
   }
 
-  .titleh1 {
-    font-size: 2.5rem;
-    margin-left: 20px;
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .editorBar {
+    height: 28px;
+    padding: 0 10px;
   }
 
-  .titleh2 {
-    font-size: 1.8rem;
-    margin-left: 20px;
+  .editorTitle {
+    font-size: 10px;
   }
 
-  .textContainer p {
-    font-size: 0.95rem;
+  .fakeCode0,
+  .fakeCode1 {
+    font-size: 0.72rem;
+    line-height: 1.7;
+  } 
+
+  .editorBody {
+    padding: 8px 0;
   }
+
+  .lineNumbers {
+    width: 32px;
+    padding-right: 10px;
+    font-size: 0.65rem;
+  }
+
+  .codeContent {
+    padding-right: 10px;
+  }  
+
+  .fakeCode1 {
+    margin-left: 0.9rem;
+    padding-left: 0.6rem;
+  }
+
+  .string {
+    padding-left: 1.2rem;
+  }  
 }

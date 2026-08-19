@@ -1,20 +1,23 @@
 /* ============================================================
-   BROWSER SHELL
+   BROWSER PREVIEW
    ============================================================ */
 
 .browser {
-  width: 38%;
-  border-radius: 10px;
-  overflow: visible;
-  background: #0a1628;
-  border: 0.5px solid rgba(255,255,255,0.08);
   position: relative;
   z-index: 0;
 
-  /* Fade in when visible */
+  width: 38%;
+
+  overflow: visible;
+
+  background: #0a1628;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s ease 0.2s; /* slight delay after typewriter ends */
+
+  transition: opacity 0.6s ease 0.2s;
 }
 
 .visible {
@@ -22,7 +25,11 @@
   visibility: visible;
 }
 
-/* Border trace animation */
+
+/* ============================================================
+   ANIMATED BORDER
+   ============================================================ */
+
 @property --browser-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -30,45 +37,58 @@
 }
 
 @keyframes rotateBorderBrowser {
-  to { --browser-angle: 360deg; }
+  to {
+    --browser-angle: 360deg;
+  }
 }
 
 .browser::after {
   content: '';
+
   position: absolute;
   inset: -1px;
-  border-radius: 10px;
+
   padding: 1px;
+
+  border-radius: 10px;
+
   background: conic-gradient(
-    from var(--browser-angle, 0deg),
+    from var(--browser-angle),
     transparent 0%,
     transparent 70%,
     #39a247 85%,
     rgba(57, 162, 71, 0.2) 95%,
     transparent 100%
   );
+
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+
   animation: rotateBorderBrowser 4s linear infinite;
+
   z-index: -1;
   pointer-events: none;
 }
 
+
 /* ============================================================
-   BROWSER CHROME BAR
+   BROWSER CHROME
    ============================================================ */
 
 .browserBar {
-  height: 36px;
-  background: #0d1f36;
-  border-bottom: 0.5px solid rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
   gap: 10px;
+
+  height: 36px;
   padding: 0 14px;
+
+  background: #0d1f36;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px 10px 0 0;
 }
 
@@ -78,119 +98,121 @@
   flex-shrink: 0;
 }
 
-.dotRed {
+.dotRed,
+.dotYellow,
+.dotGreen {
   width: 10px;
   height: 10px;
+
   border-radius: 50%;
+}
+
+.dotRed {
   background: #ff5555;
 }
 
 .dotYellow {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   background: #ffcc00;
 }
 
 .dotGreen {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   background: #50fa7b;
 }
 
 .addressBar {
-  flex: 1;
-  background: rgba(0,0,0,0.25);
-  border: 0.5px solid rgba(255,255,255,0.07);
-  border-radius: 4px;
-  padding: 3px 10px;
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 11px;
   display: flex;
   align-items: center;
   gap: 2px;
+
+  flex: 1;
+
+  padding: 3px 10px;
+
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 11px;
 }
 
 .protocol {
-  color: rgba(255,255,255,0.2);
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .domain {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
+
 /* ============================================================
-   PAGE CONTENT
+   PREVIEW CONTENT
    ============================================================ */
 
 .pageContent {
-  padding: 28px 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  padding: 28px 28px 24px;
 }
 
-/* Name block */
-.nameBlock {
+.nameBlock,
+.degreeBlock,
+.focusBlock {
   display: flex;
   flex-direction: column;
+}
+
+.nameBlock {
   gap: 2px;
 }
 
+.degreeBlock {
+  gap: 3px;
+}
+
+.focusBlock {
+  gap: 10px;
+}
+
 .greeting {
+  color: rgba(57, 162, 71, 0.6);
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.75rem;
-  color: rgba(57, 162, 71, 0.6);
   letter-spacing: 0.06em;
 }
 
-.name {
+.previewName {
+  color: #fff;
   font-size: 2rem;
   font-weight: 700;
-  color: #ffffff;
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
 
-/* Degree block */
-.degreeBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
 .degree {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
 }
 
 .university {
-  font-size: 0.75rem;
   color: #569cd6;
   font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
 }
 
-/* Divider */
 .divider {
   height: 1px;
-  background: rgba(255,255,255,0.06);
-  border: none;
-}
-
-/* Focus block */
-.focusBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .focusLabel {
+  color: rgba(57, 162, 71, 0.45);
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.72rem;
-  color: rgba(57, 162, 71, 0.45);
   letter-spacing: 0.04em;
 }
 
@@ -201,15 +223,18 @@
 }
 
 .tag {
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.75rem;
+  padding: 3px 10px;
+
   color: #4ec9b0;
   background: rgba(78, 201, 176, 0.07);
-  border: 0.5px solid rgba(78, 201, 176, 0.3);
+  border: 1px solid rgba(78, 201, 176, 0.3);
   border-radius: 4px;
-  padding: 3px 10px;
+
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
   letter-spacing: 0.03em;
 }
+
 
 /* ============================================================
    RESPONSIVE
@@ -221,7 +246,7 @@
     margin: 0 auto;
   }
 
-  .name {
+  .previewName {
     font-size: 1.6rem;
   }
 }

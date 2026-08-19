@@ -29,7 +29,7 @@ const BrowserPreview: React.FC<BrowserPreviewProps> = ({ visible }) => {
 
                 <div className={styles.nameBlock}>
                     <p className={styles.greeting}>Hi, I'm</p>
-                    <h1 className={styles.name}>Simran Cheema</h1>
+                    <h1 className={styles.previewName}>Simran Cheema</h1>
                 </div>
 
                 <div className={styles.degreeBlock}>

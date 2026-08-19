@@ -46,3 +46,9 @@
   opacity: 0.6;
   align-self: center;
 }
+
+@media (max-width: 900px) {
+  .socialBar {
+    display: none;
+  }
+}
