@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
     //States for disappearing Navbar
     const [show, setShow] = useState<boolean>(true);
-    const lastScrollY = useRef(0);
+    const lastScrollY = useRef(window.scrollY);
     const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
 
     //Flips between active - NOT active when hamburger is clicked
@@ -30,24 +30,32 @@ const Navbar: React.FC = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (!isProgrammaticScroll) {
-                if (currentScrollY > lastScrollY.current) {
-                    // Scrolling down
-                    setShow(false);
-                    setIsActive(false);
-                } else {
-                    // Scrolling up
-                    setShow(true);
-                }
+            if (isProgrammaticScroll) {
+                lastScrollY.current = currentScrollY;
+                return;
+            }
+
+            // Ignore tiny scroll movements
+            if (Math.abs(currentScrollY - lastScrollY.current) < 5) {
+                return;
+            }
+
+            if (currentScrollY > lastScrollY.current) {
+                // Scrolling down
+                setShow(false);
+                setIsActive(false);
+            } else {
+                // Scrolling up
+                setShow(true);
             }
 
             lastScrollY.current = currentScrollY;
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, [isProgrammaticScroll]);
 
@@ -127,22 +135,24 @@ const Navbar: React.FC = () => {
                             </a>
                         </li>
                     </ul>
-                    <a
-                        href="/my-portfolio-app/Resume-Main.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.resumeLink}
-                        aria-label="View CV (opens in new tab)"
-                    >
-                        <span aria-hidden="true">
-                            <img className={styles.resumeIcon} src={Images.icons.file} alt="CV" />
-                        </span>
-                        <span className={styles.resumeText}>CV</span>
-                    </a>
-                    <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
-                        <span className={styles.bar}></span>
-                        <span className={styles.bar}></span>
-                        <span className={styles.bar}></span>
+                    <div className={styles.mobileControls}>
+                        <a
+                            href="/my-portfolio-app/Resume-Main.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.resumeLink}
+                            aria-label="View CV (opens in new tab)"
+                        >
+                            <span aria-hidden="true">
+                                <img className={styles.resumeIcon} src={Images.icons.file} alt="CV" />
+                            </span>
+                            <span className={styles.resumeText}>CV</span>
+                        </a>
+                        <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
+                            <span className={styles.bar}></span>
+                            <span className={styles.bar}></span>
+                            <span className={styles.bar}></span>
+                        </div>
                     </div>
                 </nav>
             </header>
