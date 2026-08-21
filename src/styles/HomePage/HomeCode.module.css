@@ -3,13 +3,20 @@
    ============================================================ */
 
 .flexFinal {
+  min-height: 100vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+}
 
-  min-height: 100vh;
-  gap: 100px;
+.heroContent {
+  position: relative;
+  width: min(1100px, 90%);
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -18,8 +25,12 @@
    ============================================================ */
 
 .typewriterContainer {
-  width: 38%;
-  margin: 10px 0 0 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60%;
 
   overflow: hidden;
   padding: 0;
@@ -27,6 +38,18 @@
   background: rgba(13, 27, 42, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+.typewriterHidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .editorBar {
@@ -182,15 +205,8 @@
    ============================================================ */
 
 @media (max-width: 900px) {
-  .flexFinal {
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px 0 40px;
-  }
-
-  .typewriterContainer {
+  .heroContent {
     width: 85%;
-    margin: 0 auto;
   }
 
   .scrollIndicator {

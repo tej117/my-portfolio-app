@@ -3,25 +3,26 @@
    ============================================================ */
 
 .timelineContainer {
-    max-width: 800px;
-    margin: auto;
-    padding: 4rem 2rem;
-    position: relative;
+  max-width: 800px;
+  margin: auto;
+  padding: 4rem 2rem;
+  position: relative;
 }
 
+
 /* ============================================================
-   HEADER — matches Skills/About pattern
+   HEADER
    ============================================================ */
 
 .headerBlock {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  margin-bottom: 3rem;
-  margin-top: 10vh;
+  margin: 10vh 0 3rem;
 }
 
 .fileLabel {
+  margin: 0;
   font-family: 'Consolas', 'Courier New', monospace;
   font-size: 0.75rem;
   color: rgba(57, 162, 71, 0.5);
@@ -29,9 +30,10 @@
 }
 
 .heading h1 {
+  margin: 0;
   font-size: 1.6rem;
   font-weight: 400;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   white-space: nowrap;
 }
 
@@ -41,19 +43,19 @@
   margin-right: 0.4rem;
 }
 
+
 /* ============================================================
-   TIMELINE — left rail
+   TIMELINE
    ============================================================ */
 
 .timeline {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
   padding-left: 2rem;
 }
 
-/* The vertical green line */
+/* Vertical rail */
 .timeline::before {
   content: '';
   position: absolute;
@@ -61,22 +63,36 @@
   bottom: 0;
   left: 0;
   width: 2px;
+
   background: linear-gradient(
-    to bottom,
-    rgba(57, 162, 71, 0.08) var(--seg-start),   /* dim rail above */
-    rgba(57, 162, 71, 0.15) var(--seg-start),    /* tail fade in */
-    #39a247 var(--seg-end),                       /* bright front */
-    rgba(57, 162, 71, 0.08) var(--seg-end)        /* dim rail below */
+    to top,
+    rgba(57, 162, 71, 0.08) var(--seg-start),
+    rgba(57, 162, 71, 0.15) var(--seg-start),
+    #39a247 var(--seg-end),
+    rgba(57, 162, 71, 0.08) var(--seg-end)
   );
-  animation: travelDown 2.5s ease-in-out infinite;
+
+  animation: travelUp 2.5s ease-in-out infinite;
   animation-delay: 1s;
 }
 
-@keyframes travelDown {
-  0%   { --seg-end: 0%;   --seg-start: 0%;   }
-  60%  { --seg-end: 100%; --seg-start: 60%;  }
-  100% { --seg-end: 100%; --seg-start: 100%; }
+@keyframes travelUp {
+  0% {
+    --seg-end: 0%;
+    --seg-start: 0%;
+  }
+
+  60% {
+    --seg-end: 100%;
+    --seg-start: 30%;
+  }
+
+  100% {
+    --seg-end: 100%;
+    --seg-start: 100%;
+  }
 }
+
 
 
 /* ============================================================

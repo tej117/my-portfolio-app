@@ -3,9 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/Navbar.module.css';
 
-// Import icons
-import { Images } from "../assets/assets"
-
 // Define Navbar Component
 const Navbar: React.FC = () => {
 
@@ -65,93 +62,96 @@ const Navbar: React.FC = () => {
                 <nav className={`${styles.navbar} ${show ? styles.show : styles.hidden}`}>
                     <a href="/my-portfolio-app/" className={`${styles.name}`}>Tejal Simran Cheema</a>
                     <p className={styles.title}> Software Engineer </p>
-                    <ul className={`${styles.navMenu} ${isActive ? styles.active ?? '' : ''}`}>
-                        <li onClick={removeActive}>
-                            <a 
-                                href="#about" 
-                                className={styles.navLink}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsProgrammaticScroll(true);
-                                    document.getElementById("about")?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                    // reset the flag after scroll finishes
-                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
-                                }}
+                    <div className={styles.navActions}>
+                        <ul className={`${styles.navMenu} ${isActive ? styles.active ?? '' : ''}`}>
+                            <li onClick={removeActive}>
+                                <a 
+                                    href="#about" 
+                                    className={styles.navLink}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsProgrammaticScroll(true);
+                                        document.getElementById("about")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        });
+                                        // reset the flag after scroll finishes
+                                        setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                    }}
+                                >
+                                    01. &lt;Me/&gt;
+                                </a>
+                            </li>
+                            <li onClick={removeActive}>
+                                <a 
+                                    href="#skills" 
+                                    className={styles.navLink}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsProgrammaticScroll(true);
+                                        document.getElementById("skills")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        });
+                                        // reset the flag after scroll finishes
+                                        setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                    }}
+                                >
+                                    02. &lt;Skills/&gt;
+                                </a>
+                            </li>
+                            <li onClick={removeActive}>
+                                <a 
+                                    href="#experience" 
+                                    className={styles.navLink}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsProgrammaticScroll(true);
+                                        document.getElementById("experience")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        });
+                                        // reset the flag after scroll finishes
+                                        setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                    }}
+                                >
+                                    03.  &lt;Experience/&gt;
+                                </a>
+                            </li>
+                            <li onClick={removeActive}>
+                                <a 
+                                    href="#projects" 
+                                    className={styles.navLink}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsProgrammaticScroll(true);
+                                        document.getElementById("projects")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        });
+                                        // reset the flag after scroll finishes
+                                        setTimeout(() => setIsProgrammaticScroll(false), 800);
+                                    }}
+                                >
+                                    04.  &lt;Projects/&gt;
+                                </a>
+                            </li>
+                        </ul>
+                        <div className={styles.mobileControls}>
+                            <a
+                                href="/my-portfolio-app/Resume-Main.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.resumeLink}
+                                aria-label="View CV (opens in new tab)"
                             >
-                                01. &lt;About/&gt;
+                                <span className={styles.downloadIcon} aria-hidden="true">
+                                    <span className={styles.downloadArrow}></span>
+                                    <span className={styles.downloadLine}></span>
+                                </span>
+                                <span className={styles.resumeText}>CV</span>
                             </a>
-                        </li>
-                        <li onClick={removeActive}>
-                            <a 
-                                href="#skills" 
-                                className={styles.navLink}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsProgrammaticScroll(true);
-                                    document.getElementById("skills")?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                    // reset the flag after scroll finishes
-                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
-                                }}
-                            >
-                                02. &lt;Skills/&gt;
-                            </a>
-                        </li>
-                        <li onClick={removeActive}>
-                            <a 
-                                href="#experience" 
-                                className={styles.navLink}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsProgrammaticScroll(true);
-                                    document.getElementById("experience")?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                    // reset the flag after scroll finishes
-                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
-                                }}
-                            >
-                                03.  &lt;Experience/&gt;
-                            </a>
-                        </li>
-                        <li onClick={removeActive}>
-                            <a 
-                                href="#projects" 
-                                className={styles.navLink}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsProgrammaticScroll(true);
-                                    document.getElementById("projects")?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                    // reset the flag after scroll finishes
-                                    setTimeout(() => setIsProgrammaticScroll(false), 800);
-                                }}
-                            >
-                                04.  &lt;Projects/&gt;
-                            </a>
-                        </li>
-                    </ul>
-                    <div className={styles.mobileControls}>
-                        <a
-                            href="/my-portfolio-app/Resume-Main.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.resumeLink}
-                            aria-label="View CV (opens in new tab)"
-                        >
-                            <span aria-hidden="true">
-                                <img className={styles.resumeIcon} src={Images.icons.file} alt="CV" />
-                            </span>
-                            <span className={styles.resumeText}>CV</span>
-                        </a>
-                        <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
-                            <span className={styles.bar}></span>
-                            <span className={styles.bar}></span>
-                            <span className={styles.bar}></span>
+                            <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`} onClick={toggleActiveClass}>
+                                <span className={styles.bar}></span>
+                                <span className={styles.bar}></span>
+                                <span className={styles.bar}></span>
+                            </div>
                         </div>
                     </div>
                 </nav>

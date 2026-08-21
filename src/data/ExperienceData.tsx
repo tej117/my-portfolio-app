@@ -11,27 +11,53 @@ export type Experience = {
 };
 
 export const experiences: Experience [] = [
+            //Add more as needed
     {
-        date: "Sept 2022 - Apr 2023",
+        date: "Jan 2026 - Aug 2026",
         title: (
             <>
-                Security Co-op @{" "}
-                    <a href="https://www2.gov.bc.ca/gov/content/governments/organizational-structure/ministries-organizations/ministries/citizens-services" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                        Ministry of Citizen Services
-                    </a>
+                Engineering Co-op @{" "}
+                <a
+                    href="https://www.vitacore.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.hoverLink}
+                >
+                    Vitacore Industries Inc.
+                </a>
             </>
         ),
         description: (
             <>
-                I developed a PDF Generator App in{" "}
-                    <a href="https://www.servicenow.com/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                        ServiceNow
-                    </a>{" "}
-                that transformed dynamic forms into professional, responsive PDFs. I also added new features to the ministry's Security Threat Risk Assessment (
-                    <a href="https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/information-security/security-threat-and-risk-assessment" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                        STRA
+                Developed production software for manufacturing automation, including
+                a 3D printing job scheduler that automated printer assignment and
+                monitored{" "}
+                <a
+                    href="https://github.com/bambulab/BambuStudio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.hoverLink}
+                >
+                    Bambu Studio
+                </a>{" "} 
+                to manage a multi-printer farm. The system was
+                deployed to production and is actively used in the CPAP manufacturing
+                process. I also worked on robotics and computer vision projects,
+                developing a new camera calibration method for a delta robot and
+                prototyping battery chemistry detection using OCR.
+            </>
+        ),
+    },
+    {
+        date: "May 2025 - Aug 2025",
+        title: "Backend Team Member for UVIC Capstone Project",
+        description: (
+            <>
+                As part of a team building an AI-powered chatbot for{"\n"}
+                    <a href="https://www.oceannetworks.ca/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                        Oceans Network Canada
                     </a>
-                ) tool, improving automation and usability.
+                , I focused on backend development using FastAPI, PostgreSQL, and Docker. I implemented asynchronous APIs, integrated ONC's datasources, and built automated testing to ensure scalability and reliability.
             </>
         ),
     },
@@ -60,17 +86,27 @@ export const experiences: Experience [] = [
         ),
     },
     {
-        date: "May 2025 - Aug 2025",
-        title: "Backend Team Member for UVIC Capstone Project",
+        date: "Sept 2022 - Apr 2023",
+        title: (
+            <>
+                Security Co-op @{" "}
+                    <a href="https://www2.gov.bc.ca/gov/content/governments/organizational-structure/ministries-organizations/ministries/citizens-services" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                        Ministry of Citizen Services
+                    </a>
+            </>
+        ),
         description: (
             <>
-                As part of a team building an AI-powered chatbot for{"\n"}
-                    <a href="https://www.oceannetworks.ca/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                        Oceans Network Canada
+                I developed a PDF Generator App in{" "}
+                    <a href="https://www.servicenow.com/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                        ServiceNow
+                    </a>{" "}
+                that transformed dynamic forms into professional, responsive PDFs. I also added new features to the ministry's Security Threat Risk Assessment (
+                    <a href="https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/information-security/security-threat-and-risk-assessment" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
+                        STRA
                     </a>
-                , I focused on backend development using FastAPI, PostgreSQL, and Docker. I implemented asynchronous APIs, integrated ONC's datasources, and built automated testing to ensure scalability and reliability.
+                ) tool, improving automation and usability.
             </>
         ),
     },
-    //Add more as needed
 ];

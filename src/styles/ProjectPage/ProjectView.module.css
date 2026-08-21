@@ -1,20 +1,30 @@
+
 /* ============================================================
    CARD
    ============================================================ */
 
 .card {
+    position: relative;
+    z-index: 0;
+
     width: 100%;
     max-width: 900px;
-    background: rgba(13, 27, 42, 0.6);
-    border: 0.5px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
+    margin: 0 auto;
+    padding: 1.75rem 2rem;
+
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding: 1.75rem 2rem;
-    position: relative;
-    z-index: 0;
+
+    background: rgba(13, 27, 42, 0.6);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
 }
+
+
+/* ============================================================
+   ANIMATED BORDER
+   ============================================================ */
 
 @property --project-angle {
     syntax: '<angle>';
@@ -23,41 +33,50 @@
 }
 
 @keyframes rotateBorderProject {
-    to { --project-angle: 360deg; }
+    to {
+        --project-angle: 360deg;
+    }
 }
 
 .card::after {
     content: '';
+
     position: absolute;
     inset: -1px;
-    border-radius: 10px;
+    z-index: -1;
+
     padding: 1px;
+    border-radius: 10px;
+
     background: conic-gradient(
-        from var(--project-angle, 0deg),
+        from var(--project-angle),
         transparent 0%,
         transparent 70%,
         #39a247 85%,
         rgba(57, 162, 71, 0.2) 95%,
         transparent 100%
     );
+
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
+
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+
     animation: rotateBorderProject 4s linear infinite;
-    z-index: -1;
     pointer-events: none;
 }
 
+
 /* ============================================================
-   TOP ROW — title/desc left, thumbnail right
+   PROJECT CONTENT
    ============================================================ */
 
 .topRow {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .titleBlock {
@@ -65,34 +84,46 @@
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    min-width: 0;
 }
 
 .title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    margin: 0;
+
     color: #39a247;
     font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .description {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.65);
     font-size: 0.88rem;
-    color: rgba(255,255,255,0.65);
     line-height: 1.65;
 }
+
 
 /* ============================================================
    THUMBNAIL
    ============================================================ */
 
 .thumbnail {
+    position: relative;
+    flex-shrink: 0;
+
     width: 180px;
     height: 120px;
-    flex-shrink: 0;
-    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     overflow: hidden;
-    position: relative;
-    border: 0.5px solid rgba(255,255,255,0.1);
+
+    background: rgba(13, 27, 42, 0.8);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
 }
 
 .thumbnailClickable {
@@ -102,21 +133,26 @@
 .thumbnailImg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
     display: block;
+
+    object-fit: cover;
     filter: brightness(0.85) saturate(0.8);
+
     transition: filter 0.2s ease;
 }
 
-/* Hover overlay with expand icon */
 .thumbnailOverlay {
     position: absolute;
     inset: 0;
-    background: rgba(13, 27, 42, 0.5);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: rgba(13, 27, 42, 0.5);
     opacity: 0;
+
     transition: opacity 0.2s ease;
 }
 
@@ -131,38 +167,32 @@
 .expandHint {
     color: #39a247;
     font-size: 1.4rem;
-    line-height: 1;
-}
-
-/* Placeholder when no image */
-.thumbnailPlaceholder {
-    background: rgba(13, 27, 42, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: default;
 }
 
 .placeholderLabel {
+    padding: 0 8px;
+
+    color: rgba(255, 255, 255, 0.2);
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 0.65rem;
-    color: rgba(255,255,255,0.2);
     text-align: center;
-    padding: 0 8px;
 }
 
+
 /* ============================================================
-   META ROW — skills + github
+   META
    ============================================================ */
 
 .metaRow {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 1rem;
+
     padding-top: 0.5rem;
-    border-top: 0.5px solid rgba(255,255,255,0.06);
+
+    border-top: 0.5px solid rgba(255, 255, 255, 0.06);
 }
 
 .skillsBlock {
@@ -173,9 +203,9 @@
 }
 
 .skillsLabel {
+    color: rgba(255, 255, 255, 0.3);
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.3);
     white-space: nowrap;
 }
 
@@ -186,43 +216,50 @@
 }
 
 .tag {
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 0.72rem;
+    padding: 3px 8px;
+
     color: #4ec9b0;
     background: rgba(78, 201, 176, 0.07);
     border: 0.5px solid rgba(78, 201, 176, 0.25);
     border-radius: 4px;
-    padding: 3px 8px;
+
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.72rem;
 }
 
 .githubLink {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+
     padding: 5px 12px;
+
+    color: rgba(255, 255, 255, 0.75);
     background: rgba(57, 162, 71, 0.08);
     border: 0.5px solid rgba(57, 162, 71, 0.4);
     border-radius: 6px;
-    color: rgba(255,255,255,0.75);
+
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 0.78rem;
     text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     white-space: nowrap;
+
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .githubLink:hover {
+    color: #fff;
     background: rgba(57, 162, 71, 0.15);
     border-color: #39a247;
-    color: #ffffff;
 }
 
 .githubIcon {
     width: 14px;
     height: 14px;
-    filter: invert(1);
     flex-shrink: 0;
+    filter: invert(1);
 }
+
 
 /* ============================================================
    LIGHTBOX
@@ -231,34 +268,53 @@
 .lightboxOverlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.88);
+    z-index: 2000;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
+
+    background: rgba(0, 0, 0, 0.88);
+
     cursor: pointer;
     animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
 
 .lightboxImage {
     max-width: 90vw;
     max-height: 85vh;
+
     object-fit: contain;
+
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    border: 0.5px solid rgba(255,255,255,0.1);
+
     cursor: default;
     animation: scaleIn 0.2s ease;
 }
 
-@keyframes scaleIn {
-    from { transform: scale(0.95); opacity: 0; }
-    to   { transform: scale(1);    opacity: 1; }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 /* ============================================================
    RESPONSIVE
@@ -266,7 +322,8 @@
 
 @media (max-width: 700px) {
     .topRow {
-        flex-direction: column-reverse;  /* thumbnail above text on mobile */
+        flex-direction: column-reverse;
+        align-items: stretch;
     }
 
     .thumbnail {

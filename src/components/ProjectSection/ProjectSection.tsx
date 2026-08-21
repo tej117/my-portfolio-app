@@ -34,18 +34,16 @@ const ProjectSection: React.FC = () => {
             </div>
 
             {/* Project card */}
-            <div className={styles.cardWrapper}>
-                {currentProject && (
-                    <ProjectView
-                        title={currentProject.title}
-                        description={currentProject.description}
-                        image={currentProject.image}
-                        alt={currentProject.title}
-                        github={currentProject.github}
-                        skills={currentProject.skills}
-                    />
-                )}
-            </div>
+            {currentProject && (
+                <ProjectView
+                    title={currentProject.title}
+                    description={currentProject.description}
+                    image={currentProject.image}
+                    alt={currentProject.title}
+                    github={currentProject.github}
+                    skills={currentProject.skills}
+                />
+            )}
 
         </div>
     );

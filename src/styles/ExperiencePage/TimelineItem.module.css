@@ -4,67 +4,77 @@
 
 .timelineItem {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 0 0 2.5rem 0;
+  padding-bottom: 2.5rem;
 }
 
 .timelineItem:last-child {
   padding-bottom: 0;
 }
 
-/* Dot on the left rail */
+
+/* Timeline dot */
 .dot {
   position: absolute;
-  left: -2.3rem;       /* sits on the vertical line */
+  left: -2.3rem;
   top: 1.4rem;
+
   width: 10px;
   height: 10px;
+
   border-radius: 50%;
-  background: #39a247;
   border: 2px solid rgba(57, 162, 71, 0.3);
+
+  background: #39a247;
+
   box-shadow:
     0 0 6px rgba(57, 162, 71, 0.8),
     0 0 12px rgba(57, 162, 71, 0.4);
-  flex-shrink: 0;
+
   z-index: 2;
 }
+
 
 /* ============================================================
    CONTENT CARD
    ============================================================ */
 
 .content {
-  background: rgba(13, 27, 42, 0.6);
-  border: 0.5px solid rgba(255,255,255,0.08);
-  border-left: 2px solid #39a247;
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  width: 100%;
+
+  padding: 1.25rem 1.5rem;
+
+  background: rgba(13, 27, 42, 0.6);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid #39a247;
+  border-radius: 8px;
 }
 
 .content h3 {
-  font-size: 1rem;
-  font-weight: 600;
+  margin: 0;
+
   color: #39a247;
   font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .date {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.78rem;
 }
 
 .content p {
+  margin: 0.4rem 0 0;
+
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.7);
   line-height: 1.6;
-  margin-top: 0.4rem;
 }
 
 /* ============================================================

@@ -1,90 +1,82 @@
 // src/components/AboutSection/AboutSection.tsx
 
 import React, { useState } from 'react';
-import styles from '../../styles/AboutPage/AboutSection.module.css'
-
-//Images
-import { Images } from "../../assets/assets";
-
-//SVG
-import TopRightArrow from "../../assets/box-arrow-up-right.svg";
+import styles from '../../styles/AboutPage/AboutSection.module.css';
 
 const AboutSection: React.FC = () => {
-
-    //Popups
-    const [activePopup, setActivePopup] = useState<"ai" | "robotics" | null>(null);
-    
+    const [expanded, setExpanded] = useState(false);
 
     return (
         <div className={styles.container}>
             <div className={styles.contentBlock}>
+
+                {/* Header */}
                 <div className={styles.heading}>
-                    <h1><span className={styles.headingNumber}>01.</span> &lt;About Me/&gt;</h1>
+                    <p className={styles.fileLabel}>/* me.tsx */</p>
+                    <h1>
+                        <span className={styles.headingNumber}>01.</span> &lt;Me/&gt;
+                    </h1>
                 </div>
-                <div className={styles.textBlock}>
-                    <p>
-                        I’m a fourth-year Software Engineering student at the{" "} 
-                            <a href="https://www.uvic.ca" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                                University of Victoria
-                            </a>
-                        , specializing in Artificial Intelligence. My passion lies in applying AI and robotics to solve real-world problems. As I continue my degree, I’m focused on expanding my expertise in AI development, robotics, and computer vision to prepare for a career at the intersection of these fields.
-                    </p><br/><p>
-                        Through the{" "}  
-                            <span className={styles.popupTrigger} onClick={() => setActivePopup("ai")}>UVic AI Club<img src={TopRightArrow} alt="" /></span> 
-                        {" "}and{" "}  
-                            <span className={styles.popupTrigger} onClick={() => setActivePopup("robotics")}>UVic Robotics Club<img src={TopRightArrow}alt="" /></span>
-                        , I’ve gained hands-on experience applying AI techniques and working with real-world robotics systems. I developed toxicity prediction models using TensorFlow and presented this work at the Canadian Undergraduate Conference on AI ( 
-                            <a href="https://cucai.ca/" target="_blank" rel="noopener noreferrer" className={styles.hoverLink}>
-                                CUCAI
-                            </a>
-                        ), which strengthened my technical and communication skills. In robotics, I’ve worked with the ZED 2i depth camera and ROS to build vision systems for our competition robot, focusing on 3D data streaming, remote control, and marker detection. 
-                    </p><br/><p>
-                        Outside of school and clubs, I enjoy playing soccer, taking hip-hop dance classes, reading sci-fi novels and playing RPGs.
-                    </p>
-                </div>
-            </div>
-            <div className={styles.imageBlock}>
-                <div className={styles.imageWrapper}> 
-                    <img src={Images.misc.profile} alt="Simran Cheema" />
-                </div>
-            </div>
 
-            {activePopup && (
-                <div className={styles.popupOverlay} onClick={() => setActivePopup(null)}>
-                    <div 
-                    className={styles.popupBox} 
-                    onClick={(e) => e.stopPropagation()}
-                    >
-                    <button className={styles.closeButton} onClick={() => setActivePopup(null)}>×</button>
-                    
-                    {activePopup === "ai" && (
-                        <div className={styles.popupContent}>
-                            <h2>UVic AI Club</h2>
-                            <p>
-                                As part of the AI Club, I’ve worked on small projects that have honed my machine learning skills. Most recently, I developed many models to predict molecule toxicity using the Tox21 dataset, which taught me a lot about handling imbalanced data and experimenting with different techniques in TensorFlow. I also had the opportunity to present this project with my partner at the Canadian Undergraduate Conference on AI (CUCAI), where I gained valuable experience sharing technical work with both peers and industry professionals. It was an incredible way to grow my confidence and communication skills while connecting with the wider AI community.
-                            </p>
-                            <div className={styles.imageSection}>
-                                <img src={Images.clubs.AIClub} alt="UVic AI Club project" />
-                            </div>
-                        </div>
-                    )}
-
-                    {activePopup === "robotics" && (
-                        <div className={styles.popupContent}>
-                            <h2>UVic Robotics Club</h2>
-                            <p>
-                                Being part of the Robotics Club has allowed me to bridge software and hardware by working directly with robotics systems. I’m currently using the ZED 2i depth camera with ROS to experiment with computer vision, remote control, and 3D data streaming for our competition robot. The club has been a great environment for problem-solving with a team—whether it’s figuring out low-light marker detection, managing code with GitHub, or exploring how robotics and AI intersect in practice. It’s been both a technical challenge and a chance to grow through collaboration.
-                            </p>
-                            <div className={styles.imageSection}>
-                                <img src={Images.clubs.RoboticsClub} alt="UVic Robotics Club project" />
-                            </div>
-                        </div>
-                    )}
+                {/* Bio card */}
+                <div className={styles.bioRow}>
+                    <div className={styles.textBlock}>
+                        <p>
+                            I'm someone who enjoys discovering new things and exploring unfamiliar topics
+                            simply for the fun of it. I learn best by building things myself, often getting
+                            pulled down a rabbit hole to understand how everything works from the ground up.
+                            I especially enjoy projects where software has a tangible result, whether that's
+                            controlling a robot, processing data from a camera, or turning an unfamiliar idea
+                            into a reliable prototype. Outside of engineering, I enjoy soccer, hip-hop dance,
+                            sci-fi novels, and RPGs.
+                        </p>
                     </div>
                 </div>
-            )}
+
+                {/* Currently — full width, below bio row */}
+                <div className={styles.currentRole}>
+                    <div className={styles.borderPulse} />
+                    <p className={styles.sectionHeader}>/* CURRENTLY */</p>
+
+                    <div className={styles.titleRow}>
+                        <h2 className={styles.roleTitle}>Software Lead</h2>
+                        <span className={styles.activeBadge}>Active</span>
+                    </div>
+
+                    <p className={styles.roleOrg}>UVic Robotics Club</p>
+
+                    <p className={styles.roleSummary}>
+                        I lead the software team, coordinating development across our rover's systems while contributing 
+                        wherever I'm needed. My work spans project management, systems architecture, implementation, research, 
+                        and documentation, from designing control systems to investigating new tools and technologies for the team.
+                    </p>
+
+                    <button
+                        className={styles.expandButton}
+                        onClick={() => setExpanded(!expanded)}
+                    >
+                        <span>What I'm working on</span>
+                        <span className={`${styles.chevron} ${expanded ? styles.chevronOpen : ''}`}>
+                            ›
+                        </span>
+                    </button>
+
+                    <div className={`${styles.expandContent} ${expanded ? styles.expandContentOpen : ''}`}>
+                        <ul className={styles.workList}>
+                            <li>Lead and coordinate the software team and host weekly meetings</li>
+                            <li>Track issues, milestones, and requirements through GitHub and our SRS</li>
+                            <li>Design and implement control systems for the arm and drive systems</li>
+                            <li>Develop and maintain our Docker and ROS 2 development environment (+ CI/CD workflows)</li>
+                            <li>Research rover subsystems including antennas, communications, DDS, and camera pipelines</li>
+                            <li>Work with technologies including GStreamer, ROS 2, and simulation tools</li>
+                            <li>Create tutorials and documentation to help onboard and support the team</li>
+                        </ul>
+                    </div>
+                </div>                
+
+            </div>
         </div>
     );
-}
+};
 
 export default AboutSection;

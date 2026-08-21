@@ -9,7 +9,7 @@ const Timeline: React.FC = () => {
     return (
         <div className={styles.timelineContainer} id="timeline">
             <div className={styles.headerBlock}>
-                <p className={styles.fileLabel}>/* experience.md */</p>
+                <p className={styles.fileLabel}>/* experience.tsx */</p>
                 <div className={styles.heading}>
                     <h1><span className={styles.headingNumber}>03.</span> &lt;Experience/&gt;</h1>
                 </div>

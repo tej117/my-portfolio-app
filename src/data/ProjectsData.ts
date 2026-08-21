@@ -14,32 +14,101 @@ export type Projects = {
 };
 
 export const projects: Projects [] = [
+
+    // ============================================================
+    // VITACORE — PRODUCTION
+    // ============================================================
     {
         id: "project1",
-        label: "Tetris Game",
-        title: "Tetris Game",
-        description: "Modern Tetris is a custom-built Java project that recreates the classic game with modern mechanics, including SRS rotation, piece holding, and upcoming piece previews. Designed on a 20x10 grid, it challenges players with increasing speed and levels as they clear lines and score points. Built from scratch in IntelliJ, this project showcases strong design architecture and programming practice while leaving room for future enhancements like AI-driven gameplay.",
-        image: Images.projects.Tetris,
-        github: "https://github.com/tej117/Tetris---Java",
-        skills: ["OOP", "Java", "MVC", "Algorithms", "Event-Driven"]
+        label: "3D Print Automation",
+        title: "3D Printing Automation System",
+        description:
+            "Designed and built a production backend for automating a multi-printer Bambu Studio farm. I developed asynchronous job scheduling, printer state tracking, GUI automation, OCR-based status monitoring, and persistent job management to coordinate prints across multiple machines. The system was deployed into production and is actively used to automate part of the CPAP manufacturing workflow.",
+        image: Images.projects.PrintFarm,
+        github: "",
+        skills: [
+            "Python",
+            "FastAPI",
+            "SQLite",
+            "OpenCV",
+            "OCR",
+            "Async",
+            "GUI Automation",
+        ],
     },
+
     {
         id: "project2",
-        label: "AI Model for Toxicity",
-        title: "AI Model for Molecule Toxicity",
-        description: "This project applies machine learning to the Tox21 dataset to predict molecular toxicity based on chemical structure and biological response. Built as part of the University of Victoria’s AI Club, the model was paired with a Streamlit interface for interactive exploration and presented at the 2025 Canadian Undergraduate Conference on Artificial Intelligence (CUCAI). By leveraging the principle of Structure-Activity Relationship (SAR), the project highlights the potential of AI in supporting drug discovery and reducing costly failures in clinical testing.",
-        image: Images.projects.Tox,
-        github: "https://github.com/Tristant2005/Toxicology-Prediction",
-        skills: ["ML & NN", "Data Prep", "Metrics", "Hyperparam Tuning", "Visualization"]
+        label: "Battery OCR",
+        title: "Battery Detection & OCR Pipeline",
+        description:
+            "Built a computer vision pipeline for detecting and reading battery labels from live camera feeds and recorded video on an NVIDIA Jetson. I developed image-quality filtering, frame selection, preprocessing, multi-orientation OCR, and structured result processing using OpenCV and PaddleOCR. The system was designed to handle inconsistent lighting, blur, orientation, and other conditions encountered in a real recycling environment.",
+        image: Images.projects.BatteryOCR,
+        github: "",
+        skills: [
+            "Python",
+            "OpenCV",
+            "PaddleOCR",
+            "NVIDIA Jetson",
+            "Computer Vision",
+            "Docker",
+        ],
     },
+    // ============================================================
+    // UNIVERSITY / PERSONAL
+    // ============================================================
+
     {
         id: "project3",
-        label: "Nautichat",
-        title: "NautiChat - Oceans Network Canada Chatbot",
-        description: "NautiChat is a full-stack conversational AI assistant for Ocean Networks Canada that enables users to query and download real-time and historical oceanographic data through natural language. The backend, built with FastAPI and powered by LLMs, semantic search, and a PostgreSQL/Qdrant database, handles data processing and API integration, while the React frontend (deployed on Vercel) provides a clean, accessible interface. Together, they deliver a secure, scalable, and user-friendly platform designed to make ocean data more understandable for researchers, educators, students, and coastal communities.",
+        label: "NautiChat",
+        title: "NautiChat - Ocean Networks Canada Chatbot",
+        description:
+            "Built the backend for an AI-powered chatbot that allows users to query oceanographic data through natural language. I developed asynchronous FastAPI APIs, integrated Ocean Networks Canada's data sources, and worked with PostgreSQL, Qdrant, semantic search, and LLMs to connect user queries with relevant data. I also implemented automated testing and CI/CD to improve the reliability of the service.",
         image: Images.projects.Nautichat,
         github: "https://github.com/NautiChat-SENG499-Capstone/NautiChat-Backend",
-        skills: ["FastAPI", "Python", "PostgreSQL", "CI/CD", "Testing"]
+        skills: [
+            "FastAPI",
+            "Python",
+            "PostgreSQL",
+            "Qdrant",
+            "LLMs",
+            "CI/CD",
+            "Testing",
+        ],
+    },
+
+    {
+        id: "project4",
+        label: "Molecule Toxicity",
+        title: "AI Model for Molecule Toxicity",
+        description:
+            "Developed a machine learning model to predict molecular toxicity using the Tox21 dataset as part of the University of Victoria's AI Club. I worked on data preparation, model evaluation, hyperparameter tuning, and visualization before integrating the model into a Streamlit interface for interactive exploration. The project was presented at the 2025 Canadian Undergraduate Conference on Artificial Intelligence (CUCAI).",
+        image: Images.projects.Tox,
+        github: "https://github.com/Tristant2005/Toxicology-Prediction",
+        skills: [
+            "Machine Learning",
+            "Data Processing",
+            "Model Evaluation",
+            "Hyperparameter Tuning",
+            "Streamlit",
+        ],
+    },
+
+    {
+        id: "project5",
+        label: "Tetris",
+        title: "Tetris Game",
+        description:
+            "Built a Tetris game from scratch in Java using an MVC architecture and event-driven design. I implemented SRS rotation, piece holding, previews, scoring, level progression, and the underlying game-state logic. The project focused on designing a clean separation between game logic, rendering, and input handling while building a relatively complex interactive system from the ground up.",
+        image: Images.projects.Tetris,
+        github: "https://github.com/tej117/Tetris---Java",
+        skills: [
+            "Java",
+            "OOP",
+            "MVC",
+            "Algorithms",
+            "Event-Driven",
+        ],
     },
     //Add more as needed
 ];

@@ -1,37 +1,56 @@
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
 .container {
   display: flex;
   position: relative;
-  min-height: 100vh;
-  height: auto;
   width: 100%;
-  max-width: 1000px;
-  flex-direction: row;   /* side by side */
-  align-items: flex-start;
-  justify-content: center;
-  gap: 3rem;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
 }
+
+/* ============================================================
+   CONTENT BLOCK
+   ============================================================ */
 
 .contentBlock {
   flex: 1;
-  min-width: 300px;
+  min-width: 0;
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
+
+/* ============================================================
+   HEADING
+   ============================================================ */
 
 .heading {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding-left: 0.25rem;
+  gap: 0.25rem;
+}
+
+.fileLabel {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(57, 162, 71, 0.5);
+  letter-spacing: 0.04em;
 }
 
 .heading h1 {
+  margin: 0;
   font-size: 1.6rem;
-  white-space: nowrap; /* prevents wrapping */
   font-weight: 400;
+  white-space: nowrap;
   color: rgba(255,255,255,0.6);
 }
 
@@ -41,319 +60,366 @@
   margin-right: 0.4rem;
 }
 
+/* ============================================================
+   BIO ROW — card left
+   ============================================================ */
+
+.bioRow {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* ============================================================
+   BIO CARD
+   ============================================================ */
+
 .textBlock {
-  flex: 1;
-  min-width: 300px;
-
-  background: rgba(13, 27, 42, 0.6);
-  border: 0.5px solid rgba(255,255,255,0.08);
-
-  border-left: 2px solid #39a247;
-
-  padding: 1.5rem 2rem;
-
   position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem 2rem;
+  background: rgba(13, 27, 42, 0.45);
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  box-sizing: border-box;
   z-index: 0;
 }
 
-.textBlock::before {
-  content: '/* about_me.md */';
-  display: block;
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.75rem;
-  color: rgba(57, 162, 71, 0.5);
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.04em;
-}
-
-/* Glowing border trace using a pseudo-element behind the card */
+.textBlock::before,
 .textBlock::after {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--about-angle, 0deg),
-    transparent 0%,
-    transparent 70%,
-    #39a247 85%,
-    rgba(57, 162, 71, 0.2) 95%,
-    transparent 100%
-  );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: rotateBorderAbout 4s linear infinite;
-  z-index: -1;
   pointer-events: none;
 }
 
-@property --about-angle {
-  syntax: '<angle>';
-  initial-value: -441deg;
-  inherits: false;
+/* Top-left corner accent */
+.textBlock::before {
+  top: -1px;
+  left: -1px;
+  width: 40%;
+  height: 40%;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(57, 162, 71, 0.6),
+      transparent
+    ) top / 100% 2px no-repeat,
+
+    linear-gradient(
+      to bottom,
+      rgba(57, 162, 71, 0.6),
+      transparent
+    ) left / 2px 100% no-repeat;
+
+  border-radius: 8px 0 0 0;
 }
 
+/* Bottom-right corner accent */
+.textBlock::after {
+  bottom: -1px;
+  right: -1px;
+  width: 40%;
+  height: 40%;
 
-@keyframes rotateBorderAbout {
-  from { --about-angle: -441deg; }
-  to   { --about-angle: -81deg; }
+  background:
+    linear-gradient(
+      to left,
+      rgba(57, 162, 71, 0.45),
+      transparent
+    ) bottom / 100% 2px no-repeat,
+
+    linear-gradient(
+      to top,
+      rgba(57, 162, 71, 0.45),
+      transparent
+    ) right / 2px 100% no-repeat;
+
+  border-radius: 0 0 8px 0;
 }
 
 .textBlock p {
-  color: rgba(255,255,255,0.9);
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);          /* slightly dimmer text */
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin: 0;
 }
 
-.imageBlock {
-  flex: 0 0 28%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 27vh;
-}
 
-.imageWrapper {
-  padding: 2px;
-  background: #39a247;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 20px) 0,
-    100% 20px,
-    100% 100%,
-    20px 100%,
-    0 calc(100% - 20px)
-  );
-}
+/* ============================================================
+   CURRENTLY SECTION — full width, no card
+   ============================================================ */
 
-.imageWrapper img {
-  display: block;
-  width: 100%;
-  max-width: 240px;
-  max-height: 300px;
-  object-fit: cover;
-  filter: grayscale(15%);
-  clip-path: polygon(
-    0 0,
-    calc(100% - 20px) 0,   /* top-right cut */
-    100% 20px,
-    100% 100%,
-    20px 100%,              /* bottom-left cut */
-    0 calc(100% - 20px)
-  );
-}
-
-.hoverLink {
+.currentRole {
   position: relative;
-  text-decoration: none; /* remove default underline */
-  color: #41a0e3; /* match your theme */
-  font-weight: 500;
-}
-
-.hoverLink::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  background-color: #41a0e3;
-  transition: width 0.3s ease;
-}
-
-.hoverLink:hover::after {
-  width: 100%;
-}
-
-.popupTrigger {
-  color: #41a0e3;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 2px 2px;
-  border-radius: 6px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.popupTrigger:hover {
-  background: rgba(65, 123, 174, 0.2);
-  transform: scale(1.05);
-}
-
-.popupTrigger img{
-  width: 16px;
-  height: 16px;
-  filter: invert(58%) sepia(87%) saturate(409%) hue-rotate(166deg) brightness(92%) contrast(89%);
-
-  margin-left: 2px;
-}
-
-.popupOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.popupBox {
-  background: #0d1a26; /* dark theme to match your site */
-  color: #f0f0f0;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 800px;   /* wider box */
-  width: 90%;         /* responsive */
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  position: relative;
-  animation: fadeInUp 0.3s ease;
-}
-
-.closeButton {
-  position: absolute;
-  color: #f0f0f0;
-  top: 10px;
-  right: 12px;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.popupContent {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  text-align: left;
+  margin-top: 1.5rem;
+  gap: 0.6rem;
+  padding: 2rem 1.5rem 1.5rem;
+  overflow: hidden;
 }
 
-.popupContent h2 {
-  margin-bottom: 0.5rem;
+/* Background gradient */
+/* Background gradient */
+.currentRole::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(57, 162, 71, 0.16) 0%,
+    rgba(57, 162, 71, 0.06) 50%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
-.popupContent p {
+/* Fading borders */
+.currentRole::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(57, 162, 71, 0.7), transparent 85%) top / 100% 2px no-repeat,
+    linear-gradient(to bottom, rgba(57, 162, 71, 0.7), transparent 85%) left / 2px 100% no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.currentRole > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.borderPulse {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.borderPulse::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(57, 162, 71, 1),
+    rgba(57, 162, 71, 0.8),
+    transparent
+  );
+  animation: pulseTop 4s ease-in-out infinite;
+}
+
+.borderPulse::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(57, 162, 71, 1),
+    rgba(57, 162, 71, 0.8),
+    transparent
+  );
+  animation: pulseLeft 4s ease-in-out infinite;
+}
+
+@keyframes pulseTop {
+  0%   { left: -80px; opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 0.3; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes pulseLeft {
+  0%   { top: -80px; opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 0.3; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.sectionHeader {
+  margin: 0;
+
+  font-family: 'Consolas', 'Courier New', monospace;
   font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  color: rgba(57, 162, 71, 0.95);
+  text-shadow: 0 0 12px rgba(57, 162, 71, 0.4);
+}
+
+/* Title row — name + pill together */
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.roleTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Active pill badge */
+.activeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(57, 162, 71, 0.18);
+  border: 0.5px solid rgba(57, 162, 71, 0.7);
+  color: #5dcc6e;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.activeBadge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39a247;
+  box-shadow: 0 0 6px rgba(57, 162, 71, 1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.roleOrg {
+  margin: 0;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #4ec9b0;
+}
+
+.roleSummary {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  max-width: 680px;
+}
+
+/* ============================================================
+   EXPANDABLE
+   ============================================================ */
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #41a0e3;        /* blue — signals clickable */
+  cursor: pointer;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.expandButton:hover {
+  color: #4ec9b0;        /* teal on hover */
+}
+
+.chevron {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.chevronOpen {
+  transform: rotate(270deg);
+}
+
+.expandContent {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+}
+
+.expandContentOpen {
+  grid-template-rows: 1fr;
+}
+
+.workList {
+  min-height: 0;
+  margin: 0;
+  padding: 0.5rem 0 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.workList li {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
   line-height: 1.5;
 }
 
-.imageSection {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .textBlock {
+    display: none;
+  }
 }
 
-.imageSection img {
-  width: 100%;
-  max-width: 500px; /* adjust as you like */
-  max-height: 400px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
-/* About Section responsive tweaks */
-@media (max-width: 980px) {
+@media (max-width: 480px) {
   .container {
-    flex-direction: column;   /* stack text and image */
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;             /* let it grow naturally */
-    padding: 1.5rem;
-    gap: 2rem;                /* reduce spacing */
-  }
-
-  .textBlock {
-    flex: 1;
-    margin-top: 5vh;          /* start a bit lower so nav doesn’t overlap */
-    width: 100%;
-    min-width: 200px;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    padding-left: 15px;
-  }
-
-  .heading h1 {
-    font-size: clamp(1.3rem, 4vw, 1.8rem);
-  }
-
-  .headingLine {
-    margin-right: 0;  /* prevent pushing outside container */
-  }
-
-  .textBlock p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
-  .techList ul {
-    font-size: 0.85rem;
-  }
-
-  .imageBlock {
-    margin-top: 2rem;         /* less vertical push */
-    flex: unset;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .imageBlock img {
-    max-width: 320px;         /* shrink profile image */
-    width: 80%;               /* scale with screen */
-  }
-
-  /* Popup box should fit small screens better */
-  .popupBox {
-    max-width: 95%;
-    padding: 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .popupContent p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .imageSection img {
-    max-width: 100%;
-    max-height: 250px;
-  }
-}
-
-/* Even tighter on very small phones */
-@media (max-width: 500px) {
-
-  .textBlock {
-    font-size: 0.8rem;   /* shrink more for small screens */
-    padding-left: 15px;  /* preserve left border spacing */
-  }
-
-  .heading h1 {
-    font-size: clamp(1.1rem, 5vw, 1.5rem);
-  }
-
-  .textBlock p {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-  }
-
-  .imageBlock img {
-    max-width: 280px;
-  }
-
-  .popupBox {
     padding: 1rem;
+  }
+
+  .contentBlock {
+    margin-top: 8vh;
+    gap: 1.25rem;
+  }
+
+  .heading h1 {
+    font-size: 1.3rem;
+  }
+
+  .textBlock {
+    padding: 1.25rem;
+  }
+
+  .roleTitle {
+    font-size: 1rem;
+  }
+
+  .roleSummary {
+    font-size: 0.85rem;
   }
 }

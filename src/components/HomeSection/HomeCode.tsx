@@ -147,17 +147,24 @@ const HomeCode: React.FC = () => {
     //Make First Container appear center before moving to Left
     return (
         <div className={styles.flexFinal}>
-            <div className={`${styles.typewriterContainer}`}>
-                <div className={styles.editorBar}>
-                    <span className={styles.editorTitle}>index.html</span>
-                </div>
-                <div className={styles.editorBody}>
-                    <div ref={lineNumRef} className={styles.lineNumbers} />
-                    <div ref={containerRef1} className={styles.codeContent} />
-                </div>
-            </div>
+            <div className={styles.heroContent}>
+                <div
+                    className={`${styles.typewriterContainer} ${
+                        isFirstDone ? styles.typewriterHidden : ''
+                    }`}
+                >
+                    <div className={styles.editorBar}>
+                        <span className={styles.editorTitle}>index.html</span>
+                    </div>
 
-            <BrowserPreview visible={isFirstDone} />
+                    <div className={styles.editorBody}>
+                        <div ref={lineNumRef} className={styles.lineNumbers} />
+                        <div ref={containerRef1} className={styles.codeContent} />
+                    </div>
+                </div>
+
+                <BrowserPreview visible={isFirstDone} />
+            </div>
 
             {isFirstDone && (
                 <div className={`${styles.scrollIndicator} ${scrolled ? styles.scrollHidden : ''}`}>

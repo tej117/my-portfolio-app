@@ -10,24 +10,71 @@ interface SkillCategory {
 
 const SKILL_CATEGORIES: SkillCategory[] = [
     {
-        title: "Languages",
-        skills: ["Java", "Python", "TypeScript", "JavaScript", "C", "C++", "SQL", "HTML/CSS", "Bash"],
+        title: "AI & Computer Vision",
+        skills: [
+            "Computer Vision",
+            "OpenCV",
+            "OCR",
+            "PaddleOCR",
+            "Image Processing",
+            "TensorFlow",
+            "Scikit-learn",
+            "RAG",
+            "LLM Orchestration",
+        ],
     },
     {
-        title: "AI & ML",
-        skills: ["TensorFlow", "Scikit-learn", "RAG", "LLM Orchestration", "Prompt Engineering", "Qdrant", "Groq API"],
-    },
-    {
-        title: "Robotics & Vision",
-        skills: ["ROS", "ZED Depth Camera", "Computer Vision", "3D Data Streaming", "Embedded C", "STM32"],
+        title: "Robotics & Embedded",
+        skills: [
+            "ROS",
+            "ROS2",
+            "NVIDIA Jetson",
+            "ZED Depth Camera",
+            "3D Data",
+            "Embedded Systems",
+            "Camera Systems",
+            "Extrinsic Calibration",
+            "ChArUco",
+        ],
     },
     {
         title: "Web & Backend",
-        skills: ["React", "FastAPI", "Node.js", "REST APIs", "Docker", "PostgreSQL", "LangChain"],
+        skills: [
+            "React",
+            "FastAPI",
+            "REST APIs",
+            "Async Python",
+            "SQLAlchemy",
+            "Alembic",
+            "SQLite",
+            "PostgreSQL",
+        ],
     },
     {
-        title: "Dev & Tools",
-        skills: ["Git", "GitHub Actions", "Linux", "CI/CD", "ServiceNow", "VHDL", "Technical Writing"],
+        title: "Systems & Infrastructure",
+        skills: [
+            "Docker",
+            "Linux",
+            "systemd",
+            "udev",
+            "NVIDIA Container Runtime",
+            "PowerShell",
+            "Cloudflare Tunnel",
+            "rclone",
+        ],
+    },
+    {
+        title: "Dev & Engineering",
+        skills: [
+            "Git",
+            "GitHub Actions",
+            "CI/CD",
+            "pytest",
+            "Software Architecture",
+            "Technical Leadership",
+            "Project Coordination",
+            "Technical Writing",
+        ],
     },
 ];
 
@@ -36,7 +83,7 @@ const SkillsSection: React.FC = () => {
         <div className={styles.container}>
 
             <div className={styles.headerBlock}>
-                <p className={styles.fileLabel}>/* skills.md */</p>
+                <p className={styles.fileLabel}>/* skills.tsx */</p>
                 <div className={styles.heading}>
                     <h1>
                         <span className={styles.headingNumber}>02.</span> &lt;Skills/&gt;
