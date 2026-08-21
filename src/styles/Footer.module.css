@@ -27,13 +27,12 @@
   width: 20px;
   height: 20px;
   filter: brightness(0) invert(1);
-  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.socialBar a img:hover {
-  transform: scale(1.2);
-  filter: brightness(0) saturate(100%) invert(48%) sepia(20%)
-          saturate(1200%) hue-rotate(80deg) brightness(85%) contrast(90%);
+.socialBar a:hover img {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(18%)
+          saturate(1137%) hue-rotate(78deg) brightness(89%) contrast(91%);
 }
   
 /* Add vertical line under icons */

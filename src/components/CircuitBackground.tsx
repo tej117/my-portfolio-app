@@ -36,16 +36,17 @@ const CircuitBackground: React.FC = () => {
         const resize = () => {
             const dpr = window.devicePixelRatio || 1;
 
-            // Set canvas logical size to viewport only (fixed position covers the screen)
-            canvas.width = window.innerWidth * dpr;
-            canvas.height = window.innerHeight * dpr;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
 
-            // Scale canvas CSS size separately
-            canvas.style.width = `${window.innerWidth}px`;
-            canvas.style.height = `${window.innerHeight}px`;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
 
-            // Scale all drawing operations to match DPR
-            ctx.scale(dpr, dpr);
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+
+            // Reset transform before applying DPR scale
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
             buildGraph();
         };
@@ -57,10 +58,16 @@ const CircuitBackground: React.FC = () => {
             const w = window.innerWidth;
             const h = window.innerHeight;
 
-            const cols = Math.floor(w / GRID_SPACING);
-            const rows = Math.floor(h / GRID_SPACING);
+            // Responsive grid density
+            const GRID_SPACING = w <= 500
+                ? 55
+                : w <= 900
+                    ? 65
+                    : 80;
 
-            // Place every grid intersection as a node
+            const cols = Math.ceil(w / GRID_SPACING);
+            const rows = Math.ceil(h / GRID_SPACING);
+
             for (let row = 0; row <= rows; row++) {
                 for (let col = 0; col <= cols; col++) {
                     nodes.push({
@@ -71,19 +78,19 @@ const CircuitBackground: React.FC = () => {
                 }
             }
 
-            const idx = (col: number, row: number) => row * (cols + 1) + col;
+            const idx = (col: number, row: number) =>
+                row * (cols + 1) + col;
 
-            // Connect only right and down — clean orthogonal grid
             for (let row = 0; row <= rows; row++) {
                 for (let col = 0; col <= cols; col++) {
                     const i = idx(col, row);
+
                     if (col < cols) {
-                        // connect right
                         nodes[i].connections.push(idx(col + 1, row));
                         nodes[idx(col + 1, row)].connections.push(i);
                     }
+
                     if (row < rows) {
-                        // connect down
                         nodes[i].connections.push(idx(col, row + 1));
                         nodes[idx(col, row + 1)].connections.push(i);
                     }
