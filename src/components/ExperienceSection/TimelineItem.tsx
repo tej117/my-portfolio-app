@@ -16,6 +16,13 @@ const TimelineItem: React.FC<Props> = ({ experience }) => {
                 <h3>{experience.title}</h3>
                 <span className={styles.date}>{experience.date}</span>
                 <p>{experience.description}</p>
+                <div className={styles.experienceTags}>
+                    {experience.skills.map((skill) => (
+                        <span key={skill} className={styles.experienceTag}>
+                            {skill}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
     );

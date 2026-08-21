@@ -12,7 +12,7 @@ const AboutSection: React.FC = () => {
 
                 {/* Header */}
                 <div className={styles.heading}>
-                    <p className={styles.fileLabel}>/* me.tsx */</p>
+                    <p className={styles.fileLabel}>/* CURRENTLY DOING */</p>
                     <h1>
                         <span className={styles.headingNumber}>01.</span> &lt;Me/&gt;
                     </h1>
@@ -27,8 +27,7 @@ const AboutSection: React.FC = () => {
                             pulled down a rabbit hole to understand how everything works from the ground up.
                             I especially enjoy projects where software has a tangible result, whether that's
                             controlling a robot, processing data from a camera, or turning an unfamiliar idea
-                            into a reliable prototype. Outside of engineering, I enjoy soccer, hip-hop dance,
-                            sci-fi novels, and RPGs.
+                            into a reliable prototype. 
                         </p>
                     </div>
                 </div>

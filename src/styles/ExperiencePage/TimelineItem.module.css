@@ -48,10 +48,9 @@
 
   padding: 1.25rem 1.5rem;
 
-  background: rgba(13, 27, 42, 0.6);
+  background: rgba(13, 27, 42, 0.2);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
   border-left: 2px solid #39a247;
-  border-radius: 8px;
 }
 
 .content h3 {
@@ -78,6 +77,31 @@
 }
 
 /* ============================================================
+   EXPERIENCE SKILLS
+   ============================================================ */
+
+.experienceTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.experienceTag {
+  padding: 3px 8px;
+
+  color: rgba(78, 201, 176, 0.8);
+  background: rgba(78, 201, 176, 0.05);
+  border: 0.5px solid rgba(78, 201, 176, 0.2);
+  border-radius: 4px;
+
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
@@ -92,5 +116,10 @@
 
   .content p {
     font-size: 0.85rem;
+  }
+
+  .experienceTag {
+    font-size: 0.65rem;
+    padding: 3px 7px;
   }
 }

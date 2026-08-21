@@ -8,6 +8,7 @@ export type Experience = {
     date: string;
     title: ReactNode;
     description: ReactNode;
+    skills: string[];
 };
 
 export const experiences: Experience [] = [
@@ -47,6 +48,13 @@ export const experiences: Experience [] = [
                 prototyping battery chemistry detection using OCR.
             </>
         ),
+        skills: [
+            "Python",
+            "Automation",
+            "Computer Vision",
+            "OCR",
+            "Robotics",
+        ],
     },
     {
         date: "May 2025 - Aug 2025",
@@ -60,6 +68,14 @@ export const experiences: Experience [] = [
                 , I focused on backend development using FastAPI, PostgreSQL, and Docker. I implemented asynchronous APIs, integrated ONC's datasources, and built automated testing to ensure scalability and reliability.
             </>
         ),
+        skills: [
+            "FastAPI",
+            "Python",
+            "PostgreSQL",
+            "Docker",
+            "REST APIs",
+            "Testing",
+        ],
     },
     {
         date: "May 2023 - Apr 2024",
@@ -84,6 +100,13 @@ export const experiences: Experience [] = [
                 . By the end of my contract, the mobile STRA app was completed and demoed to ministry executives.
             </>
         ),
+        skills: [
+            "ServiceNow",
+            "JavaScript",
+            "Mobile Development",
+            "Automation",
+            "PDF Generation",
+        ],
     },
     {
         date: "Sept 2022 - Apr 2023",
@@ -108,5 +131,12 @@ export const experiences: Experience [] = [
                 ) tool, improving automation and usability.
             </>
         ),
+        skills: [
+            "ServiceNow",
+            "JavaScript",
+            "PDF Generation",
+            "Automation",
+            "Web Development",
+        ],
     },
 ];

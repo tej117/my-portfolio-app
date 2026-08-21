@@ -38,7 +38,7 @@ const BrowserPreview: React.FC<BrowserPreviewProps> = ({ visible }) => {
 
                     <div className={styles.degreeBlock}>
                         <span className={styles.degree}>
-                            B.Eng Software Engineering · Class of 2027
+                            B.Eng Software Engineering · Grad 2027
                         </span>
                             <a
                                 href="https://www.uvic.ca"
@@ -70,7 +70,8 @@ const BrowserPreview: React.FC<BrowserPreviewProps> = ({ visible }) => {
                             I'm a fourth-year Software Engineering student specializing in Artificial Intelligence.
                             I'm interested in applying AI, robotics, and computer vision
                             to solve real-world problems, particularly projects that bridge
-                            software with the physical world.
+                            software with the physical world. Outside of engineering, I enjoy soccer, hip-hop dance,
+                            sci-fi novels, and RPGs.
                         </p>
                     </div>
 

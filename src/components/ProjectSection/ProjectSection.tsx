@@ -14,7 +14,7 @@ const ProjectSection: React.FC = () => {
 
             {/* Header */}
             <div className={styles.headerBlock}>
-                <p className={styles.fileLabel}>/* projects.md */</p>
+                <p className={styles.fileLabel}>/* PAST PROJECTS */</p>
                 <div className={styles.heading}>
                     <h1><span className={styles.headingNumber}>04.</span> &lt;Projects/&gt;</h1>
                 </div>

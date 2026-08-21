@@ -22,19 +22,17 @@
    Name
    ========================= */
 .name {
-  text-decoration: none; /* Removes default underline */
-  font-size: clamp(18px, 5vw, 30px);
+  text-decoration: none;
+  font-size: 1rem;
   font-family: 'Consolas', 'Courier New', monospace;
-  color: rgba(255,255,255,0.75);
-
-  transition: all 0.3s ease-in-out;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
 }
 
 .name:hover {
-  color: #39a247; /* Highlight link */
-  transform: scale(1.05); /*Slightly increase the text*/
+  color: #39a247;
 }
-
 /* =========================
    Title
    ========================= */

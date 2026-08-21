@@ -83,7 +83,7 @@ const SkillsSection: React.FC = () => {
         <div className={styles.container}>
 
             <div className={styles.headerBlock}>
-                <p className={styles.fileLabel}>/* skills.tsx */</p>
+                <p className={styles.fileLabel}>/* STACKS & TOOLS */</p>
                 <div className={styles.heading}>
                     <h1>
                         <span className={styles.headingNumber}>02.</span> &lt;Skills/&gt;

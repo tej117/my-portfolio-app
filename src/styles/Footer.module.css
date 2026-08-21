@@ -3,7 +3,7 @@
   text-align: center;
   padding: 1rem 0;
   color: white;
-  margin-top: auto; /* ensures it sticks to bottom only if content is short */
+  margin-top: auto;
 }
 
 .footerBottom p {
@@ -11,44 +11,118 @@
   opacity: 0.7;
 }
 
-/* Fixed vertical sidebar */
+
+/* ============================================================
+   SOCIAL BAR — Desktop
+   ============================================================ */
+
 .socialBar {
   position: fixed;
-  right: 20px;         /* distance from scrollbar */
-  top: 90%;            /* center vertically */
-  transform: translateY(-50%);
+  right: 20px;
+  bottom: 0;
+
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  z-index: 1000;       /* keep above content */
+
+  z-index: 1000;
 }
 
 .socialBar a img {
   width: 20px;
   height: 20px;
+
   filter: brightness(0) invert(1);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
 }
 
 .socialBar a:hover img {
-  filter: brightness(0) saturate(100%) invert(51%) sepia(18%)
-          saturate(1137%) hue-rotate(78deg) brightness(89%) contrast(91%);
-}
-  
-/* Add vertical line under icons */
-.socialBar::after {
-  content: "";
-  display: block;
-  width: 2px;
-  height: 160px;            /* length of the line */
-  background-color: white;
-  margin-top: 0.5rem;
-  opacity: 0.6;
-  align-self: center;
+  transform: scale(1.2);
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(51%)
+    sepia(18%)
+    saturate(1137%)
+    hue-rotate(78deg)
+    brightness(89%)
+    contrast(91%);
 }
 
+
+/* Vertical line */
+.socialBar::after {
+  content: "";
+
+  display: block;
+
+  width: 2px;
+  height: 120px;
+
+  background-color: white;
+
+  margin-top: 0.5rem;
+
+  opacity: 0.6;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
 @media (max-width: 900px) {
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+
+    border-top: 1px solid rgba(57, 162, 71, 0.2);
+    box-sizing: border-box;
+  }
+
+  .footerBottom {
+    margin: 0;
+  }
+
+  .footerBottom p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
   .socialBar {
+    position: static;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: auto;
+    margin: 0;
+    padding: 0;
+
+    gap: 1rem;
+  }
+
+  .socialBar::after {
     display: none;
+  }
+
+  .socialBar a img {
+    width: 20px;
+    height: 20px;
   }
 }

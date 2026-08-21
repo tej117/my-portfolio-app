@@ -54,25 +54,24 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.25rem;
 }
 
+/* First row: 3 equal cards */
 .grid > .card:nth-child(1),
 .grid > .card:nth-child(2),
 .grid > .card:nth-child(3) {
-  grid-column: span 1;
+  grid-column: span 2;
 }
 
-/* Second row wrapper to center the two cards */
+/* Second row: 2 cards centered */
 .grid > .card:nth-child(4) {
-  grid-column: 1 / 2;
-  justify-self: end;
+  grid-column: 2 / span 2;
 }
 
 .grid > .card:nth-child(5) {
-  grid-column: 2 / 3;
-  justify-self: start;
+  grid-column: 4 / span 2;
 }
 
 /* ============================================================
@@ -207,15 +206,16 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .grid > .card:nth-child(4) {
+  .grid > .card {
     grid-column: auto;
-    margin-left: 0;
+    max-width: none;
   }
 
+  /* Center the final card */
   .grid > .card:nth-child(5) {
     grid-column: 1 / -1;
-    max-width: calc(50% - 0.625rem);
-    margin: 0 auto;
+    width: calc(50% - 0.625rem);
+    justify-self: center;
   }
 }
 
@@ -224,10 +224,9 @@
     grid-template-columns: 1fr;
   }
 
-  .grid > .card:nth-child(4),
-  .grid > .card:nth-child(5) {
+  .grid > .card {
     grid-column: auto;
-    max-width: 100%;
-    margin: 0;
+    width: 100%;
+    max-width: none;
   }
 }
