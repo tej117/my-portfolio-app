@@ -27,7 +27,6 @@ const CircuitBackground: React.FC = () => {
         let nodes: Node[] = [];
         let pulses: Pulse[] = [];
 
-        const GRID_SPACING = 80;
         const PULSE_CHANCE = 0.012;   // chance per frame a new pulse spawns
         const LINE_OPACITY = 0.07;    // static line opacity
         const GREEN = '57, 162, 71';  // your #39a247 as RGB
